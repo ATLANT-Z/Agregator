@@ -1,0 +1,60 @@
+input[type="checkbox"] {
+    position: relative;
+    display: block;
+    @include fixedWH(0px, 0px);
+    margin: 12px;
+    margin-right: 24px;
+    background-color: transparent;
+
+    &::before,
+    &::after {
+        content: "";
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        @include fixedWH(24px, 24px);
+        border: 1px solid #3f8483;
+        border-radius: 8px;
+    }
+
+    &::after {
+        background-color: #3f8483;
+        background-image: url(#{$pathToIcons}/checkboxOk.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+    }
+    &:checked::after {
+        opacity: 1;
+    }
+}
+
+.status-circ {
+    display: inline-flex;
+    border-radius: 50%;
+    @include fixedWH(24px, 24px);
+
+    background-color: #9e9e9e;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(#{$pathToIcons}/cross.svg);
+
+    &.loaded {
+        background-color: #308830;
+        background-image: url(#{$pathToIcons}/chekmark.svg);
+    }
+}
+
+*[data-dropdown-pop-btn] {
+    position: relative;
+
+    *[data-dropdown-pop-block] {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        display: none;
+        transition: 0s;
+    }
+}

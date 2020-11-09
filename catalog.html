@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <ul class="nav-menu ">
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Дашборд
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Сопоставление
+                </a>
+            </li>
+            <li class="nav-menu__item active">
+                <a href="javascript:void(0);">
+                    Каталог
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Заказы
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Поставщики
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Импорт
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Экспорт
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Настройки
+                </a>
+            </li>
+        </ul>
+        <a class="login-btn">
+            <span class="ico-wrapper">
+                <img src="assets/icons/user.svg" alt="">
+            </span>
+        </a>
+    </header>
+    <main>
+        <div class="sub-header">
+            <h1 class="sub-header__title">
+                Каталог
+            </h1>
+            <div class="sub-header__nav-panel">
+                <div class="sub-header__btn btn">
+                    редактировать каталог
+                </div>
+            </div>
+        </div>
+        <article class="catalog page">
+            <div class="sub-pages">
+                <a class="sub-pages__page selected" href="javascript:void(0);">
+                    <div class="sub-pages__text">
+                        Обработанный каталог
+                    </div>
+                </a>
+                <a class="sub-pages__page" href="javascript:void(0);">
+                    <div class="sub-pages__text">
+                        Новые позиции
+                    </div>
+                </a>
+            </div>
+            <div class="info-panel">
+                <div class="info-panel__label category">
+                    <div class="info-panel__title">
+                        Количество категорий:
+                    </div>
+                    <div class="info-panel__value">
+                        2
+                    </div>
+                </div>
+                <div class="info-panel__label products">
+                    <div class="info-panel__title">
+                        Количество товаров:
+                    </div>
+                    <div class="info-panel__value">
+                        11 234 шт
+                    </div>
+                </div>
+            </div>
+            <div class="filter-block">
+                <div class="filter-block__panel">
+                    <div class="select-block">
+                        <div class="select-block__info info-wrapper">
+                            <input type="checkbox" name="" id="" class="info-wrapper__flag">
+                            <div class="info-wrapper__text-row">
+                                <span class="info-wrapper__text">
+                                    Выбрано товаров:
+                                </span>
+                                <span class="info-wrapper__count">
+                                    4
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="select-block__instruments">
+                            <li class="btn">
+                                <span class="ico-wrapper">
+                                    <img src="assets/icons/edit.svg" alt="">
+                                </span>
+                            </li>
+                            <li class="btn">
+                                <span class="ico-wrapper">
+                                    <img src="assets/icons/move.svg" alt="">
+                                </span>
+                            </li>
+                            <li class="btn" data-target-pop-id='remove-items-pop'>
+                                <span class="ico-wrapper">
+                                    <img src="assets/icons/delete.svg" alt="">
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <form action="" method="GET" class="search-form">
+                        <input type="text" name="search-str" id="" class="search-form__input">
+                        <input type="submit" value="" id="search-btn" class="d-none">
+                        <label for="search-btn" class="search-form__btn btn">
+                            <span class="ico-wrapper">
+                                <img src="assets/icons/searchLoupe.svg" alt="">
+                            </span>
+                        </label>
+                    </form>
+                    <div class="sort-btn filter-block__btn btn" data-dropdown-pop-btn>
+                        <span class="text">
+                            сортировка
+                        </span>
+                        <span class="ico-wrapper">
+                            <img src="assets/icons/caretDown.svg" alt="">
+                        </span>
+                        <div class="sort-btn__pop" data-dropdown-pop-block>
+                            <ul class="option-list">
+                                <li class="option-list__option">
+                                    По ID
+                                </li>
+                                <li class="option-list__option selected">
+                                    Наименованию товара
+                                </li>
+                                <li class="option-list__option">
+                                    Поставщику
+                                </li>
+                                <li class="option-list__option">
+                                    Статусу
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-btn filter-block__btn btn" data-toggle-block-id="c-filters">
+                        <span class="text">
+                            фильтр
+                        </span>
+                        <span class="ico-wrapper">
+                            <img src="assets/icons/caretDown.svg" alt="">
+                        </span>
+                    </div>
+                </div>
+                <div class="filters" id="c-filters" data-toggleable-block>
+                    <div class="data-tag-line">
+                        <div class="data-tag data-tag-line__item">
+                            <div class="data-tag__text">
+                                Иванов И
+                            </div>
+                            <span class="ico-wrapper btn">
+                                <img src="assets/icons/crossGreen.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="data-tag data-tag-line__item">
+                            <div class="data-tag__text">
+                                Петров П
+                            </div>
+                            <span class="ico-wrapper btn">
+                                <img src="assets/icons/crossGreen.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="data-tag data-tag-line__item">
+                            <div class="data-tag__text">
+                                Сидоров С
+                            </div>
+                            <span class="ico-wrapper btn">
+                                <img src="assets/icons/crossGreen.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="data-tag data-tag-line__item">
+                            <div class="data-tag__text">
+                                Пн, 26 Октября 2020- Пн, 2 Ноября 2020
+                            </div>
+                            <span class="ico-wrapper btn">
+                                <img src="assets/icons/crossGreen.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="data-tag-line__clear-btn">
+                            Очистить
+                        </div>
+                    </div>
+                    <div class="filters__body">
+
+                    </div>
+                </div>
+            </div>
+            <section class="catalog-body">
+                <div class="catalog-body__tree">
+                    <div class="body-wrapper">
+                        <div class="catalog-body__header">
+                            <span class="ico-wrapper">
+                                <img src="assets/icons/catalogBook.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="body-wrapper"></div>
+                    </div>
+                </div>
+                <div class="catalog-body__main">
+                    <ul class="catalog-body__header catalog-table-row">
+                        <li class="column id">
+                            Id
+                        </li>
+                        <li class="column name">
+                            Наименование товара
+                        </li>
+                        <li class="column category">
+                            категория товара
+                        </li>
+                        <li class="column provider">
+                            поставщик
+                        </li>
+                        <li class="column status">
+                            Статус
+                        </li>
+                    </ul>
+                    <div class="body-wrapper">
+                        <div class="folder-row">
+                            <span class="ico-wrapper">
+                                <img src="assets/icons/folder.svg" alt="">
+                            </span>
+                            <span class="folder-row__name">
+                                Ячейки, элементы для литиевых аккумуляторов
+                            </span>
+                            <span class="folder-row__provider-count">
+                                52
+                            </span>
+                            <div class="folder-row__status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </div>
+                        <div class="folder-row">
+                            <span class="ico-wrapper">
+                                <img src="assets/icons/folder.svg" alt="">
+                            </span>
+                            <span class="folder-row__name">
+                                Литиевые аккумуляторы для лодочных моторов
+                            </span>
+                            <span class="folder-row__provider-count">
+                                41
+                            </span>
+                            <div class="folder-row__status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="catalog-body__row catalog-table-row">
+                            <div class="column id">
+                                <input type="checkbox">
+                                <span class="id__text">
+                                    1234567
+                                </span>
+                            </div>
+                            <div class="column name">
+                                Модуль для удаленного управленияяяяяяяяяяяяяя яяяяяяя инвертером
+                                LogicPowerrrrrrrrrrrrrrrrrrrr
+                            </div>
+                            <div class="column category">
+                                ИБП гибридный MPPT ссссссссссс правильной синусоидойййй
+                            </div>
+                            <div class="column provider">
+                                <span class="provider__text">
+                                    Петров И.И.
+                                </span>
+                                <span class="provider__count">
+                                    +4
+                                </span>
+                            </div>
+                            <div class="column status">
+                                <span class="status-circ loaded"></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+    <section id="g-popups-list">
+        <div class="popup-block" id="remove-items-pop">
+            <div class="popup-block__bg"></div>
+            <div class="popup-w">
+                <div class="popup-w__body popup">
+                    <div class="popup__info">
+                        <h3 class="popup__header">
+                            Вы хотите удалить 4 товара?
+                        </h3>
+                        <div class="popup__text">
+                            Всё равно удалить?
+                        </div>
+                    </div>
+                    <div class="popup__footer">
+                        <div class="popup__btn popup__btn--yes btn">
+                            Да, удалить
+                        </div>
+                        <div class="popup__btn popup__btn--no btn">
+                            Нет, отмена
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jQuery/jquery-3.4.1.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
