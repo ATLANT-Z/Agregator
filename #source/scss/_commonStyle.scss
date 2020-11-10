@@ -76,6 +76,38 @@ body > * {
     font-weight: $weight;
 }
 
+@mixin scrollbarStyle() {
+    scrollbar-color: #3f8483 transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 3px;
+    }
+    &::-webkit-scrollbar-button {
+        //background-color: #3f8483;
+        display: none;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #999;
+    }
+    &::-webkit-scrollbar-track-piece {
+        background-color: #ffffff;
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 50px;
+        background-color: #3f8483;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-corner {
+        //background-color: #999;
+        display: none;
+    }
+    &::-webkit-resizer {
+        background-color: #3f8483;
+    }
+}
+
 [data-toggleable-block] {
     display: none;
     transition: 0s;
