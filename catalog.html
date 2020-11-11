@@ -68,7 +68,7 @@
                 Каталог
             </h1>
             <div class="sub-header__nav-panel">
-                <div class="sub-header__btn btn">
+                <div class="sub-header__btn ui-btn-common btn">
                     редактировать каталог
                 </div>
             </div>
@@ -178,7 +178,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="filters" id="c-filters" data-toggleable-block>
+                <!--data-toggleable-block-->
+                <div class="filters" id="c-filters">
                     <div class="data-tag-line">
                         <div class="data-tag data-tag-line__item">
                             <div class="data-tag__text">
@@ -212,17 +213,82 @@
                                 <img src="assets/icons/crossGreen.svg" alt="">
                             </span>
                         </div>
-                        <div class="data-tag-line__clear-btn">
+                        <div class="data-tag-line__clear-btn btn">
                             Очистить
                         </div>
                     </div>
-                    <div class="filters__body">
-
-                    </div>
+                    <article class="filters-row filters__body">
+                        <section class="filter filters-row__column">
+                            <div class="filter__title">
+                                Дата загрузки
+                            </div>
+                            <div class="filter-body">
+                                <div class="calendar-range-field ui-input-wrapper">
+                                    <input class="calendar-range-field__input" value="Дата тут будет" type="text"
+                                        disabled>
+                                    <div class="calendar-range-field__btn ico-wrapper btn">
+                                        <img src="assets/icons/calendar.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="calendar-range-picker-block" data-calendar-picker-range
+                                    data-begin-date="2020-11">
+                                    <div class="month-block" data-month>
+                                        <div class="month-block__header">
+                                            <div class="month-block__name" data-month-name></div>
+                                            <div class="month-block__prev-btn btn">
+                                                <img src="assets/icons/arrowLeft.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="month-body month-block__body">
+                                            <div class="week-row month-body__week-row" data-week-row></div>
+                                            <div class="day-list month-body__day-list" data-day-list>
+                                                <span class="month-item"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="month-block" data-month>
+                                        <div class="month-block__header">
+                                            <div class="month-block__name" data-month-name></div>
+                                            <div class="month-block__next-btn btn">
+                                                <img src="assets/icons/arrowLeft.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="month-body month-block__body">
+                                            <div class="week-row month-body__week-row" data-week-row></div>
+                                            <div class="day-list month-body__day-list" data-day-list>
+                                                <span class="month-item"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="month-block month-info-block">
+                                        <div class="month-block__header">
+                                            <div class="month-block__name">
+                                                Период дат
+                                            </div>
+                                        </div>
+                                        <div class="month-body month-block__body">
+                                            <input class="month-info-block__input ui-input" value="Пн, 26 Октября 2020"
+                                                type="text" data-input-date-begin>
+                                            <input class="month-info-block__input ui-input" value="Пн, 2 Ноября 2020 "
+                                                type="text" data-input-date-end>
+                                            <div class="month-info-block__footer">
+                                                <div class="ui-btn-common yes btn">
+                                                    ок
+                                                </div>
+                                                <div class="ui-btn-common no btn">
+                                                    отменить
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
                 </div>
             </div>
             <section class="catalog-body">
-                <div class="catalog-body__tree toggled">
+                <div class="catalog-body__tree">
                     <div class="catalog-body__header">
                         <span class="ico-wrapper">
                             <img src="assets/icons/catalogBook.svg" alt="">
@@ -711,10 +777,10 @@
                         </div>
                     </div>
                     <div class="popup__footer">
-                        <div class="popup__btn popup__btn--yes btn">
+                        <div class="popup__btn ui-btn-common yes btn">
                             Да, удалить
                         </div>
-                        <div class="popup__btn popup__btn--no btn">
+                        <div class="popup__btn ui-btn-common no btn">
                             Нет, отмена
                         </div>
                     </div>
@@ -725,6 +791,7 @@
 
     <script src="js/jQuery/jquery-3.4.1.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/calendar.js"></script>
 </body>
 
 </html>
