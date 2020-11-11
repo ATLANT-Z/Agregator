@@ -69,10 +69,14 @@ body > * {
     line-height: 24px;
     font-weight: $weight;
 }
-
 @mixin fontSmall($weight: 400) {
     font-size: 14px;
     line-height: 20px;
+    font-weight: $weight;
+}
+@mixin fontCaption($weight: 400) {
+    font-size: 14px;
+    line-height: 16px;
     font-weight: $weight;
 }
 
@@ -121,6 +125,10 @@ body > * {
     position: relative;
 }
 
+//POPUP
+//POPUP
+//POPUP
+//исчезает и появляется
 .popup-block {
     display: none;
     position: fixed;
@@ -142,6 +150,8 @@ body > * {
         z-index: -1;
     }
 }
+
+//центрирует
 .popup-w {
     height: 100%;
     width: 100%;
@@ -152,6 +162,8 @@ body > * {
         margin: auto;
     }
 }
+
+//само окно
 .popup {
     width: 400px;
     padding: 24px 24px 40px;
@@ -180,25 +192,56 @@ body > * {
 
     &__btn {
         margin-right: 24px;
-        padding: 16px 24px;
-        @include fontSmall();
-
-        text-transform: uppercase;
-        border: 1px solid #5f5f5f;
-        border-radius: 8px;
     }
 
     &__btn:last-child {
         margin-right: 0;
     }
+}
 
-    &__btn--yes {
-        color: #ffffff;
-        background-color: #5f5f5f;
+.ui-btn-common {
+    padding: 16px 24px;
+
+    @include fontSmall(600);
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffff;
+    background-color: #aa3c3c;
+    border-radius: 8px;
+    border: 1px solid #aa3c3c;
+
+    &:hover {
+        background-color: #993434;
     }
 
-    &__btn--no {
-        color: #5f5f5f;
+    &.yes:hover {
+        background-color: #993434;
+    }
+
+    &.no {
+        color: #aa3c3c;
         background-color: #ffffff;
     }
+
+    &.no:hover {
+        color: #aa3c3c;
+        background-color: #f0f0f0;
+    }
+}
+
+.ui-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    background-color: #ffffff;
+    border: 1px solid #3f8483;
+}
+
+.ui-input {
+    @include fontCaption();
+
+    padding: 14px 16px;
+    background-color: #ffffff;
+    border: 1px solid #3f8483;
 }
