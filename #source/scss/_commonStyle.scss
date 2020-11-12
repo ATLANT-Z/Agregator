@@ -80,17 +80,18 @@ body > * {
     font-weight: $weight;
 }
 
-@mixin scrollbarStyle() {
+@mixin scrollbarStyle($width: 5px) {
     scrollbar-color: #3f8483 transparent;
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {
-        width: 5px;
-        height: 3px;
+        width: $width;
+        height: $width;
     }
     &::-webkit-scrollbar-button {
-        //background-color: #3f8483;
-        display: none;
+        height: 6px;
+        background-color: #ffffff;
+        //display: none;
     }
     &::-webkit-scrollbar-track {
         background-color: #999;
@@ -104,8 +105,8 @@ body > * {
         border-radius: 3px;
     }
     &::-webkit-scrollbar-corner {
-        //background-color: #999;
-        display: none;
+        //background-color: #fff;
+        //display: none;
     }
     &::-webkit-resizer {
         background-color: #3f8483;

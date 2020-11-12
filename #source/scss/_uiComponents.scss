@@ -3,7 +3,7 @@ input[type="checkbox"] {
     display: block;
     @include fixedWH(0px, 0px);
     margin: 12px;
-    margin-right: 24px !important;
+    margin-right: 20px !important;
     background-color: transparent;
 
     &::before,
