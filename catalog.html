@@ -178,8 +178,7 @@
                         </span>
                     </div>
                 </div>
-                <!--data-toggleable-block-->
-                <div class="filters" id="c-filters">
+                <div class="filters" id="c-filters" data-toggleable-block>
                     <div class="data-tag-line">
                         <div class="data-tag data-tag-line__item">
                             <div class="data-tag__text">
@@ -218,15 +217,17 @@
                         </div>
                     </div>
                     <article class="filters-row filters__body">
-                        <section class="filter filters-row__column">
+                        <div class="clear-filters btn" data-toggle-block-id="c-filters">
+                            Скрыть фильтры
+                        </div>
+                        <section class="filter filter-calendar-range filters-row__column">
                             <div class="filter__title">
                                 Дата загрузки
                             </div>
-                            <div class="filter-body">
+                            <div class="filter-body" data-filter-body>
                                 <div class="calendar-range-field ui-input-wrapper">
-                                    <input class="calendar-range-field__input" value="Дата тут будет" type="text"
-                                        disabled>
-                                    <div class="calendar-range-field__btn ico-wrapper btn">
+                                    <input class="calendar-range-field__input" type="text" data-range-input disabled>
+                                    <div class="calendar-range-field__btn ico-wrapper btn" data-toggle-calendar-btn>
                                         <img src="assets/icons/calendar.svg" alt="">
                                     </div>
                                 </div>
@@ -235,28 +236,26 @@
                                     <div class="month-block" data-month>
                                         <div class="month-block__header">
                                             <div class="month-block__name" data-month-name></div>
-                                            <div class="month-block__prev-btn btn">
+                                            <div class="month-block__prev-btn btn" data-calendar-prev-btn>
                                                 <img src="assets/icons/arrowLeft.svg" alt="">
                                             </div>
                                         </div>
                                         <div class="month-body month-block__body">
                                             <div class="week-row month-body__week-row" data-week-row></div>
                                             <div class="day-list month-body__day-list" data-day-list>
-                                                <span class="month-item"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="month-block" data-month>
                                         <div class="month-block__header">
                                             <div class="month-block__name" data-month-name></div>
-                                            <div class="month-block__next-btn btn">
+                                            <div class="month-block__next-btn btn" data-calendar-next-btn>
                                                 <img src="assets/icons/arrowLeft.svg" alt="">
                                             </div>
                                         </div>
                                         <div class="month-body month-block__body">
                                             <div class="week-row month-body__week-row" data-week-row></div>
                                             <div class="day-list month-body__day-list" data-day-list>
-                                                <span class="month-item"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -268,20 +267,113 @@
                                         </div>
                                         <div class="month-body month-block__body">
                                             <input class="month-info-block__input ui-input" value="Пн, 26 Октября 2020"
-                                                type="text" data-input-date-begin>
-                                            <input class="month-info-block__input ui-input" value="Пн, 2 Ноября 2020 "
-                                                type="text" data-input-date-end>
+                                                type="text" data-visible-input-date-begin disabled>
+                                            <input class="d-none" type="date" name="date-begin" data-field-date-begin>
+                                            <input class="month-info-block__input ui-input" value="Пн, 2 Ноября 2020"
+                                                type="text" data-visible-input-date-end disabled>
+                                            <input class="d-none" type="date" name="date-end" data-field-date-end>
                                             <div class="month-info-block__footer">
-                                                <div class="ui-btn-common yes btn">
+                                                <div class="ui-btn-common yes btn" data-apply-range>
                                                     ок
                                                 </div>
-                                                <div class="ui-btn-common no btn">
+                                                <div class="ui-btn-common no btn" data-hide-range>
                                                     отменить
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </section>
+                        <section class="filter filters-row__column">
+                            <div class="filter__title">
+                                Поставщики
+                            </div>
+                            <div class="filter-body">
+                                <div class="search-drop-down-list ui-input-wrapper">
+                                    <div class="ico-wrapper">
+                                        <img src="assets/icons/searchLoupe.svg" alt="">
+                                    </div>
+                                    <input class="search-drop-down-list__input" placeholder="Поиск поставщика"
+                                        type="text">
+                                    <ul class="options">
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Иванов И
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Петров П
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Сидоров С
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Иванов И
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Петров П
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Сидоров С
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Иванов И
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Петров П
+                                            </span>
+                                        </li>
+                                        <li class="options__item">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="provider-name">
+                                                Сидоров С
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="filter filters-row__column">
+                            <div class="filter__title">
+                                Статус
+                            </div>
+                            <div class="filter-body">
+                                <ul class="checkbox-list">
+                                    <li class="checkbox-list__item">
+                                        <input type="checkbox">
+                                        <span class="text">
+                                            Выгружается на сайт
+                                        </span>
+                                    </li>
+                                    <li class="checkbox-list__item">
+                                        <input type="checkbox">
+                                        <span class="text">
+                                            Не выгружается на сайт
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
                         </section>
                     </article>
