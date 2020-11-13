@@ -293,6 +293,9 @@ $columW5: 52 / $rowWidthWithoutPads * 100%;
         padding: 8px 24px;
         @include bodyTableBorder();
 
+        &:hover {
+            background-color: #f5faf9;
+        }
         > .column {
             @include fontMid();
             display: flex;
@@ -529,10 +532,15 @@ $columW5: 52 / $rowWidthWithoutPads * 100%;
     padding: 4px 8px;
     background-color: #f5faf9;
     border-radius: 8px;
+    border: 1px solid transparent;
 
     &__text {
         @include fontMid();
         margin-right: 24px;
+    }
+
+    &:hover {
+        border: 1px solid #8bbfbb;
     }
 }
 
