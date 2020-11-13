@@ -13,6 +13,41 @@ Date.prototype.getDateForInput = function () {
     return this.toISOString().split('T')[0];
 };
 
+function getWeekDayNameArray() {
+    return ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вc'];
+}
+
+function getMonthNameArray() {
+    return ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+}
+
+function dateToStr(date) {
+    let weekDays = getWeekDayNameArray();
+    let monthNames = getMonthNameArray();
+
+    return `${weekDays[date.getNormDay()]}, ` +
+        `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
+}
+
+$('[data-field-date-begin], [data-field-date-end]').on('change', function () {
+    let $parent = $(this).closest('[data-filter-body]');
+
+    let $begin = $('[data-field-date-begin]', $parent);
+    let $end = $('[data-field-date-end]', $parent);
+    let $userDateField = $('[data-user-date-field]', $parent);
+
+    if ($begin.val().length && $end.val().length) {
+        let beginInputVal = $begin.val();
+        let endInputVal = $end.val();
+
+        let beginStr = dateToStr(new Date(beginInputVal));
+        let endStr = dateToStr(new Date(endInputVal));
+
+        $userDateField.val(beginStr + ' - ' + endStr);
+    }
+});
+
+
 class CalendarPickerRange {
     constructor() {
         this.$calendar = $('[data-calendar-picker-range]');
@@ -20,12 +55,7 @@ class CalendarPickerRange {
         this.initMonthBody();
         this.initExternEvents();
     }
-    getWeekDayNameArray() {
-        return ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вc'];
-    }
-    getMonthNameArray() {
-        return ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-    }
+
 
     getItem() {
         return {
@@ -40,7 +70,7 @@ class CalendarPickerRange {
 
     initMonthBody() {
         let item = this.getItem();
-        let weekDays = this.getWeekDayNameArray();
+        let weekDays = getWeekDayNameArray();
 
         //init week row
         this.$calendar.each(function () {
@@ -51,20 +81,25 @@ class CalendarPickerRange {
             }
         });
 
+
+
         // init month block and day list
         let initDayList = this.initDayList.bind(this);
+        let setDefaultRange = this.setDefaultRange.bind(this);
         this.$calendar.each(function () {
             let beginDateStr = $(this).attr('data-begin-date');
             let beginDate = new Date(beginDateStr + '-01');
             initDayList(this, beginDate);
+            setDefaultRange(this);
         });
 
     }
 
     initDayList(calendarThis, beginDate) {
         let item = this.getItem();
-        let monthNames = this.getMonthNameArray();
+        let monthNames = getMonthNameArray();
         let $monthBlock = $('[data-month]', calendarThis);
+
 
         $(calendarThis).attr('data-current-date', beginDate.getDateForInput());
 
@@ -123,6 +158,24 @@ class CalendarPickerRange {
         });
     }
 
+    setDefaultRange(calendarThis) {
+        let $calendar = $(calendarThis);
+        if ($calendar.is('[data-select-begin]') && $calendar.is('[data-select-end]')) {
+            let selectBegin = new Date($calendar.attr('data-select-begin'));
+            let selectEnd = new Date($calendar.attr('data-select-end'));
+
+            let indexBegin = selectBegin.getDate();
+            //преобразование разницы в дни
+            let indexEnd = (selectEnd - selectBegin) / 1000 / 60 / 60 / 24;
+
+            this.setRange(indexBegin - 1, indexBegin + indexEnd - 1, $calendar);
+        }
+        else {
+            console.log('Данные для диапазона не указаны. Элемент:');
+            console.log($calendar);
+        }
+    }
+
     renderSelection(begin, end, scopeItem) {
         let $parent = $(scopeItem).closest('[data-calendar-picker-range]');
         let $itemsList = $('[data-day-num]', $parent);
@@ -148,12 +201,13 @@ class CalendarPickerRange {
         end = +end;
         if (begin <= end) {
             let $parent;
-            if ($(scopeItem).is('[data-calendar-picker-range]'))
+            if ($(scopeItem).is('[data-filter-body]'))
                 $parent = $(scopeItem)
             else
-                $parent = $(scopeItem).closest('[data-calendar-picker-range]');
+                $parent = $(scopeItem).closest('[data-filter-body]');
 
-            let beginDateStr = $($parent).attr('data-current-date');
+            let $parentCalendar = $('[data-calendar-picker-range]', $parent);
+            let beginDateStr = $($parentCalendar).attr('data-current-date');
             let beginDate = new Date(beginDateStr);
 
             let $inputBeginVisible = $('[data-visible-input-date-begin]', $parent);
@@ -167,8 +221,8 @@ class CalendarPickerRange {
             beginDateSelect.setDate(begin + 1);
             endDateSelect.setDate(end + 1);
 
-            $inputBeginVisible.val(this.dateToStr(beginDateSelect));
-            $inputEndVisible.val(this.dateToStr(endDateSelect));
+            $inputBeginVisible.val(dateToStr(beginDateSelect));
+            $inputEndVisible.val(dateToStr(endDateSelect));
 
             $inputBeginVisible[0]['dateJs'] = beginDateSelect;
             $inputEndVisible[0]['dateJs'] = endDateSelect;
@@ -184,14 +238,6 @@ class CalendarPickerRange {
         }
     }
 
-    dateToStr(date) {
-        let weekDays = this.getWeekDayNameArray();
-        let monthNames = this.getMonthNameArray();
-
-
-        return `${weekDays[date.getNormDay()]}, ` +
-            `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
-    }
 
     initExternEvents() {
         let toggleParent = function (scope) {
@@ -241,6 +287,8 @@ class CalendarPickerRange {
             let beginDateStr = $($parent).attr('data-current-date');
             let beginDate = new Date(beginDateStr);
             beginDate.setMonth(beginDate.getMonth() - 1);
+            beginDate.setDate(1);
+            beginDate.setHours(12); // это чтоб при переходе времени не сломалось
 
             initDayList($parent, beginDate);
         });
@@ -250,14 +298,15 @@ class CalendarPickerRange {
             let beginDateStr = $($parent).attr('data-current-date');
             let beginDate = new Date(beginDateStr);
             beginDate.setMonth(beginDate.getMonth() + 1);
+            beginDate.setDate(1);
+            beginDate.setHours(12); // это чтоб при переходе времени не сломалось
 
             initDayList($parent, beginDate);
         });
 
     }
 }
-
-let calendar = new CalendarPickerRange();
+//let calendar = new CalendarPickerRange();
 
 
 

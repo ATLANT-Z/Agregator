@@ -91,6 +91,7 @@ body > * {
     &::-webkit-scrollbar-button {
         height: 6px;
         background-color: #ffffff;
+        border-radius: 8px;
         //display: none;
     }
     &::-webkit-scrollbar-track {
@@ -105,6 +106,7 @@ body > * {
         border-radius: 3px;
     }
     &::-webkit-scrollbar-corner {
+        border-radius: 8px;
         //background-color: #fff;
         //display: none;
     }
@@ -201,32 +203,61 @@ body > * {
 }
 
 .ui-btn-common {
+    $colorMain: #aa3c3c;
+    $colorHoverMain: #993434;
+
     padding: 16px 24px;
 
     @include fontSmall(600);
     text-transform: uppercase;
     text-align: center;
     color: #ffffff;
-    background-color: #aa3c3c;
+    background-color: $colorMain;
+    border: 1px solid $colorMain;
     border-radius: 8px;
-    border: 1px solid #aa3c3c;
 
     &:hover {
-        background-color: #993434;
+        background-color: $colorHoverMain;
     }
 
     &.yes:hover {
-        background-color: #993434;
+        background-color: $colorHoverMain;
     }
 
     &.no {
-        color: #aa3c3c;
+        color: $colorMain;
         background-color: #ffffff;
     }
 
     &.no:hover {
-        color: #aa3c3c;
+        color: $colorMain;
         background-color: #f0f0f0;
+    }
+
+    &.secondary {
+        $colorSecondary: #8bbfbb;
+        $colorHoverSecondary: #79a5a1;
+
+        background-color: $colorSecondary;
+        border: 1px solid $colorSecondary;
+
+        &:hover {
+            background-color: $colorHoverSecondary;
+        }
+
+        &.yes:hover {
+            background-color: $colorHoverSecondary;
+        }
+
+        &.no {
+            color: $colorSecondary;
+            background-color: #ffffff;
+        }
+
+        &.no:hover {
+            color: $colorSecondary;
+            background-color: #f0f0f0;
+        }
     }
 }
 
