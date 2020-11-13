@@ -32,6 +32,10 @@ input[type="checkbox"] {
     }
 }
 
+input[type="radio"]:checked {
+    margin-left: 12px;
+}
+
 .status-circ {
     display: inline-flex;
     border-radius: 50%;
@@ -57,5 +61,6 @@ input[type="checkbox"] {
         top: 100%;
         display: none;
         transition: 0s;
+        z-index: 99;
     }
 }

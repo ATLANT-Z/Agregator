@@ -44,6 +44,22 @@ $('[data-field-date-begin], [data-field-date-end]').on('change', function () {
         let endStr = dateToStr(new Date(endInputVal));
 
         $userDateField.val(beginStr + ' - ' + endStr);
+        $userDateField.trigger("change");
+    }
+    else {
+        $userDateField.val('');
+    }
+});
+
+$('[data-user-date-field]').on('change', function () {
+    if ($(this).val().length == 0) {
+        let $parent = $(this).closest('[data-filter-body]');
+
+        let $begin = $('[data-field-date-begin]', $parent);
+        let $end = $('[data-field-date-end]', $parent);
+
+        $begin.val('');
+        $end.val('');
     }
 });
 
