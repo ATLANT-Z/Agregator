@@ -13,7 +13,7 @@ main {
 
 body > * {
     width: 100%;
-    max-width: 1366px;
+    //max-width: 1366px;
     margin: 0 auto;
 }
 
@@ -90,6 +90,7 @@ body > * {
     }
     &::-webkit-scrollbar-button {
         height: 6px;
+        width: 6px;
         background-color: #ffffff;
         border-radius: 8px;
         //display: none;
@@ -101,14 +102,15 @@ body > * {
         background-color: #ffffff;
     }
     &::-webkit-scrollbar-thumb {
-        height: 50px;
+        height: 24px;
         background-color: #3f8483;
         border-radius: 3px;
     }
     &::-webkit-scrollbar-corner {
-        border-radius: 8px;
-        //background-color: #fff;
-        //display: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #fff;
     }
     &::-webkit-resizer {
         background-color: #3f8483;
