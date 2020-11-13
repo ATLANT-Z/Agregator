@@ -104,11 +104,11 @@
                     </div>
                 </div>
             </div>
-            <div class="filter-block">
+            <form class="filter-block">
                 <div class="filter-block__panel">
                     <div class="select-block">
                         <div class="select-block__info info-wrapper">
-                            <input type="checkbox" name="" id="" class="info-wrapper__flag">
+                            <input type="checkbox" name="" class="info-wrapper__flag">
                             <div class="info-wrapper__text-row">
                                 <span class="info-wrapper__text">
                                     Выбрано товаров:
@@ -136,15 +136,15 @@
                             </li>
                         </ul>
                     </div>
-                    <form action="" method="GET" class="search-form">
-                        <input type="text" name="search-str" id="" class="search-form__input">
+                    <div class="search-form">
+                        <input type="text" name="search-str" class="search-form__input">
                         <input type="submit" value="" id="search-btn" class="d-none">
                         <label for="search-btn" class="search-form__btn btn">
                             <span class="ico-wrapper">
                                 <img src="assets/icons/searchLoupe.svg" alt="">
                             </span>
                         </label>
-                    </form>
+                    </div>
                     <div class="sort-btn filter-block__btn btn" data-dropdown-pop-btn>
                         <span class="text">
                             сортировка
@@ -178,110 +178,66 @@
                         </span>
                     </div>
                 </div>
-                <div class="filters" id="c-filters" data-toggleable-block>
-                    <div class="data-tag-line">
-                        <div class="data-tag data-tag-line__item">
-                            <div class="data-tag__text">
-                                Иванов И
-                            </div>
-                            <span class="ico-wrapper btn">
-                                <img src="assets/icons/crossGreen.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="data-tag data-tag-line__item">
-                            <div class="data-tag__text">
-                                Петров П
-                            </div>
-                            <span class="ico-wrapper btn">
-                                <img src="assets/icons/crossGreen.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="data-tag data-tag-line__item">
-                            <div class="data-tag__text">
-                                Сидоров С
-                            </div>
-                            <span class="ico-wrapper btn">
-                                <img src="assets/icons/crossGreen.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="data-tag data-tag-line__item">
-                            <div class="data-tag__text">
-                                Пн, 26 Октября 2020- Пн, 2 Ноября 2020
-                            </div>
-                            <span class="ico-wrapper btn">
-                                <img src="assets/icons/crossGreen.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="data-tag-line__clear-btn btn">
+                <div class="filters">
+                    <div class="data-tag-line" data-tag-block>
+                        <ul class="data-tag-line__list" data-tag-list>
+                            <li class="data-tag data-tag-line__item" data-tag>
+                                <div class="data-tag__text">
+                                    Иванов И
+                                </div>
+                                <span class="ico-wrapper btn" data-tag-delete-btn>
+                                    <img src="assets/icons/crossGreen.svg" alt="">
+                                </span>
+                            </li>
+                            <li class="data-tag data-tag-line__item">
+                                <div class="data-tag__text">
+                                    Петров П
+                                </div>
+                                <span class="ico-wrapper btn" data-tag-delete-btn>
+                                    <img src="assets/icons/crossGreen.svg" alt="">
+                                </span>
+                            </li>
+                            <li class="data-tag data-tag-line__item">
+                                <div class="data-tag__text">
+                                    Сидоров С
+                                </div>
+                                <span class="ico-wrapper btn" data-tag-delete-btn>
+                                    <img src="assets/icons/crossGreen.svg" alt="">
+                                </span>
+                            </li>
+                            <li class="data-tag data-tag-line__item">
+                                <div class="data-tag__text">
+                                    Пн, 26 Октября 2020- Пн, 2 Ноября 2020
+                                </div>
+                                <span class="ico-wrapper btn" data-tag-delete-btn>
+                                    <img src="assets/icons/crossGreen.svg" alt="">
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="data-tag-line__clear-btn btn" data-clear-tag-list-btn>
                             Очистить
                         </div>
                     </div>
-                    <article class="filters-row filters__body">
-                        <div class="clear-filters btn" data-toggle-block-id="c-filters">
-                            Скрыть фильтры
-                        </div>
+                    <article class="filters-row filters__body" id="c-filters" data-toggleable-block>
                         <section class="filter filter-calendar-range filters-row__column">
                             <div class="filter__title">
                                 Дата загрузки
                             </div>
-                            <div class="filter-body" data-filter-body>
-                                <div class="calendar-range-field ui-input-wrapper">
-                                    <input class="calendar-range-field__input" type="text" data-range-input disabled>
-                                    <div class="calendar-range-field__btn ico-wrapper btn" data-toggle-calendar-btn>
+                            <div class="filter-body calendar-filter" data-filter-body>
+                                <div class="calendar-range-user-field ui-input-wrapper">
+                                    <input class="calendar-range-user-field__input" type="text"
+                                        placeholder="Выберите диапазон дат ниже" data-user-date-field disabled>
+                                    <div class="ico-wrapper">
                                         <img src="assets/icons/calendar.svg" alt="">
                                     </div>
                                 </div>
-                                <div class="calendar-range-picker-block" data-calendar-picker-range
-                                    data-begin-date="2020-11">
-                                    <div class="month-block" data-month>
-                                        <div class="month-block__header">
-                                            <div class="month-block__name" data-month-name></div>
-                                            <div class="month-block__prev-btn btn" data-calendar-prev-btn>
-                                                <img src="assets/icons/arrowLeft.svg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="month-body month-block__body">
-                                            <div class="week-row month-body__week-row" data-week-row></div>
-                                            <div class="day-list month-body__day-list" data-day-list>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="month-block" data-month>
-                                        <div class="month-block__header">
-                                            <div class="month-block__name" data-month-name></div>
-                                            <div class="month-block__next-btn btn" data-calendar-next-btn>
-                                                <img src="assets/icons/arrowLeft.svg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="month-body month-block__body">
-                                            <div class="week-row month-body__week-row" data-week-row></div>
-                                            <div class="day-list month-body__day-list" data-day-list>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="month-block month-info-block">
-                                        <div class="month-block__header">
-                                            <div class="month-block__name">
-                                                Период дат
-                                            </div>
-                                        </div>
-                                        <div class="month-body month-block__body">
-                                            <input class="month-info-block__input ui-input" value="Пн, 26 Октября 2020"
-                                                type="text" data-visible-input-date-begin disabled>
-                                            <input class="d-none" type="date" name="date-begin" data-field-date-begin>
-                                            <input class="month-info-block__input ui-input" value="Пн, 2 Ноября 2020"
-                                                type="text" data-visible-input-date-end disabled>
-                                            <input class="d-none" type="date" name="date-end" data-field-date-end>
-                                            <div class="month-info-block__footer">
-                                                <div class="ui-btn-common yes btn" data-apply-range>
-                                                    ок
-                                                </div>
-                                                <div class="ui-btn-common no btn" data-hide-range>
-                                                    отменить
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="calendar-field-wrapper ui-input-wrapper">
+                                    <input class="calendar-field-wrapper__input-date" type="date" name="date-begin"
+                                        data-field-date-begin>
+                                </div>
+                                <div class="calendar-field-wrapper ui-input-wrapper">
+                                    <input class="calendar-field-wrapper__input-date" type="date" name="date-end"
+                                        data-field-date-end>
                                 </div>
                             </div>
                         </section>
@@ -298,55 +254,55 @@
                                         type="text">
                                     <ul class="options">
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Иванов И
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Петров П
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Сидоров С
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Иванов И
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Петров П
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Сидоров С
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Иванов И
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Петров П
                                             </span>
                                         </li>
                                         <li class="options__item">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="">
                                             <span class="provider-name">
                                                 Сидоров С
                                             </span>
@@ -376,9 +332,17 @@
                                 </ul>
                             </div>
                         </section>
+                        <div class="filters-row__footer">
+                            <div class="ui-btn-common yes btn" data-toggle-block-id="c-filters">
+                                Применить фильтры
+                            </div>
+                            <div class="ui-btn-common no btn" data-toggle-block-id="c-filters">
+                                Скрыть фильтры
+                            </div>
+                        </div>
                     </article>
                 </div>
-            </div>
+            </form>
             <section class="catalog-body">
                 <div class="catalog-body__tree">
                     <div class="catalog-body__header">
