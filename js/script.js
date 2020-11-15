@@ -103,12 +103,12 @@ $('.option-list__option').click(function () {
     $(this).addClass('selected');
 });
 
-$('.tree-toggle-btn').click(function () {
-    $(this).parents('.catalog-body__tree').toggleClass('toggled');
+$('[data-tree-toggle-btn]').click(function () {
+    $(this).parents('[data-tree-body]').toggleClass('toggled');
 });
 
-$('.title__btn').click(function () {
-    let $parent = $(this).closest('.c-list__item');
+$('[data-tree-title-btn]').click(function () {
+    let $parent = $(this).closest('[data-tree-li-item]');
     let $list = $('>.c-list', $parent);
 
     if ($list.is(':hidden')) {
@@ -121,9 +121,9 @@ $('.title__btn').click(function () {
     }
 });
 
-$('.c-list__item .title__text').click(function () {
-    $('.c-list__item').removeClass('selected');
-    $(this).closest('.c-list__item').toggleClass('selected');
+$('[data-tree-li-item] [data-tree-title-text]').click(function () {
+    $('[data-tree-li-item]').removeClass('selected');
+    $(this).closest('[data-tree-li-item]').toggleClass('selected');
 });
 
 //Таня сказала, пускай всегда выпадает
@@ -205,7 +205,7 @@ $('[data-clear-tag-list-btn]').click(function () {
 });
 
 
-//Обновляем постоянно состояние тег-листа.
+//Обновляем постоянно состояние тег-листа. Если нет тегов - прячем.
 let $tagListRows = $('[data-tag-list]');
 setInterval(function () {
     $tagListRows.each(function () {
@@ -222,6 +222,7 @@ setInterval(function () {
 }, 400);
 
 
+//Упрощённая работа с сабмит
 $('[data-child-submit-click]').click(function () {
     $('input[type="submit"]')[0].click();
 });
