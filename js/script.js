@@ -1,6 +1,8 @@
-function stopClick(e) {
+function stopClick(e, isPrevent = false) {
     e.stopPropagation();
-    e.preventDefault();
+
+    if (isPrevent)
+        e.preventDefault();
 }
 
 function activeDropdownBtn(btn) {
@@ -15,25 +17,21 @@ function unActiveDropdownBtn(btn) {
     }
 }
 
-$(document).click(function (e) {
-    let isInParentClick = $(e.target).closest('[data-dropdown-pop-btn]').length != 0;
-    let isParent = $(e.target).is('[data-dropdown-pop-btn]');
 
-    if (isInParentClick || isParent)
-        return;
-
-    $('[data-dropdown-pop-block]').fadeOut();
-    unActiveDropdownBtn();
-
+// сортировать По? Остановка клика
+$('[data-dropdown-pop-block]').click(function (e) {
+    stopClick(e);
 });
 
+// сортировать По?
+$(document).click(function (e) {
+    $('[data-dropdown-pop-block]').fadeOut();
+    unActiveDropdownBtn();
+});
+
+// сортировать По?
 $('[data-dropdown-pop-btn]').click(function (e) {
-    let isInPopClick = $(e.target).closest('[data-dropdown-pop-block]').length != 0;
-    let isPop = $(e.target).is('[data-dropdown-pop-block]');
-
-    if (isInPopClick || isPop)
-        return;
-
+    stopClick(e);
     let $block = $('[data-dropdown-pop-block]', this);
 
     if ($block.is(':hidden')) {
@@ -46,19 +44,25 @@ $('[data-dropdown-pop-btn]').click(function (e) {
     }
 });
 
-$('[data-toggle-block-id]').click(function (e) {
+$('[data-toggle-block-with-id]').click(function (e) {
     stopClick(e);
 
-    let id = $(this).attr('data-toggle-block-id')
+    let id = $(this).attr('data-toggle-block-with-id');
     let $block = $('#' + id);
 
     if ($block.is(':hidden')) {
-        $block.slideDown();
-        $(`[data-toggle-block-id='${id}']`).addClass('active');
+        $block.slideDown({
+            start: function () {
+                $(this).css({
+                    display: "flex"
+                });
+            }
+        });
+        $(`[data-toggle-block-with-id='${id}']`).addClass('active');
     }
     else {
         $block.slideUp();
-        $(`[data-toggle-block-id='${id}']`).removeClass('active');
+        $(`[data-toggle-block-with-id='${id}']`).removeClass('active');
     }
 });
 
@@ -77,10 +81,10 @@ $('.popup__btn').click(function () {
     $(this).parents('.popup-block').fadeOut();
 });
 
-$('[data-target-pop-id]').click(function (e) {
+$('[data-show-pop-with-id]').click(function (e) {
     stopClick(e);
 
-    let $block = $('#' + $(this).attr('data-target-pop-id'));
+    let $block = $('#' + $(this).attr('data-show-pop-with-id'));
 
     if ($block.is(':hidden'))
         $block.fadeIn();
@@ -99,12 +103,12 @@ $('.option-list__option').click(function () {
     $(this).addClass('selected');
 });
 
-$('.tree-toggle-btn').click(function () {
-    $(this).parents('.catalog-body__tree').toggleClass('toggled');
+$('[data-tree-toggle-btn]').click(function () {
+    $(this).parents('[data-tree-body]').toggleClass('toggled');
 });
 
-$('.title__btn').click(function () {
-    let $parent = $(this).closest('.c-list__item');
+$('[data-tree-title-btn]').click(function () {
+    let $parent = $(this).closest('[data-tree-li-item]');
     let $list = $('>.c-list', $parent);
 
     if ($list.is(':hidden')) {
@@ -117,9 +121,9 @@ $('.title__btn').click(function () {
     }
 });
 
-$('.c-list__item .title__text').click(function () {
-    $('.c-list__item').removeClass('selected');
-    $(this).closest('.c-list__item').toggleClass('selected');
+$('[data-tree-li-item] [data-tree-title-text]').click(function () {
+    $('[data-tree-li-item]').removeClass('selected');
+    $(this).closest('[data-tree-li-item]').toggleClass('selected');
 });
 
 //Таня сказала, пускай всегда выпадает
@@ -201,6 +205,7 @@ $('[data-clear-tag-list-btn]').click(function () {
 });
 
 
+//Обновляем постоянно состояние тег-листа. Если нет тегов - прячем.
 let $tagListRows = $('[data-tag-list]');
 setInterval(function () {
     $tagListRows.each(function () {
@@ -216,6 +221,8 @@ setInterval(function () {
     });
 }, 400);
 
-$('[data-submit-child-click]').click(function () {
+
+//Упрощённая работа с сабмит
+$('[data-child-submit-click]').click(function () {
     $('input[type="submit"]')[0].click();
 });

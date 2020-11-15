@@ -553,9 +553,10 @@ $columW5: 52 / $rowWidthWithoutPads * 100%;
 }
 
 .filters-row {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     margin-top: -16px;
+    max-height: 520px;
 
     &__column {
         min-height: 400px;

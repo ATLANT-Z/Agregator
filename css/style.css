@@ -1335,12 +1335,11 @@ input[type="radio"]:checked {
 }
 
 .filters-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-top: -16px;
+  max-height: 520px;
 }
 
 .filters-row__column {
