@@ -271,15 +271,15 @@ body > * {
 }
 
 .popup__header {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 600;
 }
 
 .popup__text {
   margin-top: 8px;
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
 }
 
@@ -304,7 +304,7 @@ body > * {
 .ui-btn-common {
   padding: 16px 24px;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
@@ -493,7 +493,7 @@ input[type="radio"]:checked {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 28px 0;
+  padding: 24px 0;
   margin-right: 36px;
   font-size: 17px;
   font-weight: 400;
@@ -512,7 +512,7 @@ input[type="radio"]:checked {
 }
 
 .login-btn {
-  padding: 28px 0;
+  padding: 24px 0;
 }
 
 .login-btn img {
@@ -534,14 +534,15 @@ input[type="radio"]:checked {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 32px 61px 60px;
+  padding: 32px 61px 48px;
   -webkit-box-shadow: inset 0px 0px 11px rgba(16, 70, 73, 0.1);
           box-shadow: inset 0px 0px 11px rgba(16, 70, 73, 0.1);
 }
 
 .sub-header__title {
-  font-size: 32px;
-  text-align: left;
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 700;
   color: #104649;
 }
 
@@ -566,8 +567,8 @@ input[type="radio"]:checked {
   display: flex;
   padding: 8px 12px;
   color: #9e9e9e;
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   border-radius: 8px 8px 0px 0px;
   background-color: #f4f4f4;
@@ -608,8 +609,8 @@ input[type="radio"]:checked {
 }
 
 .info-panel__title {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 600;
   margin-right: 8px;
 }
@@ -649,7 +650,7 @@ input[type="radio"]:checked {
   margin-right: 8px;
   color: #3f8483;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -691,7 +692,7 @@ input[type="radio"]:checked {
       -ms-flex-align: center;
           align-items: center;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -748,8 +749,8 @@ input[type="radio"]:checked {
 }
 
 .option-list {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   color: #9e9e9e;
 }
@@ -829,11 +830,15 @@ input[type="radio"]:checked {
   border-radius: 8px;
 }
 
+.catalog-body__tree .catalog-body__header > .ico-wrapper {
+  height: 26px;
+}
+
 .catalog-body__tree .tree-title {
   max-width: 0;
   margin-left: 12px;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 600;
   text-transform: uppercase;
   color: #8bbfbb;
@@ -964,7 +969,7 @@ input[type="radio"]:checked {
 .catalog-body__header > .column {
   padding: 4px 0;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 600;
   color: #9e9e9e;
   text-transform: uppercase;
@@ -986,8 +991,8 @@ input[type="radio"]:checked {
 }
 
 .catalog-body__row > .column {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1004,8 +1009,8 @@ input[type="radio"]:checked {
 }
 
 .catalog-body__row > .id__text {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
 }
 
@@ -1047,16 +1052,16 @@ input[type="radio"]:checked {
 
 .folder-row__name {
   margin-left: 18px;
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   text-transform: uppercase;
 }
 
 .folder-row__provider-count {
   width: 15.33101%;
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   margin-left: auto;
   margin-right: 24px;
@@ -1155,7 +1160,7 @@ input[type="radio"]:checked {
   content: "";
   position: absolute;
   left: -2px;
-  top: 32.5px;
+  top: 30.5px;
   bottom: 0;
   width: 3px;
   background-color: #ffffff;
@@ -1197,15 +1202,15 @@ input[type="radio"]:checked {
 
 .title__btn {
   position: relative;
-  min-width: 24px;
-  min-height: 24px;
-  max-width: 24px;
-  max-height: 24px;
-  width: 24px;
-  height: 24px;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  width: 20px;
+  height: 20px;
   background-color: #ffffff;
   border: 1px solid #3f8483;
-  border-radius: 8px;
+  border-radius: 6px;
   z-index: 2;
 }
 
@@ -1243,8 +1248,8 @@ input[type="radio"]:checked {
 
 .title__text {
   margin-left: 32px;
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   text-transform: uppercase;
   overflow: hidden;
@@ -1253,8 +1258,8 @@ input[type="radio"]:checked {
 }
 
 .c-list__item.selected > .title > .title__text {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 600;
 }
 
@@ -1301,7 +1306,7 @@ input[type="radio"]:checked {
 .data-tag-line__clear-btn {
   margin: 12px 38px 12px 0;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 600;
   text-transform: uppercase;
   color: #aa3c3c;
@@ -1318,8 +1323,8 @@ input[type="radio"]:checked {
 }
 
 .data-tag__text {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   margin-right: 24px;
 }
@@ -1382,16 +1387,16 @@ input[type="radio"]:checked {
   position: absolute;
   right: 0;
   bottom: 0;
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 600;
   text-transform: uppercase;
   color: #aa3c3c;
 }
 
 .filter__title {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 600;
 }
 
@@ -1419,8 +1424,8 @@ input[type="radio"]:checked {
 }
 
 .calendar-field-wrapper__input-date {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   width: 100%;
   padding-right: 0;
@@ -1434,8 +1439,8 @@ input[type="radio"]:checked {
 }
 
 .calendar-range-user-field__input {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   width: 100%;
   padding-right: 24px;
@@ -1523,8 +1528,8 @@ input[type="radio"]:checked {
 }
 
 .search-drop-down-list .options__item .provider-name {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
 }
 
@@ -1536,7 +1541,7 @@ input[type="radio"]:checked {
 }
 
 .checkbox-list .text {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
 }
