@@ -198,6 +198,10 @@ $columW5: 52 / $rowWidthWithoutPads * 100%;
         box-shadow: 0px 0px 16px rgba(16, 70, 73, 0.1);
         border-radius: 8px;
 
+        .catalog-body__header > .ico-wrapper {
+            height: 26px;
+        }
+
         .tree-title {
             max-width: 0;
             margin-left: 12px;
@@ -403,7 +407,7 @@ $columW5: 52 / $rowWidthWithoutPads * 100%;
             content: "";
             position: absolute;
             left: -2px;
-            top: 32.5px;
+            top: 30.5px;
             bottom: 0;
             width: 3px;
             background-color: #ffffff;
@@ -440,10 +444,10 @@ $columW5: 52 / $rowWidthWithoutPads * 100%;
 
     &__btn {
         position: relative;
-        @include fixedWH(24px, 24px);
+        @include fixedWH(20px, 20px);
         background-color: #ffffff;
         border: 1px solid #3f8483;
-        border-radius: 8px;
+        border-radius: 6px;
         z-index: 2;
 
         &::before,

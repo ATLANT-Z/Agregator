@@ -65,18 +65,24 @@ body > * {
 }
 
 @mixin fontMid($weight: 400) {
-    font-size: 17px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 20px;
     font-weight: $weight;
 }
 @mixin fontSmall($weight: 400) {
     font-size: 14px;
-    line-height: 20px;
+    line-height: 18px;
     font-weight: $weight;
 }
 @mixin fontCaption($weight: 400) {
     font-size: 14px;
     line-height: 16px;
+    font-weight: $weight;
+}
+
+@mixin fontTitle($weight: 700) {
+    font-size: 28px;
+    line-height: 40px;
     font-weight: $weight;
 }
 
