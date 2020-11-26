@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
 $pathToIcons: "../assets/icons";
+
 body {
     line-height: 1.2;
     display: flex;
@@ -8,7 +11,7 @@ body {
 
 main {
     flex-grow: 1;
-    padding-bottom: 60px;
+    padding-bottom: 48px;
 }
 
 body > * {
@@ -176,14 +179,39 @@ body > * {
 
 //само окно
 .popup {
+    display: flex;
+    flex-direction: column;
     width: 400px;
     padding: 24px 24px 40px;
-    background-color: #fafafa;
+    background-color: #ffffff;
     box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.11);
     border-radius: 8px;
 
     &__info {
+        display: flex;
+        flex-direction: column;
         text-align: center;
+    }
+
+    &__title-row {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        & > * {
+            width: calc(50% - 24px);
+            &:first-child {
+                margin-right: 48px;
+            }
+        }
+    }
+
+    &__sub-title {
+        @include fontSmall(600);
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 9px;
     }
 
     &__header {

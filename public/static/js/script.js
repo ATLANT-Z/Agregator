@@ -70,15 +70,19 @@ $('[data-toggle-block-with-id]').click(function (e) {
 /* POPUP */
 /* POPUP */
 $(document).click(function () {
-    $('.popup-block').fadeOut();
+    $('[data-popup-block]').fadeOut();
 });
 
 $('.popup').click(function (e) {
     stopClick(e);
 });
 
-$('.popup__btn').click(function () {
-    $(this).parents('.popup-block').fadeOut();
+$('[data-pop-btn-close-parents]').click(function () {
+    $(this).parents('[data-popup-block]').fadeOut();
+});
+
+$('[data-pop-btn-close-parent]').click(function () {
+    $(this).closest('[data-popup-block]').fadeOut();
 });
 
 $('[data-show-pop-with-id]').click(function (e) {
@@ -92,7 +96,7 @@ $('[data-show-pop-with-id]').click(function (e) {
         $block.fadeOut();
 });
 
-
+//опции в листе, в фильтрах. Где радио кнопки
 $('.option-list__option').click(function () {
     let $parent = $(this).closest('[data-dropdown-pop-btn]');
     let $title = $('[data-dropdown-pop-btn-title]', $parent);
@@ -103,10 +107,12 @@ $('.option-list__option').click(function () {
     $(this).addClass('selected');
 });
 
+//раскрытие дерева в каталоге по ширине
 $('[data-tree-toggle-btn]').click(function () {
     $(this).parents('[data-tree-body]').toggleClass('toggled');
 });
 
+//клик по плюсику в дереве
 $('[data-tree-title-btn]').click(function () {
     let $parent = $(this).closest('[data-tree-li-item]');
     let $list = $('>.c-list', $parent);
@@ -121,9 +127,33 @@ $('[data-tree-title-btn]').click(function () {
     }
 });
 
+//клик по тайтлу в дереве. По ТЕКСТУ
 $('[data-tree-li-item] [data-tree-title-text]').click(function () {
     $('[data-tree-li-item]').removeClass('selected');
     $(this).closest('[data-tree-li-item]').toggleClass('selected');
+});
+
+/* Клики в попапе по чекбоксам  */
+$('[data-tree-body] input[type="checkbox"]').click(function () {
+    let $treeBody = $(this).closest('[data-tree-body]');
+    let $liItem = $(this).closest('[data-tree-li-item]');
+
+    let $parent;
+    if ($liItem.length == 0)
+        $parent = $treeBody;
+    else {
+        $parent = $liItem;
+    }
+
+    let status = $(this).is(':checked');
+    let $checkboxes = $('input[type="checkbox"]', $parent).not(this);
+
+    $checkboxes.each(function () {
+        let thisStatus = $(this).is(':checked');
+        if (status !== thisStatus)
+            this.click();
+    });
+
 });
 
 //Таня сказала, пускай всегда выпадает
@@ -162,6 +192,7 @@ let TAG = {
         </li>`
 }
 
+//шо делать, если инпут в фильтрах изменился
 function filterInputChangeHandler() {
     let $filterBlock = $(this).closest('[data-filter-block]');
     let $tagList = $('[data-tag-list]', $filterBlock);
@@ -195,6 +226,7 @@ function filterInputChangeHandler() {
 }
 $('[data-to-tag-list]').on('change', filterInputChangeHandler);
 
+//чистим теги фильтров
 $('[data-clear-tag-list-btn]').click(function () {
     let $filters = $(this).closest('[data-filter-block]');
 
@@ -226,3 +258,5 @@ setInterval(function () {
 $('[data-child-submit-click]').click(function () {
     $('input[type="submit"]')[0].click();
 });
+
+

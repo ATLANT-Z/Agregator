@@ -1,9 +1,25 @@
+$marginCheckbox: 12px;
+
+@mixin checkboxMarginLeft($margin) {
+    margin-left: $marginCheckbox + $margin;
+}
+@mixin checkboxMarginRight($margin) {
+    margin-right: $marginCheckbox + $margin;
+}
+@mixin checkboxMarginTop($margin) {
+    margin-top: $marginCheckbox + $margin;
+}
+@mixin checkboxMarginBottom($margin) {
+    margin-bottom: $marginCheckbox + $margin;
+}
+
 input[type="checkbox"] {
     position: relative;
     display: block;
     @include fixedWH(0px, 0px);
     margin: 12px;
-    margin-right: 20px !important;
+    @include checkboxMarginRight(8px);
+
     background-color: transparent;
 
     &::before,
