@@ -44,6 +44,7 @@ $('[data-dropdown-pop-btn]').click(function (e) {
     }
 });
 
+//показываем какой-то блок. ФИЛЬТРЫ НАПРИМЕР
 $('[data-toggle-block-with-id]').click(function (e) {
     stopClick(e);
 
@@ -133,28 +134,45 @@ $('[data-tree-li-item] [data-tree-title-text]').click(function () {
     $(this).closest('[data-tree-li-item]').toggleClass('selected');
 });
 
-/* Клики в попапе по чекбоксам  */
+///* Клики в попапе по чекбоксам  */
+//$('[data-tree-body] input[type="checkbox"]').click(function () {
+//    let $treeBody = $(this).closest('[data-tree-body]');
+//    let $liItem = $(this).closest('[data-tree-li-item]');
+
+//    let $parent;
+//    if ($liItem.length == 0)
+//        $parent = $treeBody;
+//    else {
+//        $parent = $liItem;
+//    }
+
+//    let status = $(this).is(':checked');
+//    let $checkboxes = $('input[type="checkbox"]', $parent).not(this);
+
+//    $checkboxes.each(function () {
+//        let thisStatus = $(this).is(':checked');
+//        if (status !== thisStatus)
+//            $(this).prop("checked", !thisStatus);
+//    });
+
+//});
+
+// Клики в попапе по чекбоксам. Убирает чеккед везде, кроме этого
 $('[data-tree-body] input[type="checkbox"]').click(function () {
-    let $treeBody = $(this).closest('[data-tree-body]');
-    let $liItem = $(this).closest('[data-tree-li-item]');
+    setTreeCheckbox(this);
+});
 
-    let $parent;
-    if ($liItem.length == 0)
-        $parent = $treeBody;
-    else {
-        $parent = $liItem;
-    }
+function setTreeCheckbox(_this) {
+    $(_this).prop("checked", true);
 
-    let status = $(this).is(':checked');
-    let $checkboxes = $('input[type="checkbox"]', $parent).not(this);
+    let $treeBody = $(_this).closest('[data-tree-body]');
+    let $checkboxes = $('input[type="checkbox"]', $treeBody);
 
     $checkboxes.each(function () {
-        let thisStatus = $(this).is(':checked');
-        if (status !== thisStatus)
-            this.click();
+        if ($(this).is(':checked') && this != _this)
+            $(this).prop("checked", false);
     });
-
-});
+}
 
 //Таня сказала, пускай всегда выпадает
 //$('.search-drop-down-list').focusin(function () {
@@ -258,5 +276,113 @@ setInterval(function () {
 $('[data-child-submit-click]').click(function () {
     $('input[type="submit"]')[0].click();
 });
+
+
+//переключение страниц
+$('[data-show-page-with-id]').click(function () {
+    let $this = $(this);
+
+    let targetId = $this.attr('data-show-page-with-id');
+
+    let $targetPage = $(`#${targetId}`);
+    let $currentPage = $('[data-page]').filter(':visible');
+
+    $currentPage.hide();
+    $targetPage.fadeIn();
+
+    let currText = $this.text();
+    $this.text($this.attr('data-second-text'));
+    $this.attr('data-second-text', currText);
+
+    $this.attr('data-show-page-with-id', $currentPage.attr('id'));
+});
+
+//редактируем имя каталога
+$('[data-edit-catalog-name-btn]').click(function (e) {
+    stopClick(e);
+
+    let $parent = $(this).closest('[data-tree-title]');
+    let $titleText = $('[data-tree-title-text]', $parent);
+    let $parentCategory = $(this).closest('[data-tree-li-item]');
+
+    let titleText = $titleText.text();
+    let catalogId = $parentCategory.attr('data-catalog-id');
+
+    if (catalogId === undefined) {
+        //При генерации ты, видимо, забыл задать data-catalog-id всем li (категориям)
+        console.error('Нет айди у категории!');
+        console.trace('Смотри сюда');
+    }
+
+    let $pop = $('#edit-category-pop');
+    $('[data-category-name-input]', $pop).val(titleText);
+    $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
+
+    let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
+    let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
+
+    setTreeCheckbox($('input[type="checkbox"]', $popCatalogTitle).get(0));
+
+    $pop.fadeIn();
+    //ЭТО ЕСЛИ НАДО ЗАМЕНИТЬ ПОЛЕ ДВОЙНЫМ КЛИКОМ, НАПРИМЕР
+    //$titleText.empty();
+    //$titleText.append(`<input type="text" onfocusout="titleEditInputFocusOutHandler(this)" onkeydown="titleEditInputKeyDownHandler(this)">`);
+    //let $input = $('input', $titleText);
+    //$input.get(0).focus();
+    //$input.val(titleText);
+    //setTrueWidthForInput($input);
+});
+
+//обработчик нажатия клавиши, чтоб расширять
+function titleEditInputKeyDownHandler(_this) {
+    setTimeout(function () {
+        setTrueWidthForInput(_this);
+    }, 5);
+}
+//обработчик нажатия клавиши, чтоб расширять
+function uiGrowableInputKeyDownHandlerJQuery() {
+    let _this = this;
+    setTimeout(function () {
+        setTrueWidthForInput(_this);
+    }, 5);
+}
+
+//изменять ширину инпут при вводе
+function setTrueWidthForInput(input) {
+    let $input = $(input);
+    let $buffer = $('<span></span>');
+
+    $buffer.css('font-size', $input.css('font-size'));
+    $buffer.css('text-transform', $input.css('text-transform'));
+    $buffer.css('font-weight', $input.css('font-weight'));
+
+    $buffer.css('opacity', 0);
+    $buffer.css('position', 'fixed');
+    $buffer.css('width', 'auto');
+
+    $('body').append($buffer);
+
+    $buffer.text($input.val());
+
+    $input.css('width', parseFloat($buffer.css('width')) + 20 + 'px');
+
+    $buffer.remove();
+}
+
+//изменять ширину инпут при вводе
+$('[data-ui-growable-input]').on('keydown', uiGrowableInputKeyDownHandlerJQuery);
+
+
+//обработчик снятия фокуса с инпута при редактировании имени каталога
+function titleEditInputFocusOutHandler(_this) {
+    let $this = $(_this);
+    let $title = $this.closest('[data-tree-title-text]');
+    $title.text($this.val());
+
+    //Здесь что-то сделать, отправить на сервак может? Или как-то сохранить изменения.
+
+    $this.remove();
+}
+
 
 
