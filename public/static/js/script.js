@@ -316,6 +316,7 @@ $('[data-edit-catalog-name-btn]').click(function (e) {
 
     let $pop = $('#edit-category-pop');
     $('[data-category-name-input]', $pop).val(titleText);
+    $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
 
     let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
     let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
