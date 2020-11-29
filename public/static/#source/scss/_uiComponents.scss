@@ -80,3 +80,147 @@ input[type="radio"]:checked {
         z-index: 99;
     }
 }
+
+*[data-ui-growable-input] {
+    max-width: 100%;
+    transition: 0s;
+}
+
+@mixin uiBtnPlusColor($color) {
+    &::after,
+    &::before {
+        background-color: $color;
+    }
+}
+
+@mixin uiBtnPlusToMinus() {
+    &::after {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+.ui-btn-plus {
+    position: relative;
+    @include fixedWH(20px, 20px);
+    background-color: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 2px;
+        width: 100%;
+        background-color: #3f8483;
+        border-radius: 2px;
+        transform: translate(-50%, -50%);
+    }
+    &::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+}
+
+.ui-btn-common {
+    $colorMain: #aa3c3c;
+    $colorHoverMain: #993434;
+
+    padding: 16px 24px;
+
+    @include fontSmall(600);
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffff;
+    background-color: $colorMain;
+    border: 1px solid $colorMain;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: $colorHoverMain;
+    }
+
+    &.yes:hover {
+        background-color: $colorHoverMain;
+    }
+
+    &.no {
+        color: $colorMain;
+        background-color: #ffffff;
+    }
+
+    &.no:hover {
+        color: $colorMain;
+        background-color: #f0f0f0;
+    }
+
+    &.secondary {
+        $colorSecondary: #8bbfbb;
+        $colorHoverSecondary: #79a5a1;
+
+        background-color: $colorSecondary;
+        border: 1px solid $colorSecondary;
+
+        &:hover {
+            background-color: $colorHoverSecondary;
+        }
+
+        &.yes:hover {
+            background-color: $colorHoverSecondary;
+        }
+
+        &.no {
+            color: $colorSecondary;
+            background-color: #ffffff;
+        }
+
+        &.no:hover {
+            color: $colorSecondary;
+            background-color: #f0f0f0;
+        }
+    }
+}
+
+.ui-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    background-color: #ffffff;
+    border: 1px solid #3f8483;
+
+    &.with-bg-round {
+        background: #f5faf9;
+        border: 1px solid #bddcd9;
+        border-radius: 8px;
+    }
+}
+
+.ui-input {
+    @include fontCaption();
+
+    padding: 14px 16px;
+    background-color: #ffffff;
+    border: 1px solid #3f8483;
+}
+
+.blockUI.blockMsg.blockPage {
+    padding: 16px;
+}
+
+.ui-error {
+    line-height: 1;
+    width: auto !important;
+    text-align: left !important;
+    padding: 4px;
+    color: #aa3c3c;
+    &::before {
+        content: "!";
+        padding: 0 7px;
+        font-weight: 700;
+        color: #aa3c3c;
+        border: 1px solid #aa3c3c;
+        border-radius: 50%;
+    }
+}
