@@ -710,12 +710,12 @@ input[type="radio"]:checked {
 }
 
 .catalog {
-  display: none;
+  display: block;
   padding: 24px 25px 0;
 }
 
 .edit-catalog {
-  display: block;
+  display: none;
   padding: 24px 25px 0;
 }
 
