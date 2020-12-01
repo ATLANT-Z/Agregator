@@ -14,6 +14,7 @@
   transition: 0.3s;
   border: 0 none;
   background-color: transparent;
+  scroll-behavior: smooth;
 }
 
 /* Убираем внутренние отступы */
@@ -354,7 +355,7 @@ body > * {
   right: 24px;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"].ui-checkbox {
   position: relative;
   display: block;
   min-width: 0px;
@@ -364,11 +365,11 @@ input[type="checkbox"] {
   width: 0px;
   height: 0px;
   margin: 12px;
-  margin-right: 20px;
+  margin-right: 20px !important;
   background-color: transparent;
 }
 
-input[type="checkbox"]::before, input[type="checkbox"]::after {
+input[type="checkbox"].ui-checkbox::before, input[type="checkbox"].ui-checkbox::after {
   content: "";
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -389,7 +390,7 @@ input[type="checkbox"]::before, input[type="checkbox"]::after {
   border-radius: 8px;
 }
 
-input[type="checkbox"]::after {
+input[type="checkbox"].ui-checkbox::after {
   background-color: #3f8483;
   background-image: url(../assets/icons/checkboxOk.svg);
   background-position: center;
@@ -397,12 +398,55 @@ input[type="checkbox"]::after {
   opacity: 0;
 }
 
-input[type="checkbox"]:checked::after {
+input[type="checkbox"].ui-checkbox:checked::after {
   opacity: 1;
 }
 
-input[type="radio"]:checked {
-  margin-left: 12px;
+input[type="radio"].ui-checkbox {
+  position: relative;
+  display: block;
+  min-width: 0px;
+  min-height: 0px;
+  max-width: 0px;
+  max-height: 0px;
+  width: 0px;
+  height: 0px;
+  margin: 12px;
+  margin-right: 20px !important;
+  background-color: transparent;
+}
+
+input[type="radio"].ui-checkbox::before, input[type="radio"].ui-checkbox::after {
+  content: "";
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ffffff;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #3f8483;
+  border-radius: 8px;
+}
+
+input[type="radio"].ui-checkbox::after {
+  background-color: #3f8483;
+  background-image: url(../assets/icons/checkboxOk.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+input[type="radio"].ui-checkbox:checked::after {
+  opacity: 1;
 }
 
 .status-circ {
@@ -719,6 +763,10 @@ input[type="radio"]:checked {
   padding: 24px 25px 0;
 }
 
+.pages-nav {
+  position: relative;
+}
+
 .info-panel {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -740,6 +788,7 @@ input[type="radio"]:checked {
   font-size: 16px;
   line-height: 20px;
   font-weight: 600;
+  padding-top: 2px;
   margin-right: 8px;
 }
 
@@ -1701,11 +1750,11 @@ input[type="radio"]:checked {
   opacity: 1;
 }
 
-.catalog-body__tree--wide input[type="checkbox"] {
-  margin-left: 20px;
+.catalog-body__tree--wide .ui-checkbox {
+  margin-left: 20px !important;
 }
 
-.catalog-body__tree--wide input[type="checkbox"]::before, .catalog-body__tree--wide input[type="checkbox"]::after {
+.catalog-body__tree--wide .ui-checkbox::before, .catalog-body__tree--wide .ui-checkbox::after {
   border: 1px solid #d8ebe9;
 }
 

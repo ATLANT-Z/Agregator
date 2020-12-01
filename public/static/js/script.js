@@ -17,8 +17,7 @@ function unActiveDropdownBtn(btn) {
     }
 }
 
-
-// сортировать По? Остановка клика
+// сортировать По? Остановка клика в выпадающем вниз попапе
 $('[data-dropdown-pop-block]').click(function (e) {
     stopClick(e);
 });
@@ -78,12 +77,36 @@ $('.popup').click(function (e) {
     stopClick(e);
 });
 
+
+function defaultAjaxCallback() {
+    return new Promise((resolve, reject) => {
+        setTimeout(function () {
+            resolve(true);
+        }, 250);
+    });
+}
+function isCloseHandler(callback) {
+    let functionName = $(this).attr('data-is-close');
+
+    window[functionName]().then((message) => {
+        callback.call(this, message);
+    }).catch((message) => {
+        callback.call(this, message);
+    });
+}
+
 $('[data-pop-btn-close-parents]').click(function () {
-    $(this).parents('[data-popup-block]').fadeOut();
+    isCloseHandler.call(this, function (isClose) {
+        if (isClose)
+            $(this).parents('[data-popup-block]').fadeOut();
+    });
 });
 
 $('[data-pop-btn-close-parent]').click(function () {
-    $(this).closest('[data-popup-block]').fadeOut();
+    isCloseHandler.call(this, function (isClose) {
+        if (isClose)
+            $(this).parents('[data-popup-block]').fadeOut();
+    });
 });
 
 $('[data-show-pop-with-id]').click(function (e) {
@@ -108,80 +131,87 @@ $('.option-list__option').click(function () {
     $(this).addClass('selected');
 });
 
-//раскрытие дерева в каталоге по ширине
-$('[data-tree-toggle-btn]').click(function () {
-    $(this).parents('[data-tree-body]').toggleClass('toggled');
+$('.sub-pages__page').click(function () {
+    $(this).siblings('.sub-pages__page').removeClass('selected');
+    $(this).addClass('selected');
 });
 
-//клик по плюсику в дереве
-$('[data-tree-title-btn]').click(function () {
-    let $parent = $(this).closest('[data-tree-li-item]');
-    let $list = $('>.c-list', $parent);
-
-    if ($list.is(':hidden')) {
-        $list.slideDown();
-        $parent.addClass('opened');
-    }
-    else {
-        $list.slideUp();
-        $parent.removeClass('opened');
-    }
-});
-
-//клик по тайтлу в дереве. По ТЕКСТУ
-$('[data-tree-li-item] [data-tree-title-text]').click(function () {
-    $('[data-tree-li-item]').removeClass('selected');
-    $(this).closest('[data-tree-li-item]').toggleClass('selected');
-});
-
-///* Клики в попапе по чекбоксам  */
-//$('[data-tree-body] input[type="checkbox"]').click(function () {
-//    let $treeBody = $(this).closest('[data-tree-body]');
-//    let $liItem = $(this).closest('[data-tree-li-item]');
-
-//    let $parent;
-//    if ($liItem.length == 0)
-//        $parent = $treeBody;
-//    else {
-//        $parent = $liItem;
-//    }
-
-//    let status = $(this).is(':checked');
-//    let $checkboxes = $('input[type="checkbox"]', $parent).not(this);
-
-//    $checkboxes.each(function () {
-//        let thisStatus = $(this).is(':checked');
-//        if (status !== thisStatus)
-//            $(this).prop("checked", !thisStatus);
-//    });
-
-//});
-
-// Клики в попапе по чекбоксам. Убирает чеккед везде, кроме этого
-$('[data-tree-body] input[type="checkbox"]').click(function () {
-    setTreeCheckbox(this);
-});
-
-function setTreeCheckbox(_this) {
-    $(_this).prop("checked", true);
-
-    let $treeBody = $(_this).closest('[data-tree-body]');
-    let $checkboxes = $('input[type="checkbox"]', $treeBody);
-
-    $checkboxes.each(function () {
-        if ($(this).is(':checked') && this != _this)
-            $(this).prop("checked", false);
+//Подвязка событий к дереву каталога у определённого родителя. 
+// Например только в попапе "edit catalog"
+function initTreeEventsIn(parent) {
+    //раскрытие дерева в каталоге по ширине
+    $('[data-tree-toggle-btn]', parent).click(function () {
+        $(this).parents('[data-tree-body]').toggleClass('toggled');
     });
-}
 
-//Таня сказала, пускай всегда выпадает
-//$('.search-drop-down-list').focusin(function () {
-//    $('.options', this).slideDown();
-//});
-//$(document).click(function (e) {
-//    if ($(e.target).closest('.filter-body').length == 0)
-//        $('.search-drop-down-list .options', this).slideUp();
-//});
+    //клик по плюсику в дереве
+    $('[data-tree-title-btn]', parent).click(function () {
+        let $parent = $(this).closest('[data-tree-li-item]');
+        let $list = $('>.c-list', $parent);
+
+        if ($list.is(':hidden')) {
+            $list.slideDown();
+            $parent.addClass('opened');
+        }
+        else {
+            $list.slideUp();
+            $parent.removeClass('opened');
+        }
+    });
+
+    //клик по тайтлу в дереве. По ТЕКСТУ
+    $('[data-tree-li-item] [data-tree-title-text]', parent).click(function () {
+        $('[data-tree-li-item]', $(this).closest('[data-tree-body]')).removeClass('selected');
+        $(this).closest('[data-tree-li-item]').toggleClass('selected');
+    });
+
+    //редактируем категорию (каталог) (кнопка с карандашиком)
+    $('[data-edit-catalog-btn]', parent).click(function (e) {
+        stopClick(e);
+
+        let $parent = $(this).closest('[data-tree-title]');
+        let $titleText = $('[data-tree-title-text]', $parent);
+        let $parentCategory = $(this).closest('[data-tree-li-item]');
+
+        //Убираем пробелы в названии, если вдруг есть
+        let titleText = $titleText.text().trim().replace(/\s+/g, ' ');
+        let catalogId = $parentCategory.attr('data-catalog-id');
+
+        if (catalogId === undefined) {
+            //При генерации ты, видимо, забыл задать data-catalog-id всем li (категориям)
+            console.error('Нет айди у категории!');
+            console.trace('Смотри сюда');
+        }
+
+        let $pop = $('#edit-category-pop');
+        $('[data-category-name-input]', $pop).val(titleText);
+        $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
+
+        let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
+        let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
+
+        setRadio($('input[type="radio"]', $popCatalogTitle).get(0));
+
+        $popCategory.parents('[data-tree-li-item]').each(function () {
+            if (!$(this).hasClass('opened'))
+                $('[data-tree-title-btn]', this)[0].click();
+        });
+
+        let delayTime = parseFloat($popCategory.css('transitionDuration')) * 1000 + 300;
+        setTimeout(function () {
+            $popCategory[0].scrollIntoView();
+        }, delayTime);
+
+
+        $pop.fadeIn();
+    });
+
+}
+initTreeEventsIn(document);
+
+function setRadio(_this) {
+    $(_this).prop("checked", true);
+}
 
 function deleteTag() {
     let $tag = $(this).closest('[data-tag]');
@@ -199,7 +229,6 @@ function deleteTag() {
 }
 $('[data-tag-delete-btn]').click(deleteTag);
 
-
 let TAG = {
     code:
         `<li class="data-tag data-tag-line__item" data-tag>
@@ -210,7 +239,7 @@ let TAG = {
         </li>`
 }
 
-//шо делать, если инпут в фильтрах изменился
+//шо делать, если поле в фильтрах каталога изменилось
 function filterInputChangeHandler() {
     let $filterBlock = $(this).closest('[data-filter-block]');
     let $tagList = $('[data-tag-list]', $filterBlock);
@@ -254,7 +283,6 @@ $('[data-clear-tag-list-btn]').click(function () {
     });
 });
 
-
 //Обновляем постоянно состояние тег-листа. Если нет тегов - прячем.
 let $tagListRows = $('[data-tag-list]');
 setInterval(function () {
@@ -271,12 +299,10 @@ setInterval(function () {
     });
 }, 400);
 
-
 //Упрощённая работа с сабмит
 $('[data-child-submit-click]').click(function () {
     $('input[type="submit"]')[0].click();
 });
-
 
 //переключение страниц
 $('[data-show-page-with-id]').click(function () {
@@ -290,51 +316,17 @@ $('[data-show-page-with-id]').click(function () {
     $currentPage.hide();
     $targetPage.fadeIn();
 
-    let currText = $this.text();
-    $this.text($this.attr('data-second-text'));
-    $this.attr('data-second-text', currText);
-
-    $this.attr('data-show-page-with-id', $currentPage.attr('id'));
-});
-
-//редактируем имя каталога
-$('[data-edit-catalog-name-btn]').click(function (e) {
-    stopClick(e);
-
-    let $parent = $(this).closest('[data-tree-title]');
-    let $titleText = $('[data-tree-title-text]', $parent);
-    let $parentCategory = $(this).closest('[data-tree-li-item]');
-
-    let titleText = $titleText.text();
-    let catalogId = $parentCategory.attr('data-catalog-id');
-
-    if (catalogId === undefined) {
-        //При генерации ты, видимо, забыл задать data-catalog-id всем li (категориям)
-        console.error('Нет айди у категории!');
-        console.trace('Смотри сюда');
+    if ($(this).is('[data-second-text]')) {
+        let currText = $this.text();
+        $this.text($this.attr('data-second-text'));
+        $this.attr('data-second-text', currText);
+        $this.attr('data-show-page-with-id', $currentPage.attr('id'));
     }
-
-    let $pop = $('#edit-category-pop');
-    $('[data-category-name-input]', $pop).val(titleText);
-    $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
-
-    let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
-    let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
-
-    setTreeCheckbox($('input[type="checkbox"]', $popCatalogTitle).get(0));
-
-    $pop.fadeIn();
-    //ЭТО ЕСЛИ НАДО ЗАМЕНИТЬ ПОЛЕ ДВОЙНЫМ КЛИКОМ, НАПРИМЕР
-    //$titleText.empty();
-    //$titleText.append(`<input type="text" onfocusout="titleEditInputFocusOutHandler(this)" onkeydown="titleEditInputKeyDownHandler(this)">`);
-    //let $input = $('input', $titleText);
-    //$input.get(0).focus();
-    //$input.val(titleText);
-    //setTrueWidthForInput($input);
 });
 
 //обработчик нажатия клавиши, чтоб расширять
-function titleEditInputKeyDownHandler(_this) {
+function uiGrowableInputKeyDownHandler(_this) {
+    //задержка, чтобы буква отпечаталась
     setTimeout(function () {
         setTrueWidthForInput(_this);
     }, 5);
@@ -342,6 +334,7 @@ function titleEditInputKeyDownHandler(_this) {
 //обработчик нажатия клавиши, чтоб расширять
 function uiGrowableInputKeyDownHandlerJQuery() {
     let _this = this;
+    //задержка, чтобы буква отпечаталась
     setTimeout(function () {
         setTrueWidthForInput(_this);
     }, 5);
@@ -371,18 +364,3 @@ function setTrueWidthForInput(input) {
 
 //изменять ширину инпут при вводе
 $('[data-ui-growable-input]').on('keydown', uiGrowableInputKeyDownHandlerJQuery);
-
-
-//обработчик снятия фокуса с инпута при редактировании имени каталога
-function titleEditInputFocusOutHandler(_this) {
-    let $this = $(_this);
-    let $title = $this.closest('[data-tree-title-text]');
-    $title.text($this.val());
-
-    //Здесь что-то сделать, отправить на сервак может? Или как-то сохранить изменения.
-
-    $this.remove();
-}
-
-
-

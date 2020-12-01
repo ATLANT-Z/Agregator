@@ -1,19 +1,19 @@
 $marginCheckbox: 12px;
 
 @mixin checkboxMarginLeft($margin) {
-    margin-left: $marginCheckbox + $margin;
+    margin-left: $marginCheckbox + $margin !important;
 }
 @mixin checkboxMarginRight($margin) {
-    margin-right: $marginCheckbox + $margin;
+    margin-right: $marginCheckbox + $margin !important;
 }
 @mixin checkboxMarginTop($margin) {
-    margin-top: $marginCheckbox + $margin;
+    margin-top: $marginCheckbox + $margin !important;
 }
 @mixin checkboxMarginBottom($margin) {
-    margin-bottom: $marginCheckbox + $margin;
+    margin-bottom: $marginCheckbox + $margin !important;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"].ui-checkbox {
     position: relative;
     display: block;
     @include fixedWH(0px, 0px);
@@ -48,8 +48,39 @@ input[type="checkbox"] {
     }
 }
 
-input[type="radio"]:checked {
-    margin-left: 12px;
+input[type="radio"].ui-checkbox {
+    position: relative;
+    display: block;
+    @include fixedWH(0px, 0px);
+    margin: 12px;
+    @include checkboxMarginRight(8px);
+
+    background-color: transparent;
+
+    &::before,
+    &::after {
+        content: "";
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        background-color: #ffffff;
+        @include fixedWH(24px, 24px);
+        border: 1px solid #3f8483;
+        border-radius: 8px;
+    }
+
+    &::after {
+        background-color: #3f8483;
+        background-image: url(#{$pathToIcons}/checkboxOk.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+    }
+    &:checked::after {
+        opacity: 1;
+    }
 }
 
 .status-circ {
