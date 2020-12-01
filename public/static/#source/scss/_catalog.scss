@@ -11,6 +11,10 @@
     padding: 24px 25px 0;
 }
 
+.pages-nav {
+    position: relative;
+}
+
 .info-panel {
     display: flex;
     padding: 16px 24px;
@@ -22,6 +26,7 @@
     }
     &__title {
         @include fontMid(600);
+        padding-top: 2px;
         margin-right: 8px;
     }
 
@@ -730,7 +735,7 @@ $maxHeightCatalogBody: 728px;
             opacity: 1;
         }
 
-        input[type="checkbox"] {
+        .ui-checkbox {
             @include checkboxMarginLeft(8px);
             &::before,
             &::after {
