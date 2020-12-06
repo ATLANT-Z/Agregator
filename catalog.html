@@ -121,7 +121,7 @@
                                 </span>
                             </div>
                         </div>
-                        <ul class="select-block__instruments">
+                        <ul class="instruments select-block__instruments">
                             <li class="btn" data-show-pop-with-id='edit-items-pop'>
                                 <span class="ico-wrapper">
                                     <img src="public/static/assets/icons/edit.svg" alt="">
@@ -139,14 +139,16 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="search-form">
-                        <input type="text" name="search-str" class="search-form__input">
-                        <input type="submit" value="" id="search-btn" class="d-none">
+                    <div class="search-form" data-search-form>
                         <label for="search-btn" class="search-form__btn btn">
                             <span class="ico-wrapper">
                                 <img src="public/static/assets/icons/searchLoupe.svg" alt="">
                             </span>
                         </label>
+                        <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                            class="search-form__input" data-search-input>
+                        <input type="submit" value="" id="search-btn" class="d-none">
+                        <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
                     </div>
                     <div class="sort-btn filter-block__btn btn" data-dropdown-pop-btn>
                         <span class="text" data-dropdown-pop-btn-title>
@@ -155,7 +157,7 @@
                         <span class="ico-wrapper">
                             <img src="public/static/assets/icons/caretDown.svg" alt="">
                         </span>
-                        <div class="sort-btn__pop" data-dropdown-pop-block>
+                        <div class="sort-btn__pop right" data-dropdown-pop-block>
                             <ul class="option-list">
                                 <li class="option-list__option">
                                     <label for="sortById">
@@ -204,7 +206,7 @@
                 <div class="filters">
                     <div class="data-tag-line" data-tag-line>
                         <ul class="data-tag-line__list" data-tag-list>
-                            <li class="data-tag data-tag-line__item" data-tag>
+                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Иванов И
                                 </div>
@@ -212,7 +214,7 @@
                                     <img src="public/static/assets/icons/crossGreen.svg" alt="">
                                 </span>
                             </li>
-                            <li class="data-tag data-tag-line__item" data-tag>
+                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Петров П
                                 </div>
@@ -220,7 +222,7 @@
                                     <img src="public/static/assets/icons/crossGreen.svg" alt="">
                                 </span>
                             </li>
-                            <li class="data-tag data-tag-line__item" data-tag>
+                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Сидоров С
                                 </div>
@@ -228,7 +230,7 @@
                                     <img src="public/static/assets/icons/crossGreen.svg" alt="">
                                 </span>
                             </li>
-                            <li class="data-tag data-tag-line__item" data-tag>
+                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Пн, 26 Октября 2020- Пн, 2 Ноября 2020
                                 </div>
@@ -384,28 +386,28 @@
                         <ul class="c-list tree-body__list">
                             <li class="c-list__item" data-tree-li-item>
                                 <span class="end-border"></span>
-                                <div class="title">
+                                <div class="title" data-tree-title>
                                     <div class="title__btn btn" data-tree-title-btn></div>
                                     <div class="title__text btn" data-tree-title-text>Литиевые аккумуляторы</div>
                                 </div>
                                 <ul class="c-list">
                                     <li class="c-list__item" data-tree-li-item>
                                         <span class="end-border"></span>
-                                        <div class="title">
+                                        <div class="title" data-tree-title>
                                             <div class="title__btn btn" data-tree-title-btn></div>
                                             <div class="title__text btn" data-tree-title-text>BMS платы</div>
                                         </div>
                                         <ul class="c-list">
                                             <li class="c-list__item" data-tree-li-item>
                                                 <span class="end-border"></span>
-                                                <div class="title">
+                                                <div class="title" data-tree-title>
                                                     <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="c-list__item" data-tree-li-item>
                                                 <span class="end-border"></span>
-                                                <div class="title">
+                                                <div class="title" data-tree-title>
                                                     <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
                                                     </div>
                                                 </div>
@@ -414,40 +416,40 @@
                                     </li>
                                     <li class="c-list__item" data-tree-li-item>
                                         <span class="end-border"></span>
-                                        <div class="title">
+                                        <div class="title" data-tree-title>
                                             <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
                                         </div>
                                     </li>
                                     <li class="c-list__item" data-tree-li-item>
                                         <span class="end-border"></span>
-                                        <div class="title">
+                                        <div class="title" data-tree-title>
                                             <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
                                         </div>
                                     </li>
                                     <li class="c-list__item" data-tree-li-item>
                                         <span class="end-border"></span>
-                                        <div class="title">
+                                        <div class="title" data-tree-title>
                                             <div class="title__btn btn" data-tree-title-btn></div>
                                             <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
                                         </div>
                                         <ul class="c-list">
                                             <li class="c-list__item" data-tree-li-item>
                                                 <span class="end-border"></span>
-                                                <div class="title">
+                                                <div class="title" data-tree-title>
                                                     <div class="title__btn btn" data-tree-title-btn></div>
                                                     <div class="title__text btn" data-tree-title-text>BMS платы</div>
                                                 </div>
                                                 <ul class="c-list">
                                                     <li class="c-list__item" data-tree-li-item>
                                                         <span class="end-border"></span>
-                                                        <div class="title">
+                                                        <div class="title" data-tree-title>
                                                             <div class="title__text btn" data-tree-title-text>BMS платы
                                                                 Lifepo4</div>
                                                         </div>
                                                     </li>
                                                     <li class="c-list__item" data-tree-li-item>
                                                         <span class="end-border"></span>
-                                                        <div class="title">
+                                                        <div class="title" data-tree-title>
                                                             <div class="title__text btn" data-tree-title-text>BMS платы
                                                                 Lifepo4</div>
                                                         </div>
@@ -456,21 +458,21 @@
                                             </li>
                                             <li class="c-list__item" data-tree-li-item>
                                                 <span class="end-border"></span>
-                                                <div class="title">
+                                                <div class="title" data-tree-title>
                                                     <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="c-list__item" data-tree-li-item>
                                                 <span class="end-border"></span>
-                                                <div class="title">
+                                                <div class="title" data-tree-title>
                                                     <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="c-list__item" data-tree-li-item>
                                                 <span class="end-border"></span>
-                                                <div class="title">
+                                                <div class="title" data-tree-title>
                                                     <div class="title__text btn btn">BMS платы Lifepo4</div>
                                                 </div>
                                             </li>
@@ -480,7 +482,7 @@
                             </li>
                             <li class="c-list__item" data-tree-li-item>
                                 <span class="end-border"></span>
-                                <div class="title">
+                                <div class="title" data-tree-title>
                                     <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
                                 </div>
                             </li>
@@ -854,7 +856,7 @@
                 </div>
             </section>
         </article>
-        <article class="catalog page" data-page id="new-items-catalog-page">
+        <article class="catalog catalog-new-items page" data-page id="new-items-catalog-page">
             <div class="info-panel">
                 <div class="info-panel__label products">
                     <div class="info-panel__title">
@@ -879,7 +881,7 @@
                                 </span>
                             </div>
                         </div>
-                        <ul class="select-block__instruments">
+                        <ul class="instruments select-block__instruments">
                             <li class="btn" data-show-pop-with-id='edit-items-pop'>
                                 <span class="ico-wrapper">
                                     <img src="public/static/assets/icons/edit.svg" alt="">
@@ -897,14 +899,16 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="search-form">
-                        <input type="text" name="search-str" class="search-form__input">
-                        <input type="submit" value="" id="search-btn" class="d-none">
+                    <div class="search-form" data-search-form>
                         <label for="search-btn" class="search-form__btn btn">
                             <span class="ico-wrapper">
                                 <img src="public/static/assets/icons/searchLoupe.svg" alt="">
                             </span>
                         </label>
+                        <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                            class="search-form__input" data-search-input>
+                        <input type="submit" value="" id="search-btn" class="d-none">
+                        <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
                     </div>
                     <div class="sort-btn filter-block__btn btn" data-dropdown-pop-btn>
                         <span class="text" data-dropdown-pop-btn-title>
@@ -913,7 +917,7 @@
                         <span class="ico-wrapper">
                             <img src="public/static/assets/icons/caretDown.svg" alt="">
                         </span>
-                        <div class="sort-btn__pop" data-dropdown-pop-block>
+                        <div class="sort-btn__pop right" data-dropdown-pop-block>
                             <ul class="option-list">
                                 <li class="option-list__option">
                                     <label for="sortById">
@@ -1518,13 +1522,8 @@
             </section>
         </article>
         <article class="edit-catalog page" data-page id="edit-catalog-page">
-            <div class="catalog-body__tree catalog-body__tree--wide catalog-body__tree--page" data-tree-body>
-                <div class="catalog-body__header">
-                    <span class="ico-wrapper">
-                        <img src="public/static/assets/icons/catalogBook.svg" alt="">
-                    </span>
-                    <div class="tree-title">Каталог</div>
-                </div>
+            <div class="catalog-body__tree catalog-body__tree--wide catalog-body__tree--page" data-tree-body-check-behav
+                data-tree-body>
                 <div class="c-create-panel catalog-body__tree-create-panel">
                     <div class="add-category-btn btn" data-show-pop-with-id="create-category-pop">
                         <div class="ui-btn-plus c-create-panel__btn-add"></div>
@@ -1532,6 +1531,41 @@
                             новая категория
                         </div>
                     </div>
+                    <div class="search-form" data-search-form>
+                        <label for="search-btn" class="search-form__btn btn">
+                            <span class="ico-wrapper">
+                                <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                            </span>
+                        </label>
+                        <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                            class="search-form__input" data-search-input>
+                        <input type="submit" value="" id="search-btn" class="d-none">
+                        <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
+                    </div>
+                    <ul class="instruments c-create-panel__instruments">
+                        <li class="btn" data-show-pop-with-id='move-items-pop'>
+                            <span class="ico-wrapper">
+                                <img src="public/static/assets/icons/move.svg" alt="">
+                            </span>
+                            <span class="text">
+                                Переместить
+                            </span>
+                        </li>
+                        <li class="btn" data-show-pop-with-id='remove-items-pop'>
+                            <span class="ico-wrapper">
+                                <img src="public/static/assets/icons/delete.svg" alt="">
+                            </span>
+                            <span class="text">
+                                Удалить
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="catalog-body__header">
+                    <span class="ico-wrapper">
+                        <img src="public/static/assets/icons/catalogBook.svg" alt="">
+                    </span>
+                    <div class="tree-title">Каталог</div>
                 </div>
                 <div class="tree-body">
                     <ul class="c-list tree-body__list">
@@ -1546,6 +1580,7 @@
                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                 </div>
+                                <input type="checkbox" class="ui-checkbox">
                             </div>
                             <ul class="c-list">
                                 <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[3]'>
@@ -1556,6 +1591,7 @@
                                         <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                             <img src="public/static/assets/icons/edit.svg" alt="">
                                         </div>
+                                        <input type="checkbox" class="ui-checkbox">
                                     </div>
                                     <ul class="c-list">
                                         <li class="c-list__item" data-tree-li-item>
@@ -1566,6 +1602,7 @@
                                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                                 </div>
+                                                <input type="checkbox" class="ui-checkbox">
                                             </div>
                                         </li>
                                         <li class="c-list__item" data-tree-li-item>
@@ -1576,6 +1613,7 @@
                                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                                 </div>
+                                                <input type="checkbox" class="ui-checkbox">
                                             </div>
                                         </li>
                                     </ul>
@@ -1587,6 +1625,7 @@
                                         <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                             <img src="public/static/assets/icons/edit.svg" alt="">
                                         </div>
+                                        <input type="checkbox" class="ui-checkbox">
                                     </div>
                                 </li>
                                 <li class="c-list__item" data-tree-li-item>
@@ -1596,6 +1635,7 @@
                                         <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                             <img src="public/static/assets/icons/edit.svg" alt="">
                                         </div>
+                                        <input type="checkbox" class="ui-checkbox">
                                     </div>
                                 </li>
                                 <li class="c-list__item" data-tree-li-item>
@@ -1606,6 +1646,7 @@
                                         <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                             <img src="public/static/assets/icons/edit.svg" alt="">
                                         </div>
+                                        <input type="checkbox" class="ui-checkbox">
                                     </div>
                                     <ul class="c-list">
                                         <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[4]'>
@@ -1616,6 +1657,7 @@
                                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                                 </div>
+                                                <input type="checkbox" class="ui-checkbox">
                                             </div>
                                             <ul class="c-list">
                                                 <li class="c-list__item" data-tree-li-item>
@@ -1627,6 +1669,7 @@
                                                         <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                             <img src="public/static/assets/icons/edit.svg" alt="">
                                                         </div>
+                                                        <input type="checkbox" class="ui-checkbox">
                                                     </div>
                                                 </li>
                                                 <li class="c-list__item" data-tree-li-item>
@@ -1638,6 +1681,7 @@
                                                         <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                             <img src="public/static/assets/icons/edit.svg" alt="">
                                                         </div>
+                                                        <input type="checkbox" class="ui-checkbox">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -1650,6 +1694,7 @@
                                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                                 </div>
+                                                <input type="checkbox" class="ui-checkbox">
                                             </div>
                                         </li>
                                         <li class="c-list__item" data-tree-li-item>
@@ -1660,6 +1705,7 @@
                                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                                 </div>
+                                                <input type="checkbox" class="ui-checkbox">
                                             </div>
                                         </li>
                                         <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[5]'>
@@ -1671,6 +1717,7 @@
                                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                                 </div>
+                                                <input type="checkbox" class="ui-checkbox">
                                             </div>
                                         </li>
                                     </ul>
@@ -1684,6 +1731,7 @@
                                 <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
                                     <img src="public/static/assets/icons/edit.svg" alt="">
                                 </div>
+                                <input type="checkbox" class="ui-checkbox">
                             </div>
                         </li>
                     </ul>
@@ -1723,6 +1771,19 @@
                         <div class="popup__title-row">
                             <div class="popup__sub-title">
                                 Переместить товары в
+                            </div>
+                            <div class="popup__sub-title">
+                                <div class="search-form" data-search-form>
+                                    <label for="search-btn" class="search-form__btn btn">
+                                        <span class="ico-wrapper">
+                                            <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                                        </span>
+                                    </label>
+                                    <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                                        class="search-form__input" data-search-input>
+                                    <input type="submit" value="" id="search-btn" class="d-none">
+                                    <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
+                                </div>
                             </div>
                         </div>
                         <form class="catalog-body__tree catalog-body__tree--wide catalog-body__tree--in-pop toggled"
@@ -2025,9 +2086,6 @@
                             <div class="popup__sub-title">
                                 название категории
                             </div>
-                            <div class="ui-error">
-                                Введите название категории
-                            </div>
                         </div>
                         <div class="ui-input-wrapper category-name">
                             <input type="text" placeholder="Введите название новой категории" data-category-name-input
@@ -2039,13 +2097,21 @@
                             <div class="popup__sub-title">
                                 Раздел в каталоге
                             </div>
-                            <div class="ui-error">
-                                Выберите категорию
+                            <div class="search-form" data-search-form>
+                                <label for="search-btn" class="search-form__btn btn">
+                                    <span class="ico-wrapper">
+                                        <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                                    </span>
+                                </label>
+                                <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                                    class="search-form__input" data-search-input>
+                                <input type="submit" value="" id="search-btn" class="d-none">
+                                <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
                             </div>
                         </div>
                         <!--Если ошибка, надо добавить класс catalog-body__tree--error-->
                         <form class="catalog-body__tree catalog-body__tree--in-pop 
-                        catalog-body__tree--wide  catalog-body__tree--error toggled" data-tree-body>
+                        catalog-body__tree--wide toggled" data-tree-body>
                             <div class="catalog-body__header">
                                 <span class="ico-wrapper">
                                     <img src="public/static/assets/icons/catalogBook.svg" alt="">
@@ -2159,9 +2225,6 @@
                             <div class="popup__sub-title">
                                 название категории
                             </div>
-                            <div class="ui-error">
-                                Введите название категории
-                            </div>
                         </div>
                         <div class="ui-input-wrapper category-name">
                             <input type="text" placeholder="Введите название категории" data-category-name-input
@@ -2173,13 +2236,21 @@
                             <div class="popup__sub-title">
                                 Раздел в каталоге
                             </div>
-                            <div class="ui-error">
-                                Выберите категорию
+                            <div class="search-form" data-search-form>
+                                <label for="search-btn" class="search-form__btn btn">
+                                    <span class="ico-wrapper">
+                                        <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                                    </span>
+                                </label>
+                                <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                                    class="search-form__input" data-search-input>
+                                <input type="submit" value="" id="search-btn" class="d-none">
+                                <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
                             </div>
                         </div>
                         <!--Если ошибка, надо добавить класс catalog-body__tree--error-->
                         <form class="catalog-body__tree catalog-body__tree--in-pop 
-                        catalog-body__tree--wide  catalog-body__tree--error toggled" data-tree-body>
+                        catalog-body__tree--wide toggled" data-tree-body>
                             <div class="catalog-body__header">
                                 <span class="ico-wrapper">
                                     <img src="public/static/assets/icons/catalogBook.svg" alt="">

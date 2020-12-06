@@ -106,9 +106,15 @@ input[type="radio"].ui-checkbox {
         position: absolute;
         left: 0;
         top: 100%;
+        min-width: 100%;
         display: none;
         transition: 0s;
         z-index: 99;
+    }
+
+    *[data-dropdown-pop-block].right {
+        left: auto;
+        right: 0;
     }
 }
 
