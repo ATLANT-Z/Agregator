@@ -1,27 +1,8 @@
 //? Здесь всё удаленное, не обращай внимания. Это моя кубышка
+//? Здесь всё удаленное, не обращай внимания. Это моя кубышка
+//? Здесь всё удаленное, не обращай внимания. Это моя кубышка
 
-/* Клики в попапе по чекбоксам  */
-$('[data-tree-body] input[type="checkbox"]').click(function () {
-    let $treeBody = $(this).closest('[data-tree-body]');
-    let $liItem = $(this).closest('[data-tree-li-item]');
 
-    let $parent;
-    if ($liItem.length == 0)
-        $parent = $treeBody;
-    else {
-        $parent = $liItem;
-    }
-
-    let status = $(this).is(':checked');
-    let $checkboxes = $('input[type="checkbox"]', $parent).not(this);
-
-    $checkboxes.each(function () {
-        let thisStatus = $(this).is(':checked');
-        if (status !== thisStatus)
-            $(this).prop("checked", !thisStatus);
-    });
-
-});
 
 // Клики в попапе по чекбоксам. Убирает чеккед везде, кроме этого
 $('[data-tree-body] input[type="checkbox"]').click(function () {

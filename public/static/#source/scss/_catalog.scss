@@ -6,6 +6,10 @@
     padding: 24px 25px 0;
 }
 
+.catalog-new-items {
+    display: none;
+}
+
 .edit-catalog {
     display: none;
     padding: 24px 25px 0;
@@ -71,12 +75,22 @@
     &__info {
         margin-right: 26px;
     }
+}
 
-    &__instruments {
+.instruments {
+    display: flex;
+    align-self: flex-end;
+    > .btn {
         display: flex;
-
-        > .btn {
-            margin-right: 24px;
+        align-items: center;
+        margin-right: 24px;
+        .text {
+            margin-left: 10px;
+        }
+        &:hover {
+            .text {
+                color: #8bbfbb;
+            }
         }
     }
 }
@@ -105,19 +119,62 @@
 }
 
 .search-form {
+    position: relative;
     display: flex;
+    align-items: center;
     margin-left: auto;
 
     &__input {
-        width: 200px;
+        @include fontSmall(400);
+        width: 372px;
         height: 24px;
-        padding-right: 4px;
+        padding-left: 4px;
+        padding-right: 18px;
         font-size: 17px;
         border-bottom: 1px solid #8bbfbb;
         border-radius: 2px;
     }
+    &__input::placeholder {
+        color: #9e9e9e;
+    }
+
     &__btn {
+        margin-right: 4px;
         @include fixedWH(20px, 20px);
+    }
+
+    &__clear-btn {
+        position: absolute;
+        padding: 5px;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        opacity: 0.3;
+
+        &::before {
+            content: "+";
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 600;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: #3f8483;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+        }
+    }
+    &:hover {
+        .search-form__clear-btn {
+            opacity: 1;
+        }
     }
 }
 
@@ -225,7 +282,7 @@ $maxHeightCatalogBody: 728px;
         .tree-title {
             max-width: 0;
             margin-left: 12px;
-            @include fontSmall(600);
+            @include fontMid(600);
             text-transform: uppercase;
             color: #8bbfbb;
             white-space: nowrap;
@@ -262,6 +319,7 @@ $maxHeightCatalogBody: 728px;
 
             transform: translateY(-50%);
             z-index: 2;
+            clip-path: inset(-30px -30px -30px 0px);
 
             & > img {
                 min-width: 10px;
@@ -415,7 +473,7 @@ $maxHeightCatalogBody: 728px;
         position: absolute;
         left: -1px;
         bottom: 100%;
-        height: 40px;
+        height: 32px;
         width: 1px;
         background-color: #8bbfbb;
     }
@@ -427,7 +485,7 @@ $maxHeightCatalogBody: 728px;
             content: "";
             position: absolute;
             left: -2px;
-            top: 30.5px;
+            top: 26.5px;
             bottom: 0;
             width: 3px;
             background-color: #ffffff;
@@ -437,9 +495,10 @@ $maxHeightCatalogBody: 728px;
 }
 .title {
     position: relative;
+    max-height: 52px;
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 16px 0;
     padding-left: 9px;
     padding-right: 8px;
     //margin-top: 12px;
@@ -730,6 +789,7 @@ $maxHeightCatalogBody: 728px;
         box-shadow: none;
 
         .tree-title {
+            margin-left: 0;
             max-width: none;
             display: block;
             opacity: 1;
@@ -783,15 +843,19 @@ $maxHeightCatalogBody: 728px;
                     text-transform: uppercase;
                 }
             }
-
+            .search-form {
+                align-self: flex-end;
+            }
+            &__instruments {
+                margin-left: 24px;
+            }
             &.catalog-body__tree-create-panel {
                 padding-left: 16px;
-                margin-left: 16px;
-                border-left: 1px solid #8bbfbb;
             }
         }
 
         .tree-body {
+            padding-right: 8px;
             &__list {
                 max-width: none;
                 width: 100%;
@@ -804,9 +868,9 @@ $maxHeightCatalogBody: 728px;
             }
             &__item {
                 .title {
-                    margin: 12px 0;
-                    padding-top: 16px;
-                    padding-bottom: 16px;
+                    margin: 8px 0;
+                    padding-top: 12px;
+                    padding-bottom: 12px;
                     background-color: #f5faf9;
                     border: 1px solid #8bbfbb;
                     border-radius: 8px;
@@ -819,9 +883,10 @@ $maxHeightCatalogBody: 728px;
                         z-index: -1;
                     }
                     .c-edit-btn {
-                        margin-left: 24px;
+                        margin-left: 10px;
                     }
-                    &__btn {
+                    .ui-checkbox {
+                        margin-left: auto !important;
                     }
 
                     &__text {
@@ -836,7 +901,7 @@ $maxHeightCatalogBody: 728px;
                 }
 
                 &:last-child > .end-border::after {
-                    top: 28.5px;
+                    top: 25.5px;
                 }
 
                 .c-list__item {
@@ -876,12 +941,12 @@ $popWithTreeWidth: 772px;
 #move-items-pop {
     .popup {
         width: $popWithTreeWidth;
-        height: 656px;
+        height: 596px;
         padding: 24px;
     }
     .popup__info {
         flex-grow: 1;
-        max-height: 516px;
+        max-height: calc(100% - 80px);
     }
     .popup__footer {
         margin-top: 24px;
@@ -893,7 +958,7 @@ $popWithTreeWidth: 772px;
     & > .popup-w {
         .popup {
             width: $popWithTreeWidth;
-            height: 748px;
+            height: 658px;
             padding: 24px;
         }
         .popup__title-row {
@@ -904,12 +969,11 @@ $popWithTreeWidth: 772px;
                 margin-right: 8px;
             }
         }
-
-        .popup__info.grow {
-            flex-grow: 1;
-        }
         .popup__info {
-            max-height: 516px;
+            max-height: calc(100% - 170px);
+            &.grow {
+                flex-grow: 1;
+            }
         }
         .popup__info + .popup__info {
             margin-top: 24px;

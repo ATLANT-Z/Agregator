@@ -56,6 +56,8 @@ body > * {
     align-items: center;
     color: inherit;
     line-height: 0;
+    min-width: 12px;
+    user-select: none;
 }
 
 @mixin fixedWH($height, $width) {

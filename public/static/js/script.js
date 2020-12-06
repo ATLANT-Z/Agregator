@@ -19,7 +19,7 @@ function unActiveDropdownBtn(btn) {
 
 // сортировать По? Остановка клика в выпадающем вниз попапе
 $('[data-dropdown-pop-block]').click(function (e) {
-    stopClick(e);
+    //stopClick(e);
 });
 
 // сортировать По?
@@ -145,7 +145,7 @@ function initTreeEventsIn(parent) {
     });
 
     //клик по плюсику в дереве
-    $('[data-tree-title-btn]', parent).click(function () {
+    function expandBranch() {
         let $parent = $(this).closest('[data-tree-li-item]');
         let $list = $('>.c-list', $parent);
 
@@ -157,6 +157,12 @@ function initTreeEventsIn(parent) {
             $list.slideUp();
             $parent.removeClass('opened');
         }
+    }
+    $('[data-tree-title-btn]', parent).click(function () {
+        expandBranch.call(this);
+    });
+    $('[data-tree-title]', parent).dblclick(function (e) {
+        expandBranch.call(this);
     });
 
     //клик по тайтлу в дереве. По ТЕКСТУ
@@ -206,6 +212,27 @@ function initTreeEventsIn(parent) {
         $pop.fadeIn();
     });
 
+    /* Клики в попапе по чекбоксам  */
+    $('[data-tree-body][data-tree-body-check-behav] input[type="checkbox"]').click(function () {
+        let $treeBody = $(this).closest('[data-tree-body]');
+        let $liItem = $(this).closest('[data-tree-li-item]');
+
+        let $parent;
+        if ($liItem.length == 0)
+            $parent = $treeBody;
+        else {
+            $parent = $liItem;
+        }
+
+        let status = $(this).is(':checked');
+        let $checkboxes = $('input[type="checkbox"]', $parent).not(this);
+
+        $checkboxes.each(function () {
+            let thisStatus = $(this).is(':checked');
+            if (status !== thisStatus)
+                $(this).prop("checked", !thisStatus);
+        });
+    });
 }
 initTreeEventsIn(document);
 
@@ -234,7 +261,7 @@ let TAG = {
         `<li class="data-tag data-tag-line__item" data-tag>
             <div class="data-tag__text" data-tag-title></div>
             <span class="ico-wrapper btn" data-tag-delete-btn>
-                <img src="assets/icons/crossGreen.svg" alt="">
+                <img src="public/static/assets/icons/crossGreen.svg" alt="">
             </span>
         </li>`
 }
@@ -364,3 +391,11 @@ function setTrueWidthForInput(input) {
 
 //изменять ширину инпут при вводе
 $('[data-ui-growable-input]').on('keydown', uiGrowableInputKeyDownHandlerJQuery);
+
+
+//очистить форму поиска
+$('[data-clear-search-input-btn]').click(function () {
+    let $parent = $(this).closest('[data-search-form]');
+    $('[data-search-input]', $parent).val('');
+});
+
