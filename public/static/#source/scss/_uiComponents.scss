@@ -83,6 +83,12 @@ input[type="radio"].ui-checkbox {
     }
 }
 
+input {
+    &::placeholder {
+        color: #9e9e9e;
+    }
+}
+
 .status-circ {
     display: inline-flex;
     border-radius: 50%;
@@ -193,7 +199,7 @@ input[type="radio"].ui-checkbox {
     }
 
     &.secondary {
-        $colorSecondary: #8bbfbb;
+        $colorSecondary: #3f8483;
         $colorHoverSecondary: #79a5a1;
 
         background-color: $colorSecondary;
@@ -227,10 +233,22 @@ input[type="radio"].ui-checkbox {
     background-color: #ffffff;
     border: 1px solid #3f8483;
 
-    &.with-bg-round {
-        background: #f5faf9;
+    &.with-bg {
         border: 1px solid #bddcd9;
         border-radius: 8px;
+    }
+
+    &.round-border {
+        border: 1px solid #8bbfbb;
+        border-radius: 8px;
+    }
+
+    &.small {
+        padding: 11px 16px;
+    }
+    input {
+        @include fontCaption();
+        width: 100%;
     }
 }
 
@@ -243,7 +261,7 @@ input[type="radio"].ui-checkbox {
 }
 
 .blockUI.blockMsg.blockPage {
-    padding: 16px;
+    padding: 16px !important;
 }
 
 .ui-error {

@@ -139,16 +139,43 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="search-form" data-search-form>
-                        <label for="search-btn" class="search-form__btn btn">
-                            <span class="ico-wrapper">
-                                <img src="public/static/assets/icons/searchLoupe.svg" alt="">
-                            </span>
-                        </label>
-                        <input type="text" placeholder="Поиск товара или категории" name="search-str"
-                            class="search-form__input" data-search-input>
-                        <input type="submit" value="" id="search-btn" class="d-none">
-                        <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
+                    <div class="search-form btn" data-search-form data-dropdown-pop-btn>
+                        <span class="ico-wrapper search-form__btn btn">
+                            <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                        </span>
+                        <div class="search-form__text">
+                            поиск
+                        </div>
+                        <div class="right" data-dropdown-pop-block>
+                            <div class="pop-block-search">
+                                <div class="row">
+                                    <div class="ui-input-wrapper round-border small">
+                                        <input type="text" name="product-search">
+                                    </div>
+                                    <label class="label">
+                                        По товару
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <div class="ui-input-wrapper round-border small">
+                                        <input type="text" name="category-search">
+                                    </div>
+                                    <label class="label">
+                                        По категории
+                                    </label>
+                                </div>
+                                <div class="pop-block-search__footer row">
+                                    <div class="ui-btn-common yes secondary" data-dropdown-pop-btn-close-parent
+                                        data-is-close="defaultAjaxCallback">
+                                        найти
+                                    </div>
+                                    <div class="ui-btn-common no secondary" data-dropdown-pop-btn-close-parent
+                                        data-is-close="defaultAjaxCallback">
+                                        отменить
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="sort-btn filter-block__btn btn" data-dropdown-pop-btn>
                         <span class="text" data-dropdown-pop-btn-title>
@@ -157,7 +184,7 @@
                         <span class="ico-wrapper">
                             <img src="public/static/assets/icons/caretDown.svg" alt="">
                         </span>
-                        <div class="sort-btn__pop right" data-dropdown-pop-block>
+                        <div class="sort-btn__pop right" data-dropdown-pop-block data-close-by-click>
                             <ul class="option-list">
                                 <li class="option-list__option">
                                     <label for="sortById">
@@ -206,7 +233,7 @@
                 <div class="filters">
                     <div class="data-tag-line" data-tag-line>
                         <ul class="data-tag-line__list" data-tag-list>
-                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
+                            <li class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Иванов И
                                 </div>
@@ -214,7 +241,7 @@
                                     <img src="public/static/assets/icons/crossGreen.svg" alt="">
                                 </span>
                             </li>
-                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
+                            <li class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Петров П
                                 </div>
@@ -222,7 +249,7 @@
                                     <img src="public/static/assets/icons/crossGreen.svg" alt="">
                                 </span>
                             </li>
-                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
+                            <li class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Сидоров С
                                 </div>
@@ -230,7 +257,7 @@
                                     <img src="public/static/assets/icons/crossGreen.svg" alt="">
                                 </span>
                             </li>
-                            <li draggable="true" class="data-tag data-tag-line__item" data-tag>
+                            <li class="data-tag data-tag-line__item" data-tag>
                                 <div class="data-tag__text" data-tag-title>
                                     Пн, 26 Октября 2020- Пн, 2 Ноября 2020
                                 </div>
@@ -899,16 +926,43 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="search-form" data-search-form>
-                        <label for="search-btn" class="search-form__btn btn">
-                            <span class="ico-wrapper">
-                                <img src="public/static/assets/icons/searchLoupe.svg" alt="">
-                            </span>
-                        </label>
-                        <input type="text" placeholder="Поиск товара или категории" name="search-str"
-                            class="search-form__input" data-search-input>
-                        <input type="submit" value="" id="search-btn" class="d-none">
-                        <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
+                    <div class="search-form btn" data-search-form data-dropdown-pop-btn>
+                        <span class="ico-wrapper search-form__btn btn">
+                            <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                        </span>
+                        <div class="search-form__text">
+                            поиск
+                        </div>
+                        <div class="right" data-dropdown-pop-block>
+                            <div class="pop-block-search">
+                                <div class="row">
+                                    <div class="ui-input-wrapper round-border small">
+                                        <input type="text" name="product-search">
+                                    </div>
+                                    <label class="label">
+                                        По товару
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <div class="ui-input-wrapper round-border small">
+                                        <input type="text" name="category-search">
+                                    </div>
+                                    <label class="label">
+                                        По категории
+                                    </label>
+                                </div>
+                                <div class="pop-block-search__footer row">
+                                    <div class="ui-btn-common yes secondary" data-dropdown-pop-btn-close-parent
+                                        data-is-close="defaultAjaxCallback">
+                                        найти
+                                    </div>
+                                    <div class="ui-btn-common no secondary" data-dropdown-pop-btn-close-parent
+                                        data-is-close="defaultAjaxCallback">
+                                        отменить
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="sort-btn filter-block__btn btn" data-dropdown-pop-btn>
                         <span class="text" data-dropdown-pop-btn-title>
@@ -917,7 +971,7 @@
                         <span class="ico-wrapper">
                             <img src="public/static/assets/icons/caretDown.svg" alt="">
                         </span>
-                        <div class="sort-btn__pop right" data-dropdown-pop-block>
+                        <div class="sort-btn__pop right" data-dropdown-pop-block data-close-by-click>
                             <ul class="option-list">
                                 <li class="option-list__option">
                                     <label for="sortById">

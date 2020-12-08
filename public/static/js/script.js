@@ -19,7 +19,8 @@ function unActiveDropdownBtn(btn) {
 
 // сортировать По? Остановка клика в выпадающем вниз попапе
 $('[data-dropdown-pop-block]').click(function (e) {
-    //stopClick(e);
+    if (!$(this).is('[data-close-by-click]'))
+        stopClick(e);
 });
 
 // сортировать По?
@@ -82,7 +83,7 @@ function defaultAjaxCallback() {
     return new Promise((resolve, reject) => {
         setTimeout(function () {
             resolve(true);
-        }, 250);
+        }, 10);
     });
 }
 function isCloseHandler(callback) {
@@ -108,6 +109,21 @@ $('[data-pop-btn-close-parent]').click(function () {
             $(this).parents('[data-popup-block]').fadeOut();
     });
 });
+
+$('[data-dropdown-pop-btn-close-parents]').click(function () {
+    isCloseHandler.call(this, function (isClose) {
+        if (isClose)
+            $(this).parents('[data-dropdown-pop-block]').fadeOut();
+    });
+});
+
+$('[data-dropdown-pop-btn-close-parent]').click(function () {
+    isCloseHandler.call(this, function (isClose) {
+        if (isClose)
+            $(this).parents('[data-dropdown-pop-block]').fadeOut();
+    });
+});
+
 
 $('[data-show-pop-with-id]').click(function (e) {
     stopClick(e);
@@ -397,5 +413,5 @@ $('[data-ui-growable-input]').on('keydown', uiGrowableInputKeyDownHandlerJQuery)
 $('[data-clear-search-input-btn]').click(function () {
     let $parent = $(this).closest('[data-search-form]');
     $('[data-search-input]', $parent).val('');
+    $('[data-search-input]', $parent).trigger("change");
 });
-
