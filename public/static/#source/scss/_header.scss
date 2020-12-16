@@ -1,7 +1,7 @@
 $headerHorizontalPad: 61px;
 $headerVerticalPad: 24px;
 
-.header {
+body > .header {
     display: flex;
     align-items: center;
     justify-content: space-between;

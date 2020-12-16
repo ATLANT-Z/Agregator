@@ -52,13 +52,9 @@ $('[data-toggle-block-with-id]').click(function (e) {
     let $block = $('#' + id);
 
     if ($block.is(':hidden')) {
-        $block.slideDown({
-            start: function () {
-                $(this).css({
-                    display: "flex"
-                });
-            }
-        });
+        $block.css('display', 'flex');
+        $block.hide();
+        $block.slideDown();
         $(`[data-toggle-block-with-id='${id}']`).addClass('active');
     }
     else {
@@ -106,7 +102,7 @@ $('[data-pop-btn-close-parents]').click(function () {
 $('[data-pop-btn-close-parent]').click(function () {
     isCloseHandler.call(this, function (isClose) {
         if (isClose)
-            $(this).parents('[data-popup-block]').fadeOut();
+            $(this).closest('[data-popup-block]').fadeOut();
     });
 });
 
@@ -124,11 +120,19 @@ $('[data-dropdown-pop-btn-close-parent]').click(function () {
     });
 });
 
-
+//Установить заголовок для тайтла, если есть [data-pop-title-text]
+function setTitleForPop($block) {
+    if ($(this).is('[data-pop-title-text]')) {
+        let popTitleText = $(this).attr('data-pop-title-text');
+        $('[data-pop-title]', $block).text(popTitleText);
+    }
+}
+// Открыть попап по нажатию кнопки
 $('[data-show-pop-with-id]').click(function (e) {
     stopClick(e);
 
     let $block = $('#' + $(this).attr('data-show-pop-with-id'));
+    setTitleForPop.call(this, $block);
 
     if ($block.is(':hidden'))
         $block.fadeIn();
@@ -152,6 +156,7 @@ $('.sub-pages__page').click(function () {
     $(this).addClass('selected');
 });
 
+
 //Подвязка событий к дереву каталога у определённого родителя. 
 // Например только в попапе "edit catalog"
 function initTreeEventsIn(parent) {
@@ -173,60 +178,186 @@ function initTreeEventsIn(parent) {
             $list.slideUp();
             $parent.removeClass('opened');
         }
+
+        //делаем "селект" раскрывшейся категории (первый элемент - первый в нашем тайтле)
+        $('[data-tree-title-text]', $parent)[0].click();
     }
+    function expandTitleBtnBuilder() {
+        let $btn = $('<div class="title__btn btn" data-tree-title-btn></div>');
+        $btn.click(expandBranch);
+        return $btn;
+    }
+    //разворачиваем ветку
     $('[data-tree-title-btn]', parent).click(function () {
         expandBranch.call(this);
     });
-    $('[data-tree-title]', parent).dblclick(function (e) {
-        expandBranch.call(this);
-    });
 
+
+    //Реализация переноса экспорта
+    {
+        function getTreesStruct($parent) {
+            if ($(this).closest('[data-exp-orig-tree]').length)
+                return {
+                    thisTree: $(this).closest('[data-exp-orig-tree]'),
+                    anotherTree: $('[data-exp-new-tree]', $parent),
+                }
+            else if ($(this).closest('[data-exp-new-tree]').length)
+                return {
+                    thisTree: $(this).closest('[data-exp-new-tree]'),
+                    anotherTree: $('[data-exp-orig-tree]', $parent),
+                }
+            else
+                return undefined;
+        }
+        function finBuildBranch($selectedBranch) {
+            let $list;
+
+            if ($selectedBranch.is('.c-list')) {
+                $list = $selectedBranch;
+            }
+            else if (!$selectedBranch.has('.c-list').length) {
+                $selectedBranch.append('<ul class="c-list"></ul>');
+
+                let $selectedTitle = $('[data-tree-title]', $selectedBranch).first();
+                $selectedTitle.prepend(expandTitleBtnBuilder());
+
+                $list = $('.c-list', $selectedBranch);
+            }
+            else if ($selectedBranch.has('.c-list').length) {
+                $list = $('.c-list', $selectedBranch).first();
+            }
+
+            return $list;
+        }
+        function unBuildBranch($selectedBranch) {
+            if ($selectedBranch.has('.c-list').length)
+                if (!$('.c-list', $selectedBranch).children().length) {
+                    $('.c-list', $selectedBranch).remove();
+
+                    let $selectedTitle = $('[data-tree-title]', $selectedBranch).first();
+                    $('[data-tree-title-btn]', $selectedTitle).remove();
+                }
+        }
+        //Перенос из оригинала в профиль
+        $('[data-exp-trees-parent] [data-tree-title]', parent).dblclick(function (e) {
+            let $parent = $(this).closest('[data-exp-trees-parent]');
+            let trees = getTreesStruct.call(this, $parent);
+
+            let $parentTree = trees.thisTree;
+            let $anotherTree = trees.anotherTree;
+
+            let $parentBranch = $(this).closest('[data-tree-li-item]');
+
+            let $selectedBranch = $('[data-tree-li-item].selected', $anotherTree);
+            if (!$selectedBranch.length)
+                $selectedBranch = $('[data-root-list]', $anotherTree);
+
+            let $branchId = $parentBranch.attr('data-catalog-id');
+            let $branchWithIdInAnotherTree = $(`[data-catalog-id="${$branchId}"]`, $anotherTree);
+
+
+            function deleteBranch($removeBranch, $clearBranch) {
+                let $thisParentBranch = $removeBranch.parents('[data-tree-li-item]').first();
+
+                $removeBranch.remove();
+                unBuildBranch($thisParentBranch);
+
+                $clearBranch.removeClass('exported');
+                $('[data-tree-li-item]', $clearBranch).removeClass('exported');
+            }
+            if ($parentTree.is('[data-exp-orig-tree]')) {
+                if ($branchWithIdInAnotherTree.length) {
+                    //Удаление из экспорта, клик в оригинале
+                    deleteBranch($branchWithIdInAnotherTree, $parentBranch);
+                }
+                else {
+                    //Добавление из оригинала в экспорт
+                    let $list = finBuildBranch($selectedBranch);
+
+                    $parentBranch.addClass('exported');
+                    let $copyBranch = $parentBranch.clone(true).removeClass('selected');
+
+                    $list.append($copyBranch);
+
+                    $('[data-tree-li-item]', $parentBranch).addClass('exported');
+                    $('[data-tree-li-item]', $copyBranch).addClass('exported');
+                }
+            }
+            else if ($parentTree.is('[data-exp-new-tree]')) {
+                if ($branchWithIdInAnotherTree.length) {
+                    //Удаление из экспорта, клик в экспорте
+                    deleteBranch($parentBranch, $branchWithIdInAnotherTree);
+                }
+            }
+        });
+    }
+
+    //Убрать выделение по клику на тайтл дерева
+    $('[data-exp-trees-parent] .tree-title').click(function () {
+        let $tree = $(this).closest('[data-tree-body]');
+        $('[data-tree-li-item]', $tree).removeClass('selected');
+    });
     //клик по тайтлу в дереве. По ТЕКСТУ
     $('[data-tree-li-item] [data-tree-title-text]', parent).click(function () {
         $('[data-tree-li-item]', $(this).closest('[data-tree-body]')).removeClass('selected');
         $(this).closest('[data-tree-li-item]').toggleClass('selected');
     });
 
-    //редактируем категорию (каталог) (кнопка с карандашиком)
-    $('[data-edit-catalog-btn]', parent).click(function (e) {
-        stopClick(e);
 
-        let $parent = $(this).closest('[data-tree-title]');
-        let $titleText = $('[data-tree-title-text]', $parent);
-        let $parentCategory = $(this).closest('[data-tree-li-item]');
+    //ПЕТЯ это инициализация кнопок удалить и редактировать. Думаю, тебе оно понадобится))
+    function initEditorsBtns(parent) {
+        //редактируем категорию (каталог) (кнопка с карандашиком)
+        function editCatalogBtnClick(e) {
+            stopClick(e);
 
-        //Убираем пробелы в названии, если вдруг есть
-        let titleText = $titleText.text().trim().replace(/\s+/g, ' ');
-        let catalogId = $parentCategory.attr('data-catalog-id');
+            let $parent = $(this).closest('[data-tree-title]');
+            let $titleText = $('[data-tree-title-text]', $parent);
+            let $parentCategory = $(this).closest('[data-tree-li-item]');
 
-        if (catalogId === undefined) {
-            //При генерации ты, видимо, забыл задать data-catalog-id всем li (категориям)
-            console.error('Нет айди у категории!');
-            console.trace('Смотри сюда');
+            //Убираем пробелы в названии, если вдруг есть
+            let titleText = $titleText.text().trim().replace(/\s+/g, ' ');
+            let catalogId = $parentCategory.attr('data-catalog-id');
+
+            if (catalogId === undefined) {
+                //При генерации ты, видимо, забыл задать data-catalog-id всем li (категориям)
+                console.error('Нет айди у категории!');
+                console.trace('Смотри сюда');
+            }
+
+            let $pop = $('#edit-category-pop');
+            $('[data-category-name-input]', $pop).val(titleText);
+            $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
+
+            let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
+            let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
+
+            setRadio($('input[type="radio"]', $popCatalogTitle).get(0));
+
+            $popCategory.parents('[data-tree-li-item]').each(function () {
+                if (!$(this).hasClass('opened'))
+                    $('[data-tree-title-btn]', this)[0].click();
+            });
+
+            let delayTime = parseFloat($popCategory.css('transitionDuration')) * 1000 + 300;
+            setTimeout(function () {
+                $popCategory[0].scrollIntoView();
+            }, delayTime);
+
+
+            $pop.fadeIn();
         }
-
-        let $pop = $('#edit-category-pop');
-        $('[data-category-name-input]', $pop).val(titleText);
-        $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
-
-        let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
-        let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
-
-        setRadio($('input[type="radio"]', $popCatalogTitle).get(0));
-
-        $popCategory.parents('[data-tree-li-item]').each(function () {
-            if (!$(this).hasClass('opened'))
-                $('[data-tree-title-btn]', this)[0].click();
+        $('[data-edit-catalog-btn]', parent).click(function (e) {
+            editCatalogBtnClick.call(this, e);
         });
+        //удаляем категорию (каталог) (кнопка с баком)
+        $('[data-delete-catalog-btn]', parent).click(function (e) {
+            editCatalogBtnClick.call(this, e);
 
-        let delayTime = parseFloat($popCategory.css('transitionDuration')) * 1000 + 300;
-        setTimeout(function () {
-            $popCategory[0].scrollIntoView();
-        }, delayTime);
-
-
-        $pop.fadeIn();
-    });
+            let $pop = $('#edit-category-pop');
+            $('[data-show-pop-with-id="ask-sure-delete-c-pop"]', $pop)[0].click();
+        });
+    }
+    initEditorsBtns(parent);
 
     /* Клики в попапе по чекбоксам  */
     $('[data-tree-body][data-tree-body-check-behav] input[type="checkbox"]').click(function () {
@@ -251,6 +382,7 @@ function initTreeEventsIn(parent) {
     });
 }
 initTreeEventsIn(document);
+
 
 function setRadio(_this) {
     $(_this).prop("checked", true);
@@ -414,4 +546,86 @@ $('[data-clear-search-input-btn]').click(function () {
     let $parent = $(this).closest('[data-search-form]');
     $('[data-search-input]', $parent).val('');
     $('[data-search-input]', $parent).trigger("change");
+});
+
+
+
+function popCaptionBuilder() {
+    this.class = `ui-pop-caption`;
+    return {
+        class: `${this.class}`,
+        code: `<div class="${this.class}" data-caption-text></div>`,
+        time: 300,
+    };
+}
+let POP_CAPTION = popCaptionBuilder();
+
+$('[data-caption-on-focus]').on('mouseenter', function () {
+    $(this).append(POP_CAPTION.code);
+    let $cap = $(`.${POP_CAPTION.class}`, this);
+
+    $cap.animate({
+        opacity: 1,
+    }, {
+        duration: POP_CAPTION.time,
+    });
+
+    $('[data-caption-text]', this).text(
+        $(this).attr('data-caption-on-focus')
+    );
+});
+
+$('[data-caption-on-focus]').on('mouseleave', function () {
+    let $cap = $(`.${POP_CAPTION.class}`, this);
+
+    $cap.animate({
+        opacity: 0,
+    }, {
+        duration: POP_CAPTION.time,
+        complete: function () {
+            $(this).remove();
+        }
+    });
+});
+
+
+$('[data-copy-btn]').click(function () {
+    let $parent = $(this).closest('[data-copy-parent]');
+    let $target = $('[data-copy-target]', $parent);
+
+    var $temp = $("<input>");
+    $("body").append($temp);
+    let textToCopy = ($target.val() || $target.text()).trim();
+    $temp.val(textToCopy).select();
+    document.execCommand("copy");
+    $temp.remove();
+
+
+    let time = 2400;
+    if ($target.is('input') || $target.is('textarea')) {
+        $target.val('Тест скопирован!');
+        setTimeout(() => {
+            $target.val(textToCopy);
+        }, time);
+    }
+    else {
+        $target.text('Тест скопирован!');
+        setTimeout(() => {
+            $target.text(textToCopy);
+        }, time);
+    }
+
+});
+
+$('[data-all-checked]').click(function () {
+    let $parent = $(this).closest('[data-checklist-parent]');
+
+    let status = $(this).is(':checked');
+    let $checkboxes = $('input[type="checkbox"]', $parent).not(this);
+
+    $checkboxes.each(function () {
+        let thisStatus = $(this).is(':checked');
+        if (status !== thisStatus)
+            $(this).prop("checked", !thisStatus);
+    });
 });
