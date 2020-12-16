@@ -13,6 +13,18 @@ $marginCheckbox: 12px;
     margin-bottom: $marginCheckbox + $margin !important;
 }
 
+@mixin addClickArea($val, $position: relative) {
+    position: $position;
+    &::before {
+        content: "";
+        position: absolute;
+        top: -$val;
+        left: -$val;
+        right: -$val;
+        bottom: -$val;
+    }
+}
+
 input[type="checkbox"].ui-checkbox {
     position: relative;
     display: block;
@@ -116,6 +128,7 @@ input {
         display: none;
         transition: 0s;
         z-index: 99;
+        cursor: auto;
     }
 
     *[data-dropdown-pop-block].right {
@@ -235,6 +248,7 @@ input {
 
     &.with-bg {
         border: 1px solid #bddcd9;
+        background-color: #f5faf9;
         border-radius: 8px;
     }
 
@@ -278,4 +292,52 @@ input {
         border: 1px solid #aa3c3c;
         border-radius: 50%;
     }
+}
+
+*[data-caption-on-focus] {
+    position: relative;
+}
+.ui-cap-right {
+    .ui-pop-caption {
+        left: auto;
+        right: 0;
+    }
+}
+.ui-cap-top {
+    .ui-pop-caption {
+        bottom: 100%;
+        top: auto;
+    }
+}
+
+.ui-pop-caption {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    padding: 8px 12px;
+    background-color: #04282ba1;
+    border-radius: 8px;
+    white-space: nowrap;
+    @include fontCaption(400);
+    text-align: center;
+    color: #ffffff;
+    z-index: 99;
+    opacity: 0;
+    transition: 0s;
+
+    @include addClickArea(8px, absolute);
+
+    &.right {
+        left: auto;
+        right: 0;
+    }
+    &.top {
+        bottom: calc(100% + 4px);
+        top: auto;
+    }
+}
+
+.ui-caption {
+    @include fontCaption(400);
+    color: #9e9e9e;
 }

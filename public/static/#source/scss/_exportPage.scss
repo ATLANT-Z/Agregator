@@ -1,0 +1,433 @@
+.export {
+    display: block;
+    padding: 24px 25px 0;
+}
+
+.edit-export {
+    display: none;
+}
+
+$ExportBodyW: 1316;
+$rowWidthWithoutPads: $ExportBodyW - 48;
+
+$columWExport1: 400 / $rowWidthWithoutPads * 100%;
+$columWExport2: 180 / $rowWidthWithoutPads * 100%;
+$columWExport3: 180 / $rowWidthWithoutPads * 100%;
+$columWExport4: 220 / $rowWidthWithoutPads * 100%;
+$columWExport5: 228 / $rowWidthWithoutPads * 100%;
+
+.export-table-row {
+    display: flex;
+
+    > .column {
+        display: flex;
+        margin-right: 24px;
+    }
+    > .column:last-child {
+        margin-right: 0;
+    }
+
+    > .column:nth-child(1) {
+        width: $columWExport1;
+    }
+    > .column:nth-child(2) {
+        width: $columWExport2;
+    }
+    > .column:nth-child(3) {
+        width: $columWExport3;
+    }
+    > .column:nth-child(4) {
+        width: $columWExport4;
+    }
+    > .column:nth-child(5) {
+        width: $columWExport5;
+    }
+    .name {
+    }
+    .date-create {
+    }
+    .date-edit {
+    }
+    .update {
+    }
+    .status {
+    }
+}
+
+$maxHeightCatalogBody: 728px;
+
+.export-body {
+    display: flex;
+
+    &__main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        box-shadow: 0px 0px 16px rgba(16, 70, 73, 0.1);
+        border-radius: 8px;
+
+        .body-wrapper {
+            max-height: $maxHeightCatalogBody;
+            @include scrollbarStyle();
+            overflow: auto;
+        }
+
+        > * {
+            width: 100%;
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        line-height: 0;
+        padding: 12px 24px;
+        border-bottom: 1px solid #8bbfbb;
+        border-radius: 8px 8px 0px 0px;
+
+        > .column {
+            padding: 4px 0;
+            @include fontSmall(600);
+            color: #9e9e9e;
+            text-transform: uppercase;
+        }
+        > .column.id {
+            justify-content: center;
+        }
+    }
+
+    &__row {
+        min-height: 56px;
+        padding: 8px 24px;
+        @include bodyTableBorder();
+
+        &:hover {
+            background-color: #f5faf9;
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        > .column {
+            @include fontMid();
+            display: flex;
+            align-items: center;
+        }
+        > .column.on {
+            color: #308830;
+        }
+        > .column.off {
+            color: #aa3c3c;
+        }
+    }
+}
+
+.export {
+    .info-panel {
+        .exp-profile-name {
+            .ui-input-wrapper {
+                min-width: 300px;
+            }
+        }
+        .exp-profile-status__text {
+            margin-right: 16px;
+        }
+
+        &__value {
+            @include fontMid(400);
+        }
+
+        &__clear-btn {
+            margin-left: auto;
+        }
+    }
+}
+
+.create-exp-profile {
+    &__title {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .text {
+            @include fontMid(600);
+            color: #3f8483;
+            & + .ico-wrapper {
+                margin-left: 8px;
+            }
+        }
+    }
+    &__toggle-btn {
+        width: 824px;
+        max-width: 100%;
+        padding: 8px;
+        margin: 8px auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid #3f8483;
+        border-bottom: 1px solid transparent;
+
+        &.active {
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid #3f8483;
+
+            .ico-wrapper {
+                transform: matrix(1, 0, 0, -1, 0, 0);
+            }
+        }
+    }
+}
+
+.create-exp-profile-panel {
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    &__column {
+        display: flex;
+        flex-direction: column;
+    }
+    &__column + &__column {
+        margin-left: 32px;
+    }
+
+    &__copy-panel {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: 12px;
+    }
+    &__copy-btn {
+        @include fixedWH(48px, 48px);
+        border-radius: 50%;
+        border: 1px solid transparent;
+
+        &:hover {
+            border: 1px solid #3f8483;
+        }
+    }
+    &__copy-field {
+        flex-grow: 1;
+        padding: 16px;
+        background-color: #f5faf9;
+        border: 1px solid #d8ebe9;
+        border-radius: 8px;
+        input {
+            @include fontMid(500);
+        }
+        .btn + & {
+            margin-left: 8px;
+        }
+    }
+}
+
+.checkbox-list-block {
+    min-height: 364px;
+    max-height: 364px;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #8bbfbb;
+    border-radius: 8px;
+
+    &__title {
+        width: 100%;
+        @include fontMid(400);
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__body {
+        max-height: 276px;
+        margin-top: 16px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(8, minmax(24px, auto));
+    }
+
+    .days &__body {
+        grid-template-columns: repeat(1, 152px);
+    }
+    .hours &__body {
+        grid-template-columns: repeat(3, 80px) 72px;
+    }
+    .minutes &__body {
+        grid-template-columns: repeat(1, 80px) 72px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        .text {
+            @include fontSmall(400);
+        }
+        & + & {
+            margin-top: 12px;
+        }
+        &:first-child {
+            grid-column: 1 / -1;
+            width: 100%;
+            .text {
+                @include fontMid(600);
+            }
+        }
+    }
+}
+
+//calendar
+//calendar
+//calendar
+.calendar {
+    .calendar-user-field {
+        width: 388px;
+        margin-bottom: 12px;
+        border-color: transparent;
+        border-bottom-color: #3f8483;
+
+        &__input {
+            @include fontMid();
+            width: 100%;
+            padding-right: 24px;
+        }
+    }
+    .calendar-field-wrapper {
+        min-width: 100%;
+        max-width: 100%;
+        position: relative;
+
+        &__input-date {
+            @include fontMid();
+            width: 100%;
+            padding-right: 0;
+        }
+    }
+}
+
+.export-type-panel {
+    margin-left: 56px;
+    margin-top: auto;
+    .caption {
+        display: inline-flex;
+        @include fontCaption(400);
+        margin-bottom: 8px;
+    }
+}
+
+.types {
+    display: flex;
+    &__item {
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid transparent;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+            border-color: #3f8483;
+        }
+    }
+    &__item + &__item {
+        margin-left: 24px;
+    }
+}
+
+.add-category-btn {
+    display: flex;
+    align-items: center;
+    &__label {
+        margin-left: 12px;
+        padding: 16px 24px;
+        background-color: #f5faf9;
+        border: 1px solid #8bbfbb;
+        border-radius: 8px;
+        @include fontMid();
+        text-transform: uppercase;
+    }
+}
+
+.export-trees {
+    &__header-row {
+        width: 100%;
+        margin-top: 28px;
+        margin-bottom: 8px;
+        display: flex;
+
+        .header {
+            max-width: calc(50% - 18px);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+
+            .ui-caption {
+                width: 90%;
+                @include fontMid();
+            }
+        }
+        .header + .header {
+            margin-left: 36px;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        .export-arrow {
+            @include fixedWH(36px, 36px);
+        }
+    }
+
+    &__footer {
+        width: 100%;
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > * + * {
+            margin-left: 24px;
+        }
+    }
+}
+
+.catalog-body {
+    &__tree--export {
+        min-width: auto;
+        max-width: none;
+        flex-grow: 1;
+        border: 1px solid #8bbfbb;
+
+        .tree-title {
+            max-width: none;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .tree-body {
+            min-height: 600px;
+            &__list {
+                max-width: 100%;
+                width: 100%;
+                .c-list__item {
+                    .title {
+                        .c-edit-btn {
+                            margin-left: auto;
+                        }
+                    }
+
+                    &.exported {
+                        & > .title {
+                            font-style: italic;
+                            opacity: 0.3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
