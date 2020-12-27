@@ -269,6 +269,29 @@
                                         data-field-date>
                                 </div>
                             </div>
+                            <div class="ui-inputs-list">
+                                <div class="ui-input-wrapper has-label">
+                                    <label for="profile_margin" class="label">
+                                        Наценка на профиль
+                                    </label>
+                                    <input type="text" class="ui-input" id="profile_margin" name="profile_margin"
+                                        required="required" value="0.00">
+                                </div>
+                                <div class="ui-input-wrapper has-label">
+                                    <label for="profile_description" class="label">
+                                        Описание профиля
+                                    </label>
+                                    <textarea class="ui-input" id="profile_description" name="profile_description"
+                                        required="required"></textarea>
+                                </div>
+                                <div class="ui-input-wrapper has-label">
+                                    <label for="profile_file" class="label">
+                                        Наименование файла экспорта (profile_NAME.FORMAT)
+                                    </label>
+                                    <input type="text" class="ui-input" id="profile_file" name="profile_file"
+                                        required="required" value="">
+                                </div>
+                            </div>
                             <div class="export-type-panel">
                                 <span class="caption">Выберите формат файла выгрузки</span>
                                 <ul class="types">
@@ -587,6 +610,9 @@
                                         <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
                                             <img src="public/static/assets/icons/delete.svg" alt="">
                                         </div>
+                                        <div class="ico-wrapper btn c-search-btn ttl tooltipstered"
+                                            data-search-catalog-btn="" data-search-category-id="79"><img
+                                                src="public/static/assets/icons/searchLoupe.svg" alt=""></div>
                                     </div>
                                     <ul class="c-list">
                                         <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[6]'>

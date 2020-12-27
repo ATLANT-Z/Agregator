@@ -183,6 +183,7 @@ $maxHeightCatalogBody: 728px;
     }
 }
 
+//slide down
 .create-exp-profile-panel {
     width: 100%;
     margin-top: 20px;
@@ -283,8 +284,10 @@ $maxHeightCatalogBody: 728px;
 //calendar
 //calendar
 .calendar {
+    $calendarWidth: 388px;
+    max-width: $calendarWidth;
     .calendar-user-field {
-        width: 388px;
+        width: $calendarWidth;
         margin-bottom: 12px;
         border-color: transparent;
         border-bottom-color: #3f8483;
@@ -351,6 +354,7 @@ $maxHeightCatalogBody: 728px;
     }
 }
 
+$icoExportArrowSize: 36px;
 .export-trees {
     &__header-row {
         width: 100%;
@@ -378,7 +382,7 @@ $maxHeightCatalogBody: 728px;
         display: flex;
         align-items: center;
         .export-arrow {
-            @include fixedWH(36px, 36px);
+            @include fixedWH($icoExportArrowSize, $icoExportArrowSize);
         }
     }
 
@@ -398,7 +402,7 @@ $maxHeightCatalogBody: 728px;
 .catalog-body {
     &__tree--export {
         min-width: auto;
-        max-width: none;
+        max-width: calc(50% - #{$icoExportArrowSize} / 2);
         flex-grow: 1;
         border: 1px solid #8bbfbb;
 

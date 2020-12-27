@@ -530,6 +530,7 @@ $maxHeightCatalogBody: 728px;
         position: relative;
         padding-left: 20px;
         background-color: inherit;
+        z-index: 2;
 
         &:last-child > .end-border {
             background-color: inherit;
@@ -543,6 +544,19 @@ $maxHeightCatalogBody: 728px;
                 background-color: inherit;
                 z-index: 2;
             }
+        }
+
+        @keyframes blow {
+            0% {
+                transform: scale(1.5);
+            }
+            95% {
+                transform: scale(1);
+            }
+        }
+
+        &.category-blow {
+            animation: blow 1.5s ease-in-out forwards;
         }
     }
 }

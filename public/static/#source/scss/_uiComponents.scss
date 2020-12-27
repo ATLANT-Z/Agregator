@@ -260,9 +260,26 @@ input {
     &.small {
         padding: 11px 16px;
     }
-    input {
-        @include fontCaption();
+    input,
+    textarea {
+        max-width: 100%;
         width: 100%;
+        @include fontCaption();
+    }
+    textarea {
+        resize: vertical;
+    }
+    &.has-label {
+        flex-direction: column;
+        align-items: flex-start;
+        border: none;
+        padding: 0;
+
+        .label {
+            padding-bottom: 4px;
+            @include fontCaption();
+            color: #9e9e9e;
+        }
     }
 }
 
@@ -275,6 +292,7 @@ input {
 }
 
 .blockUI.blockMsg.blockPage {
+    font-size: 20px !important;
     padding: 16px !important;
 }
 
@@ -340,4 +358,18 @@ input {
 .ui-caption {
     @include fontCaption(400);
     color: #9e9e9e;
+}
+
+.ui-inputs-list {
+    max-width: 100%;
+    width: 388px;
+    margin: 16px 0;
+
+    & > * {
+        width: 100%;
+    }
+
+    & > * + * {
+        margin-top: 8px;
+    }
 }

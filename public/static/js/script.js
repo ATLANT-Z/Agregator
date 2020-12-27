@@ -5,6 +5,10 @@ function stopClick(e, isPrevent = false) {
         e.preventDefault();
 }
 
+function setRadio(_this) {
+    $(_this).prop("checked", true);
+}
+
 function activeDropdownBtn(btn) {
     $(btn).addClass('active');
 }
@@ -156,9 +160,77 @@ $('.sub-pages__page').click(function () {
     $(this).addClass('selected');
 });
 
-
+//!События дерева
+//!События дерева
+//!События дерева
 //Подвязка событий к дереву каталога у определённого родителя. 
 // Например только в попапе "edit catalog"
+//ПЕТЯ это инициализация кнопок удалить и редактировать. Думаю, тебе оно понадобится))
+function initEditorsBtns(parent) {
+    //редактируем категорию (каталог) (кнопка с карандашиком)
+    function editCatalogBtnClick(e) {
+        stopClick(e);
+
+        let $parent = $(this).closest('[data-tree-title]');
+        let $titleText = $('[data-tree-title-text]', $parent);
+        let $parentCategory = $(this).closest('[data-tree-li-item]');
+
+        //Убираем пробелы в названии, если вдруг есть
+        let titleText = $titleText.text().trim().replace(/\s+/g, ' ');
+        let catalogId = $parentCategory.attr('data-catalog-id');
+
+        if (catalogId === undefined) {
+            //При генерации ты, видимо, забыл задать data-catalog-id всем li (категориям)
+            console.error('Нет айди у категории!');
+            console.trace('Смотри сюда');
+        }
+
+        let $pop = $('#edit-category-pop');
+        $('[data-category-name-input]', $pop).val(titleText);
+        $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
+
+        let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
+        let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
+
+        setRadio($('input[type="radio"]', $popCatalogTitle).get(0));
+
+        showCategoryByIdIn(catalogId, $pop);
+
+        $pop.fadeIn();
+    }
+    $('[data-edit-catalog-btn]', parent).click(function (e) {
+        editCatalogBtnClick.call(this, e);
+    });
+    //удаляем категорию (каталог) (кнопка с баком)
+    $('[data-delete-catalog-btn]', parent).click(function (e) {
+        editCatalogBtnClick.call(this, e);
+
+        let $pop = $('#edit-category-pop');
+        $('[data-show-pop-with-id="ask-sure-delete-c-pop"]', $pop)[0].click();
+    });
+}
+function showCategoryByIdIn(id, parent) {
+    let $popCategory = $(`[data-catalog-id='${id}']`, parent);
+
+    if ($popCategory.length == 0) {
+        console.warn('Такой категории нет');
+        return;
+    }
+
+    $popCategory.parents('[data-tree-li-item]').each(function () {
+        if (!$(this).hasClass('opened'))
+            $('[data-tree-title-btn]', this)[0].click();
+    });
+
+    let delayTime = parseFloat($popCategory.css('transitionDuration')) * 1000 + 300;
+    setTimeout(function () {
+        $popCategory[0].scrollIntoView();
+    }, delayTime);
+
+    $popCategory.removeClass('category-blow');
+    void $popCategory[0].offsetWidth;
+    $popCategory.addClass('category-blow');
+}
 function initTreeEventsIn(parent) {
     //раскрытие дерева в каталоге по ширине
     $('[data-tree-toggle-btn]', parent).click(function () {
@@ -182,11 +254,6 @@ function initTreeEventsIn(parent) {
         //делаем "селект" раскрывшейся категории (первый элемент - первый в нашем тайтле)
         $('[data-tree-title-text]', $parent)[0].click();
     }
-    function expandTitleBtnBuilder() {
-        let $btn = $('<div class="title__btn btn" data-tree-title-btn></div>');
-        $btn.click(expandBranch);
-        return $btn;
-    }
     //разворачиваем ветку
     $('[data-tree-title-btn]', parent).click(function () {
         expandBranch.call(this);
@@ -195,6 +262,11 @@ function initTreeEventsIn(parent) {
 
     //Реализация переноса экспорта
     {
+        function expandTitleBtnBuilder() {
+            let $btn = $('<div class="title__btn btn" data-tree-title-btn></div>');
+            $btn.click(expandBranch);
+            return $btn;
+        }
         function getTreesStruct($parent) {
             if ($(this).closest('[data-exp-orig-tree]').length)
                 return {
@@ -303,60 +375,6 @@ function initTreeEventsIn(parent) {
         $(this).closest('[data-tree-li-item]').toggleClass('selected');
     });
 
-
-    //ПЕТЯ это инициализация кнопок удалить и редактировать. Думаю, тебе оно понадобится))
-    function initEditorsBtns(parent) {
-        //редактируем категорию (каталог) (кнопка с карандашиком)
-        function editCatalogBtnClick(e) {
-            stopClick(e);
-
-            let $parent = $(this).closest('[data-tree-title]');
-            let $titleText = $('[data-tree-title-text]', $parent);
-            let $parentCategory = $(this).closest('[data-tree-li-item]');
-
-            //Убираем пробелы в названии, если вдруг есть
-            let titleText = $titleText.text().trim().replace(/\s+/g, ' ');
-            let catalogId = $parentCategory.attr('data-catalog-id');
-
-            if (catalogId === undefined) {
-                //При генерации ты, видимо, забыл задать data-catalog-id всем li (категориям)
-                console.error('Нет айди у категории!');
-                console.trace('Смотри сюда');
-            }
-
-            let $pop = $('#edit-category-pop');
-            $('[data-category-name-input]', $pop).val(titleText);
-            $('#ask-sure-delete-c-pop [data-pop-header] [data-category-name]').text(titleText);
-
-            let $popCategory = $(`[data-catalog-id='${catalogId}']`, $pop);
-            let $popCatalogTitle = $('>[data-tree-title]', $popCategory);
-
-            setRadio($('input[type="radio"]', $popCatalogTitle).get(0));
-
-            $popCategory.parents('[data-tree-li-item]').each(function () {
-                if (!$(this).hasClass('opened'))
-                    $('[data-tree-title-btn]', this)[0].click();
-            });
-
-            let delayTime = parseFloat($popCategory.css('transitionDuration')) * 1000 + 300;
-            setTimeout(function () {
-                $popCategory[0].scrollIntoView();
-            }, delayTime);
-
-
-            $pop.fadeIn();
-        }
-        $('[data-edit-catalog-btn]', parent).click(function (e) {
-            editCatalogBtnClick.call(this, e);
-        });
-        //удаляем категорию (каталог) (кнопка с баком)
-        $('[data-delete-catalog-btn]', parent).click(function (e) {
-            editCatalogBtnClick.call(this, e);
-
-            let $pop = $('#edit-category-pop');
-            $('[data-show-pop-with-id="ask-sure-delete-c-pop"]', $pop)[0].click();
-        });
-    }
     initEditorsBtns(parent);
 
     /* Клики в попапе по чекбоксам  */
@@ -380,13 +398,24 @@ function initTreeEventsIn(parent) {
                 $(this).prop("checked", !thisStatus);
         });
     });
+
+    //поиск категории для экспорта из нового в оригинале
+    $('[data-exp-new-tree] [data-search-catalog-btn]').click(function () {
+        let $parent = $(this).closest('[data-tree-li-item]');
+        let id = $parent.attr('data-catalog-id');
+        showCategoryByIdIn(id, $('[data-exp-orig-tree]'));
+    });
+
+    //поиск категории для экспорта из попапа создания в новом
+    $('#create-category-pop [data-search-catalog-btn]').click(function () {
+        let $parent = $(this).closest('[data-tree-li-item]');
+        let id = $parent.attr('data-catalog-id');
+        showCategoryByIdIn(id, $('[data-exp-new-tree]'));
+    });
 }
 initTreeEventsIn(document);
 
 
-function setRadio(_this) {
-    $(_this).prop("checked", true);
-}
 
 function deleteTag() {
     let $tag = $(this).closest('[data-tag]');
