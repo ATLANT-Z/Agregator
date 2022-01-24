@@ -1,9 +1,9 @@
 .page {
     transition: 0s;
+    padding: 24px 25px 0;
 }
 .catalog {
     display: block;
-    padding: 24px 25px 0;
 }
 
 .catalog-new-items {
@@ -12,7 +12,6 @@
 
 .edit-catalog {
     display: none;
-    padding: 24px 25px 0;
 }
 
 .pages-nav {
@@ -32,7 +31,6 @@
     }
     &__title {
         @include fontMid(600);
-        padding-top: 2px;
         margin-right: 8px;
     }
 
@@ -48,7 +46,7 @@
 .filter-block {
     &__panel {
         display: flex;
-        padding: 16px 24px 16px 144px;
+        padding: 16px 24px;
     }
 
     &__btn {
@@ -69,6 +67,14 @@
             color: #3f8483;
             @include fontSmall(600);
             text-transform: uppercase;
+        }
+    }
+
+    @at-root .catalog {
+        .filter-block {
+            &__panel {
+                padding-left: 144px;
+            }
         }
     }
 }
@@ -101,7 +107,7 @@
 
 .info-wrapper {
     display: flex;
-    align-items: stretch;
+    align-items: flex-end;
 
     &__text-row {
         display: flex;
@@ -503,12 +509,13 @@ $maxHeightCatalogBody: 728px;
         min-width: 200px;
     }
 
-    & > &__list {
+    & > &__list.c-list {
         display: block;
         min-width: 400px;
         max-width: 400px;
     }
 }
+
 .c-list {
     position: relative;
     display: none;
@@ -530,6 +537,7 @@ $maxHeightCatalogBody: 728px;
         position: relative;
         padding-left: 20px;
         background-color: inherit;
+        z-index: 2;
 
         &:last-child > .end-border {
             background-color: inherit;
@@ -544,8 +552,22 @@ $maxHeightCatalogBody: 728px;
                 z-index: 2;
             }
         }
+
+        @keyframes blow {
+            0% {
+                transform: scale(1.5);
+            }
+            95% {
+                transform: scale(1);
+            }
+        }
+
+        &.category-blow {
+            animation: blow 1.5s ease-in-out forwards;
+        }
     }
 }
+
 .title {
     position: relative;
     max-height: 52px;
@@ -638,7 +660,6 @@ $maxHeightCatalogBody: 728px;
         margin-left: 10px;
     }
 }
-
 //filters
 //filters
 //filters

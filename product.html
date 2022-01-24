@@ -64,147 +64,90 @@
     </header>
     <main>
         <div class="sub-header">
-            <h1 class="sub-header__title">
-                Экспорт
-            </h1>
+            <a href="javascript:void(0);" class="sub-header__title">
+                <span class="ico-wrapper">
+                    <img src="public/static/assets/icons/arrowBack.svg" alt="">
+                </span>
+                Вернуться в раздел
+            </a>
             <div class="sub-header__nav-panel">
-                <div class="sub-header__btn ui-btn-common btn" id="changePageVision"
-                    data-second-text="Вернуться к списку экспортов" data-show-page-with-id='edit-export-page'>
-                    Создать новый профиль
+                <div class="sub-header__btn ui-btn-common btn">
+                    сохранить изменения
                 </div>
             </div>
         </div>
-        <article class="export page" data-page id="export-page">
-            <section class="export-body">
-                <div class="export-body__main">
-                    <ul class="export-body__header export-table-header export-table-row">
-                        <li class="column name">
-                            Название профиля для экспорта
-                        </li>
-                        <li class="column date-create">
-                            Дата создания
-                        </li>
-                        <li class="column date-edit">
-                            Дата ред.
-                        </li>
-                        <li class="column update">
-                            обновление
-                        </li>
-                        <li class="column status">
-                            Статус
-                        </li>
-                    </ul>
-                    <div class="body-wrapper">
-                        <a href="javascript:void(0);" onclick="$('#changePageVision')[0].click();"
-                            class="export-body__row export-table-row">
-                            <div class="column name">
-                                LogicHouse_Test
-                            </div>
-                            <div class="column date-create">
-                                01-11-2020
-                            </div>
-                            <div class="column date-edit">
-                                09-11-2020
-                            </div>
-                            <div class="column update">
-                                Ежедневно в 00:00, 09:00, 20:00
-                            </div>
-                            <div class="column status on">
-                                Активный
-                            </div>
-                        </a>
-                        <a href="javascript:void(0);" onclick="$('#changePageVision')[0].click();"
-                            class="export-body__row export-table-row">
-                            <div class="column name">
-                                LogicHouse_Test
-                            </div>
-                            <div class="column date-create">
-                                01-11-2020
-                            </div>
-                            <div class="column date-edit">
-                                09-11-2020
-                            </div>
-                            <div class="column update">
-                                Ежедневно в 00:00, 09:00, 20:00
-                            </div>
-                            <div class="column status on">
-                                Активный
-                            </div>
-                        </a>
-                        <a href="javascript:void(0);" onclick="$('#changePageVision')[0].click();"
-                            class="export-body__row export-table-row">
-                            <div class="column name">
-                                LogicHouse_Test
-                            </div>
-                            <div class="column date-create">
-                                01-11-2020
-                            </div>
-                            <div class="column date-edit">
-                                09-11-2020
-                            </div>
-                            <div class="column update">
-                                Ежедневно каждый час
-                            </div>
-                            <div class="column status on">
-                                Активный
-                            </div>
-                        </a>
-                        <a href="javascript:void(0);" onclick="$('#changePageVision')[0].click();"
-                            class="export-body__row export-table-row">
-                            <div class="column name">
-                                LogicHouse_Test
-                            </div>
-                            <div class="column date-create">
-                                01-11-2020
-                            </div>
-                            <div class="column date-edit">
-                                09-11-2020
-                            </div>
-                            <div class="column update">
-                                Ежедневно в 00:00, 09:00, 20:00
-                            </div>
-                            <div class="column status on">
-                                Активный
-                            </div>
-                        </a>
-                        <a href="javascript:void(0);" onclick="$('#changePageVision')[0].click();"
-                            class="export-body__row export-table-row">
-                            <div class="column name">
-                                LogicHouse_Test
-                            </div>
-                            <div class="column date-create">
-                                01-11-2020
-                            </div>
-                            <div class="column date-edit">
-                                09-11-2020
-                            </div>
-                            <div class="column update">
-                                Ежедневно в 00:00, 09:00, 20:00
-                            </div>
-                            <div class="column status off">
-                                Отключен
-                            </div>
-                        </a>
-                        <a href="javascript:void(0);" onclick="$('#changePageVision')[0].click();"
-                            class="export-body__row export-table-row">
-                            <div class="column name">
-                                LogicHouse_Test
-                            </div>
-                            <div class="column date-create">
-                                01-06-2020
-                            </div>
-                            <div class="column date-edit">
-                                09-11-2020
-                            </div>
-                            <div class="column update">
-                                Пн., Чт., в 09:00, 20:00
-                            </div>
-                            <div class="column status off">
-                                Отключен
-                            </div>
-                        </a>
+        <div class="pages-nav">
+            <div class="sub-pages" data-sub-pages-first>
+                <a class="sub-pages__page selected" href="javascript:void(0);" data-show-page-with-id='export-page'>
+                    <div class="sub-pages__text">
+                        Общий вид
                     </div>
-                </div>
+                </a>
+                <a class="sub-pages__page" href="javascript:void(0);" data-show-page-with-id='edit-export-page'>
+                    <div class="sub-pages__text">
+                        Описание
+                    </div>
+                </a>
+                <a class="sub-pages__page" href="javascript:void(0);" data-show-page-with-id='new-suppliers-page'>
+                    <div class="sub-pages__text">
+                        Характеристики
+                    </div>
+                </a>
+                <a class="sub-pages__page" href="javascript:void(0);" data-show-page-with-id='new-suppliers-page'>
+                    <div class="sub-pages__text">
+                        Фото
+                    </div>
+                </a>
+            </div>
+        </div>
+        <article class="product page" data-page id="export-page">
+            <div class="info-panel product">
+                <ul class="info-panel__info-col">
+                    <li class="info-panel__attr-row name">
+                        <span class="i-title">Название:</span>
+                        <span class="value">Зарядное устройство для АКБ LP AC-015 6V 2A</span>
+                    </li>
+                    <li class="info-panel__attr-row article">
+                        <span class="i-title">Артикул:</span>
+                        <span class="value">LP AC-015 6V 2A</span>
+                    </li>
+                    <li class="info-panel__attr-row category">
+                        <span class="i-title">Категория:</span>
+                        <span class="value">Ячейки, элементы для литиевых аккумуляторов</span>
+                    </li>
+                </ul>
+                <ul class="info-panel__instrument-col">
+                    <li class="btn update-btn" data-show-pop-with-id="move-items-pop"
+                        data-pop-title-text="Переместить категории в">
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/edit.svg" alt="">
+                        </span>
+                        <span class="text">
+                            Редактировать
+                        </span>
+                    </li>
+                    <li class="btn update-btn" data-show-pop-with-id="move-items-pop"
+                        data-pop-title-text="Переместить категории в">
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/move.svg" alt="">
+                        </span>
+                        <span class="text">
+                            Переместить
+                        </span>
+                    </li>
+                    <li class="btn update-btn" data-show-pop-with-id="move-items-pop"
+                        data-pop-title-text="Переместить категории в">
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/delete.svg" alt="">
+                        </span>
+                        <span class="text">
+                            Удалить
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <section class="product-view">
+
             </section>
         </article>
         <article class="export edit-export page" data-page id="edit-export-page">
