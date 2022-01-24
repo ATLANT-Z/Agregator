@@ -70,9 +70,9 @@ $('[data-toggle-block-with-id]').click(function (e) {
 /* POPUP */
 /* POPUP */
 /* POPUP */
-$(document).click(function () {
-    $('[data-popup-block]').fadeOut();
-});
+//$(document).click(function () {
+//    $('[data-popup-block]').fadeOut();
+//});
 
 $('.popup').click(function (e) {
     stopClick(e);
@@ -508,6 +508,11 @@ $('[data-child-submit-click]').click(function () {
     $('input[type="submit"]')[0].click();
 });
 
+//Упрощённая работа с чекбоксами
+$('[data-child-input-click]').click(function () {
+    $('input')[0].click();
+});
+
 //переключение страниц
 $('[data-show-page-with-id]').click(function () {
     let $this = $(this);
@@ -521,14 +526,29 @@ $('[data-show-page-with-id]').click(function () {
     $targetPage.fadeIn();
 
     if ($(this).is('[data-second-text]')) {
-        let currText = $this.text();
+        let currText = $this.text().trim();
         $this.text($this.attr('data-second-text'));
         $this.attr('data-second-text', currText);
         $this.attr('data-show-page-with-id', $currentPage.attr('id'));
     }
 });
 
-//обработчик нажатия клавиши, чтоб расширять
+$('[data-change-vision]').click(function () {
+    let isChanged = $(this).attr('data-change-vision') == 'true';
+    $(this).attr('data-change-vision', !isChanged);
+
+    if (!isChanged) {
+        $('[data-sub-pages-first]').hide();
+        $('[data-sub-pages-second]').show();
+    }
+    else {
+        $('[data-sub-pages-first]').show();
+        $('[data-sub-pages-second]').hide();
+    }
+});
+
+
+//обработчик нажатия клавиши, чтоб расширять, для обычной передачи объекта
 function uiGrowableInputKeyDownHandler(_this) {
     //задержка, чтобы буква отпечаталась
     setTimeout(function () {
@@ -543,7 +563,6 @@ function uiGrowableInputKeyDownHandlerJQuery() {
         setTrueWidthForInput(_this);
     }, 5);
 }
-
 //изменять ширину инпут при вводе
 function setTrueWidthForInput(input) {
     let $input = $(input);
@@ -561,13 +580,13 @@ function setTrueWidthForInput(input) {
 
     $buffer.text($input.val());
 
-    $input.css('width', parseFloat($buffer.css('width')) + 20 + 'px');
+    $input.css('width', parseFloat($buffer.css('width')) + 5 + 'px');
 
     $buffer.remove();
 }
-
 //изменять ширину инпут при вводе
 $('[data-ui-growable-input]').on('keydown', uiGrowableInputKeyDownHandlerJQuery);
+
 
 
 //очистить форму поиска
@@ -576,7 +595,6 @@ $('[data-clear-search-input-btn]').click(function () {
     $('[data-search-input]', $parent).val('');
     $('[data-search-input]', $parent).trigger("change");
 });
-
 
 
 function popCaptionBuilder() {

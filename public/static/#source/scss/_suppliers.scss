@@ -1,0 +1,185 @@
+.new-suppliers,
+.edit-suppliers {
+    display: none;
+}
+
+.suppliers {
+    .filter-block {
+        .filter-block {
+            input[type="checkbox"].ui-checkbox {
+                @include checkboxMarginRight(0px);
+            }
+        }
+    }
+
+    $suppliersBodyW: 1316;
+    $rowWidthWithoutPads: $suppliersBodyW - 48;
+
+    $columWSuppliers1: 24 / $rowWidthWithoutPads * 100%;
+    $columWSuppliers2: 72 / $rowWidthWithoutPads * 100%;
+    $columWSuppliers3: 620 / $rowWidthWithoutPads * 100%;
+    $columWSuppliers4: 144 / $rowWidthWithoutPads * 100%;
+    $columWSuppliers5: 144 / $rowWidthWithoutPads * 100%;
+    $columWSuppliers6: 144 / $rowWidthWithoutPads * 100%;
+
+    .suppliers-table-row {
+        display: flex;
+
+        > .column {
+            display: flex;
+            margin-right: 24px;
+        }
+        > .column:last-child {
+            margin-right: 0;
+        }
+
+        > .column:nth-child(1) {
+            width: $columWSuppliers1;
+        }
+        > .column:nth-child(2) {
+            width: $columWSuppliers2;
+        }
+        > .column:nth-child(3) {
+            width: $columWSuppliers3;
+        }
+        > .column:nth-child(4) {
+            width: $columWSuppliers4;
+        }
+        > .column:nth-child(5) {
+            width: $columWSuppliers5;
+        }
+        > .column:nth-child(6) {
+            width: $columWSuppliers5;
+        }
+        > .column.id {
+        }
+        .name {
+        }
+        .category {
+        }
+        .provider {
+        }
+        > .column.status {
+            justify-content: center;
+        }
+    }
+
+    .catalog-body {
+        &__header {
+            > .column.id {
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+
+.edit-suppliers {
+    .info-panel {
+        .exp-profile-name {
+            .ui-input-wrapper {
+                min-width: 300px;
+            }
+        }
+        .exp-profile-status__text {
+            margin-right: 16px;
+        }
+
+        &__value {
+            @include fontMid(400);
+        }
+
+        &__clear-btn {
+            margin-left: auto;
+        }
+    }
+}
+
+.suppliers-content {
+    margin: 20px 0;
+}
+.sup-body {
+    display: flex;
+
+    $parent: &;
+
+    > * {
+        width: calc(50% - 14px);
+        padding: 16px 24px;
+
+        background: #ffffff;
+        box-shadow: 0px 0px 16px rgba(16, 70, 73, 0.05);
+        border-radius: 8px;
+    }
+    > * + * {
+        margin-left: 28px;
+    }
+
+    &__info-block {
+        > * + * {
+            margin-top: 16px;
+        }
+    }
+
+    &__header {
+        @include fontMid(600);
+        color: #3f8483;
+    }
+
+    & * + &__header {
+        margin-top: 20px;
+    }
+
+    &__inputs {
+        > * + * {
+            margin-top: 12px;
+        }
+    }
+
+    &__delivery-block {
+        > * + * {
+            margin-top: 16px;
+        }
+    }
+
+    .growable {
+        input {
+            width: 20px;
+        }
+    }
+}
+
+.markup {
+    &__row {
+        display: flex;
+        align-items: center;
+    }
+
+    &__text {
+        @include fontMid();
+        flex-grow: 1;
+        max-width: 128px;
+        margin-left: 16px;
+    }
+
+    .ui-input-wrapper {
+        max-width: 76px;
+        margin-left: 24px;
+    }
+
+    .ui-caption {
+        max-width: 300px;
+        margin-left: 4px;
+    }
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox"].ui-checkbox {
+        @include checkboxMarginRight(0px);
+    }
+    &__text {
+        margin-left: 10px;
+    }
+}

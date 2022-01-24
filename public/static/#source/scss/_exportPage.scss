@@ -419,8 +419,11 @@ $icoExportArrowSize: 36px;
                 width: 100%;
                 .c-list__item {
                     .title {
-                        .c-edit-btn {
-                            margin-left: auto;
+                        .btn + .btn {
+                            margin-left: 10px;
+                        }
+                        &__text + .btn {
+                            margin-left: auto !important;
                         }
                     }
 

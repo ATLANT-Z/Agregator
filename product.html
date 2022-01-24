@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="public/static/css/style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <ul class="nav-menu ">
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Дашборд
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Сопоставление
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Каталог
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Заказы
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Поставщики
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Импорт
+                </a>
+            </li>
+            <li class="nav-menu__item active">
+                <a href="javascript:void(0);">
+                    Экспорт
+                </a>
+            </li>
+            <li class="nav-menu__item">
+                <a href="javascript:void(0);">
+                    Настройки
+                </a>
+            </li>
+        </ul>
+        <a class="login-btn">
+            <span class="ico-wrapper">
+                <img src="public/static/assets/icons/user.svg" alt="">
+            </span>
+        </a>
+    </header>
+    <main>
+        <div class="sub-header">
+            <a href="javascript:void(0);" class="sub-header__title">
+                <span class="ico-wrapper">
+                    <img src="public/static/assets/icons/arrowBack.svg" alt="">
+                </span>
+                Вернуться в раздел
+            </a>
+            <div class="sub-header__nav-panel">
+                <div class="sub-header__btn ui-btn-common btn">
+                    сохранить изменения
+                </div>
+            </div>
+        </div>
+        <div class="pages-nav">
+            <div class="sub-pages" data-sub-pages-first>
+                <a class="sub-pages__page selected" href="javascript:void(0);" data-show-page-with-id='export-page'>
+                    <div class="sub-pages__text">
+                        Общий вид
+                    </div>
+                </a>
+                <a class="sub-pages__page" href="javascript:void(0);" data-show-page-with-id='edit-export-page'>
+                    <div class="sub-pages__text">
+                        Описание
+                    </div>
+                </a>
+                <a class="sub-pages__page" href="javascript:void(0);" data-show-page-with-id='new-suppliers-page'>
+                    <div class="sub-pages__text">
+                        Характеристики
+                    </div>
+                </a>
+                <a class="sub-pages__page" href="javascript:void(0);" data-show-page-with-id='new-suppliers-page'>
+                    <div class="sub-pages__text">
+                        Фото
+                    </div>
+                </a>
+            </div>
+        </div>
+        <article class="product page" data-page id="export-page">
+            <div class="info-panel product">
+                <ul class="info-panel__info-col">
+                    <li class="info-panel__attr-row name">
+                        <span class="i-title">Название:</span>
+                        <span class="value">Зарядное устройство для АКБ LP AC-015 6V 2A</span>
+                    </li>
+                    <li class="info-panel__attr-row article">
+                        <span class="i-title">Артикул:</span>
+                        <span class="value">LP AC-015 6V 2A</span>
+                    </li>
+                    <li class="info-panel__attr-row category">
+                        <span class="i-title">Категория:</span>
+                        <span class="value">Ячейки, элементы для литиевых аккумуляторов</span>
+                    </li>
+                </ul>
+                <ul class="info-panel__instrument-col">
+                    <li class="btn update-btn" data-show-pop-with-id="move-items-pop"
+                        data-pop-title-text="Переместить категории в">
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/edit.svg" alt="">
+                        </span>
+                        <span class="text">
+                            Редактировать
+                        </span>
+                    </li>
+                    <li class="btn update-btn" data-show-pop-with-id="move-items-pop"
+                        data-pop-title-text="Переместить категории в">
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/move.svg" alt="">
+                        </span>
+                        <span class="text">
+                            Переместить
+                        </span>
+                    </li>
+                    <li class="btn update-btn" data-show-pop-with-id="move-items-pop"
+                        data-pop-title-text="Переместить категории в">
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/delete.svg" alt="">
+                        </span>
+                        <span class="text">
+                            Удалить
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <section class="product-view">
+
+            </section>
+        </article>
+        <article class="export edit-export page" data-page id="edit-export-page">
+            <form action="" method="GET">
+                <div class="info-panel">
+                    <div class="info-panel__label exp-profile-name">
+                        <div class="info-panel__title">
+                            Название:
+                        </div>
+                        <div class="info-panel__value">
+                            <div class="ui-input-wrapper with-bg small">
+                                <input type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-panel__label exp-profile-create">
+                        <div class="info-panel__title">
+                            Дата создания:
+                        </div>
+                        <div class="info-panel__value">
+                            10-11-2020
+                        </div>
+                    </div>
+                    <div class="info-panel__label exp-profile-status">
+                        <div class="info-panel__title">
+                            Статус:
+                        </div>
+                        <div class="info-panel__value">
+                            <span class="exp-profile-status__text">
+                                Отключен
+                            </span>
+                            <input class="ui-checkbox" type="checkbox" name="" id="">
+                        </div>
+                    </div>
+                    <div class="info-panel__clear-btn btn ico-wrapper ui-cap-right"
+                        data-caption-on-focus='Удалить профиль'>
+                        <img src="public/static/assets/icons/delete.svg" alt="">
+                    </div>
+                </div>
+                <div class="create-exp-profile">
+                    <div class="create-exp-profile__title">
+                        <div class="text">
+                            Выгрузка не настроена.
+                        </div>
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/gear.svg" alt="">
+                        </span>
+                    </div>
+                    <div class="create-exp-profile-panel" id="exp-data" data-toggleable-block>
+                        <section class="create-exp-profile-panel__column">
+                            <div class="calendar" data-calendar-body>
+                                <div class="calendar-user-field ui-input-wrapper">
+                                    <input class="calendar-user-field__input" type="text"
+                                        placeholder="Выберите начало действия расписания" data-user-date-field readonly
+                                        data-to-tag-list id="someUniqueId1">
+                                    <div class="ico-wrapper">
+                                        <img src="public/static/assets/icons/calendar.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="calendar-field-wrapper ui-input-wrapper">
+                                    <input class="calendar-field-wrapper__input-date" type="date" name="date"
+                                        data-field-date>
+                                </div>
+                            </div>
+                            <div class="ui-inputs-list">
+                                <div class="ui-input-wrapper has-label">
+                                    <label for="profile_margin" class="label">
+                                        Наценка на профиль
+                                    </label>
+                                    <input type="text" class="ui-input" id="profile_margin" name="profile_margin"
+                                        required="required" value="0.00">
+                                </div>
+                                <div class="ui-input-wrapper has-label">
+                                    <label for="profile_description" class="label">
+                                        Описание профиля
+                                    </label>
+                                    <textarea class="ui-input" id="profile_description" name="profile_description"
+                                        required="required"></textarea>
+                                </div>
+                                <div class="ui-input-wrapper has-label">
+                                    <label for="profile_file" class="label">
+                                        Наименование файла экспорта (profile_NAME.FORMAT)
+                                    </label>
+                                    <input type="text" class="ui-input" id="profile_file" name="profile_file"
+                                        required="required" value="">
+                                </div>
+                            </div>
+                            <div class="export-type-panel">
+                                <span class="caption">Выберите формат файла выгрузки</span>
+                                <ul class="types">
+                                    <li class="types__item ico-wrapper btn">
+                                        <img src="public/static/assets/icons/typeYml.svg" alt="">
+                                    </li>
+                                    <li class="types__item ico-wrapper btn">
+                                        <img src="public/static/assets/icons/typeXml.svg" alt="">
+                                    </li>
+                                    <li class="types__item ico-wrapper btn">
+                                        <img src="public/static/assets/icons/typeCsv.svg" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="checkbox-list-block create-exp-profile-panel__column days">
+                            <div class="checkbox-list-block__title">
+                                Дни недели
+                            </div>
+                            <ul class="checkbox-list-block__body " data-checklist-parent>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="" data-all-checked>
+                                    <span class="text">
+                                        Каждый день
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        Понедельник
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        Вторник
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        Среда
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        Четверг
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        Пятница
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        Суббота
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        Воскресенье
+                                    </span>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="checkbox-list-block create-exp-profile-panel__column hours">
+                            <div class="checkbox-list-block__title">
+                                Часы
+                            </div>
+                            <ul class="checkbox-list-block__body" data-checklist-parent>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="" data-all-checked>
+                                    <span class="text">
+                                        Каждый час
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        00
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        02
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        03
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        04
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        05
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        06
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="">
+                                    <span class="text">
+                                        01
+                                    </span>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="checkbox-list-block create-exp-profile-panel__column minutes">
+                            <div class="checkbox-list-block__title">
+                                минуты
+                            </div>
+                            <ul class="checkbox-list-block__body" data-checklist-parent>
+                                <li class="checkbox-list-block__item">
+                                    <input class="ui-checkbox" type="checkbox" name="" id="" data-all-checked>
+                                    <span class="text">
+                                        Все
+                                    </span>
+                                </li>
+                            </ul>
+                        </section>
+                        <div class="create-exp-profile-panel__copy-panel" data-copy-parent>
+                            <div class="create-exp-profile-panel__copy-btn ico-wrapper btn"
+                                data-caption-on-focus="Скопировать путь к файлу выгрузки" data-copy-btn>
+                                <img src="public/static/assets/icons/copy.svg" alt="">
+                            </div>
+                            <div class="create-exp-profile-panel__copy-field ui-input-wrapper">
+                                <input type="text"
+                                    value="http://aggregator.greenvision.ua/dashboard/export/LogicHouse_Test.xml"
+                                    readonly data-copy-target>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="create-exp-profile__toggle-btn btn" data-toggle-block-with-id="exp-data">
+                        <span class="ico-wrapper">
+                            <img src="public/static/assets/icons/arrowBigDown.svg" alt="">
+                        </span>
+                    </div>
+                </div>
+            </form>
+            <section class="export-trees">
+                <div class="export-trees__header-row">
+                    <div class="header">
+                        <div class="ui-caption">
+                            Двойной клик левой кнопкой мыши перенесет нужную категорию в выбранную категорию в каталоге
+                            профиля.
+                        </div>
+                    </div>
+                    <div class="header">
+                        <div class="add-category-btn btn" data-show-pop-with-id="create-category-pop">
+                            <div class="ui-btn-plus c-create-panel__btn-add"></div>
+                            <div class="add-category-btn__label">
+                                создать новую категорию
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="export-trees__wrapper" data-exp-trees-parent>
+                    <div class="catalog-body__tree catalog-body__tree--export" data-exp-orig-tree
+                        data-tree-body-check-behav data-tree-body>
+                        <div class="catalog-body__header">
+                            <span class="ico-wrapper">
+                                <img src="public/static/assets/icons/catalogBook.svg" alt="">
+                            </span>
+                            <div class="tree-title">Каталог</div>
+                        </div>
+                        <div class="tree-body">
+                            <ul class="c-list tree-body__list" data-root-list>
+                                <!--Здесь форич начинается-->
+                                <!--data-catalog-id='catalogId[1] - ЭТО УНИКАЛЬНЫЙ ИДЕНТИФИКАТОР КАТЕГОРИИ-->
+                                <!--Задай их каждому элементу li внутри дерева. Это чтобы данные подятнулись в попап-->
+                                <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[1]'>
+                                    <span class="end-border"></span>
+                                    <div class="title" data-tree-title>
+                                        <div class="title__btn btn" data-tree-title-btn></div>
+                                        <div class="title__text btn" data-tree-title-text>Литиевые аккумуляторы</div>
+                                    </div>
+                                    <ul class="c-list">
+                                        <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[2]'>
+                                            <span class="end-border"></span>
+                                            <div class="title" data-tree-title>
+                                                <div class="title__text btn" data-tree-title-text>BMS платы</div>
+                                            </div>
+                                        </li>
+                                        <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[3]'>
+                                            <span class="end-border"></span>
+                                            <div class="title" data-tree-title>
+                                                <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[4]'>
+                                    <span class="end-border"></span>
+                                    <div class="title" data-tree-title>
+                                        <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="export-arrow ico-wrapper btn">
+                        <img src="public/static/assets/icons/exportArrowRight.svg" alt="">
+                    </div>
+                    <div class="catalog-body__tree catalog-body__tree--export" data-exp-new-tree
+                        data-tree-body-check-behav data-tree-body>
+                        <div class="catalog-body__header">
+                            <span class="ico-wrapper">
+                                <img src="public/static/assets/icons/catalogBook.svg" alt="">
+                            </span>
+                            <div class="tree-title">Каталог</div>
+                        </div>
+                        <div class="tree-body">
+                            <ul class="c-list tree-body__list" data-root-list>
+                                <!--Здесь форич начинается-->
+                                <!--data-catalog-id='catalogId[1] - ЭТО УНИКАЛЬНЫЙ ИДЕНТИФИКАТОР КАТЕГОРИИ-->
+                                <!--Задай их каждому элементу li внутри дерева. Это чтобы данные подятнулись в попап-->
+                                <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[5]'>
+                                    <span class="end-border"></span>
+                                    <div class="title" data-tree-title>
+                                        <div class="title__btn btn" data-tree-title-btn></div>
+                                        <div class="title__text btn" data-tree-title-text>Литиевые аккумуляторы</div>
+                                        <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
+                                            <img src="public/static/assets/icons/edit.svg" alt="">
+                                        </div>
+                                        <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                            <img src="public/static/assets/icons/delete.svg" alt="">
+                                        </div>
+                                        <div class="ico-wrapper btn c-search-btn ttl tooltipstered"
+                                            data-search-catalog-btn="" data-search-category-id="79"><img
+                                                src="public/static/assets/icons/searchLoupe.svg" alt=""></div>
+                                    </div>
+                                    <ul class="c-list">
+                                        <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[6]'>
+                                            <span class="end-border"></span>
+                                            <div class="title" data-tree-title>
+                                                <div class="title__text btn" data-tree-title-text>BMS платы</div>
+                                                <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
+                                                    <img src="public/static/assets/icons/edit.svg" alt="">
+                                                </div>
+                                                <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                                    <img src="public/static/assets/icons/delete.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[7]'>
+                                            <span class="end-border"></span>
+                                            <div class="title" data-tree-title>
+                                                <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                </div>
+                                                <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
+                                                    <img src="public/static/assets/icons/edit.svg" alt="">
+                                                </div>
+                                                <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                                    <img src="public/static/assets/icons/delete.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[8]'>
+                                    <span class="end-border"></span>
+                                    <div class="title" data-tree-title>
+                                        <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
+                                        <div class="ico-wrapper btn c-edit-btn" data-edit-catalog-btn>
+                                            <img src="public/static/assets/icons/edit.svg" alt="">
+                                        </div>
+                                        <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                            <img src="public/static/assets/icons/delete.svg" alt="">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="export-trees__footer">
+                    <label class="ui-btn-common yes btn" data-child-submit-click>
+                        Сохранить
+                        <input class="d-none" type="submit">
+                    </label>
+                    <div class="ui-btn-common no btn">
+                        Отменить
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+    <!--g это global глобальный лист попапов они должны быть именно тут по-хорошему-->
+    <section id="g-popups-list">
+        <div class="popup-block" id="remove-items-pop" data-popup-block>
+            <div class="popup-block__bg"></div>
+            <div class="popup-w">
+                <div class="popup-w__body popup">
+                    <div class="popup__info">
+                        <h3 class="popup__header">
+                            Вы хотите удалить 4 товара?
+                        </h3>
+                    </div>
+                    <div class="popup__footer">
+                        <div class="popup__btn ui-btn-common yes btn" data-pop-btn-close-parents
+                            data-is-close="defaultAjaxCallback">
+                            Да, удалить
+                        </div>
+                        <div class="popup__btn ui-btn-common no btn" data-pop-btn-close-parent
+                            data-is-close="defaultAjaxCallback">
+                            Нет, отмена
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-block" id="move-items-pop" data-popup-block>
+            <div class="popup-block__bg"></div>
+            <div class="popup-w">
+                <div class="popup-w__body popup">
+                    <div class="popup__info">
+                        <div class="popup__title-row">
+                            <div class="popup__sub-title" data-pop-title>
+                                Переместить товары в
+                            </div>
+                            <div class="popup__sub-title">
+                                <div class="search-form" data-search-form>
+                                    <label for="search-btn" class="search-form__btn btn">
+                                        <span class="ico-wrapper">
+                                            <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                                        </span>
+                                    </label>
+                                    <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                                        class="search-form__input" data-search-input>
+                                    <input type="submit" value="" id="search-btn" class="d-none">
+                                    <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="catalog-body__tree catalog-body__tree--wide catalog-body__tree--in-pop toggled"
+                            data-tree-body>
+                            <div class="catalog-body__header">
+                                <span class="ico-wrapper">
+                                    <img src="public/static/assets/icons/catalogBook.svg" alt="">
+                                </span>
+                                <div class="tree-title">Каталог</div>
+                                <input type="radio" class="ui-checkbox" name="move-category">
+                            </div>
+                            <div class="tree-body">
+                                <ul class="c-list tree-body__list">
+                                    <!--Здесь форич начинается-->
+                                    <li class="c-list__item" data-tree-li-item>
+                                        <span class="end-border"></span>
+                                        <div class="title">
+                                            <div class="title__btn btn" data-tree-title-btn></div>
+                                            <div class="title__text btn" data-tree-title-text>Литиевые аккумуляторы
+                                            </div>
+                                            <input type="radio" class="ui-checkbox" name="move-category">
+                                        </div>
+                                        <ul class="c-list">
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__btn btn" data-tree-title-btn></div>
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы</div>
+                                                    <input type="radio" class="ui-checkbox" name="move-category">
+                                                </div>
+                                                <ul class="c-list">
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__text btn" data-tree-title-text>
+                                                                BMS платы Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="move-category">
+                                                        </div>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="move-category">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="move-category">
+                                                </div>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="move-category">
+                                                </div>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__btn btn" data-tree-title-btn></div>
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="move-category">
+                                                </div>
+                                                <ul class="c-list">
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__btn btn" data-tree-title-btn></div>
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="move-category">
+                                                        </div>
+                                                        <ul class="c-list">
+                                                            <li class="c-list__item" data-tree-li-item>
+                                                                <span class="end-border"></span>
+                                                                <div class="title">
+                                                                    <div class="title__text btn" data-tree-title-text>
+                                                                        BMS платы
+                                                                        Lifepo4</div>
+                                                                    <input type="radio" class="ui-checkbox"
+                                                                        name="move-category">
+                                                                </div>
+                                                            </li>
+                                                            <li class="c-list__item" data-tree-li-item>
+                                                                <span class="end-border"></span>
+                                                                <div class="title">
+                                                                    <div class="title__text btn" data-tree-title-text>
+                                                                        BMS платы
+                                                                        Lifepo4</div>
+                                                                    <input type="radio" class="ui-checkbox"
+                                                                        name="move-category">
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="move-category">
+                                                        </div>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="move-category">
+                                                        </div>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__text btn btn">BMS платы Lifepo4</div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="move-category">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c-list__item" data-tree-li-item>
+                                        <span class="end-border"></span>
+                                        <div class="title">
+                                            <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
+                                            <input type="radio" class="ui-checkbox" name="move-category">
+                                        </div>
+                                    </li>
+                                    <!--Здесь форич заканчивается-->
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="popup__footer">
+                        <div class="popup__btn ui-btn-common yes btn" data-pop-btn-close-parents
+                            data-is-close="defaultAjaxCallback">
+                            Переместить
+                        </div>
+                        <div class="popup__btn ui-btn-common no btn" data-pop-btn-close-parent
+                            data-is-close="defaultAjaxCallback">
+                            Отменить
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-block" id="edit-items-pop" data-popup-block>
+            <div class="popup-block__bg"></div>
+            <div class="popup-w">
+                <div class="popup-w__body popup">
+                    <div class="popup__info">
+                        <div class="popup__title-row">
+                            <div class="popup__sub-title">
+                                Выберите поставщика для импорта данных
+                            </div>
+                            <div class="popup__sub-title">
+                                Изменить:
+                            </div>
+                        </div>
+                        <div class="popup__sub-body-row">
+                            <!--Точно такие же колонки, как и в фильтрах генерируются, только нет заголовка-->
+                            <!--А также нет атрибутов data-to-tag-list-->
+                            <section class="filter filters-row__column">
+                                <div class="filter-body">
+                                    <div class="search-drop-down-list ui-input-wrapper">
+                                        <div class="ico-wrapper">
+                                            <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                                        </div>
+                                        <input class="search-drop-down-list__input" placeholder="Поиск поставщика"
+                                            type="text">
+                                        <ul class="options">
+                                            <li class="options__item">
+                                                <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                                    <img src="public/static/assets/icons/delete.svg" alt="">
+                                                </div>
+                                                <span class="provider-name">
+                                                    Иванов И
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Петров П
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Сидоров С
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Иванов И
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Петров П
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Сидоров С
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Иванов И
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Петров П
+                                                </span>
+                                            </li>
+                                            <li class="options__item">
+                                                <input type="checkbox" class="ui-checkbox" name="">
+                                                <span class="provider-name">
+                                                    Сидоров С
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="filter filters-row__column">
+                                <div class="filter-body">
+                                    <ul class="checkbox-list">
+                                        <li class="checkbox-list__item">
+                                            <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                                <img src="public/static/assets/icons/delete.svg" alt="">
+                                            </div>
+                                            <span class="text">
+                                                Описание
+                                            </span>
+                                        </li>
+                                        <li class="checkbox-list__item">
+                                            <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                                <img src="public/static/assets/icons/delete.svg" alt="">
+                                            </div>
+                                            <span class="text">
+                                                Фото
+                                            </span>
+                                        </li>
+                                        <!--теперь эти дата-атрибуты не нужны, потому не генерим их
+                                        data-to-tag-list='Не выгружается на сайт'-->
+                                        <li class="checkbox-list__item">
+                                            <div class="c-delete-btn btn ico-wrapper" data-delete-catalog-btn>
+                                                <img src="public/static/assets/icons/delete.svg" alt="">
+                                            </div>
+                                            <span class="text">
+                                                Характеристики
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="popup__footer">
+                        <div class="popup__btn ui-btn-common yes btn" data-pop-btn-close-parents
+                            data-is-close="defaultAjaxCallback">
+                            Импорт
+                        </div>
+                        <div class="popup__btn ui-btn-common no btn" data-pop-btn-close-parent
+                            data-is-close="defaultAjaxCallback">
+                            Отменить
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="popup-block" id="create-category-pop" data-popup-block>
+            <div class="popup-block__bg"></div>
+            <div class="popup-w">
+                <div class="popup-w__body popup">
+                    <div class="popup__info">
+                        <div class="popup__title-row">
+                            <div class="popup__sub-title">
+                                название категории
+                            </div>
+                        </div>
+                        <div class="ui-input-wrapper category-name">
+                            <input type="text" placeholder="Введите название новой категории" data-category-name-input
+                                data-ui-growable-input>
+                        </div>
+                    </div>
+                    <div class="popup__info grow">
+                        <div class="popup__title-row">
+                            <div class="popup__sub-title">
+                                Раздел в каталоге
+                            </div>
+                            <div class="search-form" data-search-form>
+                                <label for="search-btn" class="search-form__btn btn">
+                                    <span class="ico-wrapper">
+                                        <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                                    </span>
+                                </label>
+                                <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                                    class="search-form__input" data-search-input>
+                                <input type="submit" value="" id="search-btn" class="d-none">
+                                <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
+                            </div>
+                        </div>
+                        <!--Если ошибка, надо добавить класс catalog-body__tree--error-->
+                        <form class="catalog-body__tree catalog-body__tree--in-pop 
+                        catalog-body__tree--wide toggled" data-tree-body>
+                            <div class="catalog-body__header">
+                                <span class="ico-wrapper">
+                                    <img src="public/static/assets/icons/catalogBook.svg" alt="">
+                                </span>
+                                <div class="tree-title">Каталог</div>
+                                <input type="radio" class="ui-checkbox" name="create-category">
+                            </div>
+                            <div class="tree-body">
+                                <ul class="c-list tree-body__list">
+                                    <!--Здесь форич начинается-->
+                                    <li class="c-list__item" data-tree-li-item>
+                                        <span class="end-border"></span>
+                                        <div class="title">
+                                            <div class="title__btn btn" data-tree-title-btn></div>
+                                            <div class="title__text btn" data-tree-title-text>Литиевые аккумуляторы
+                                            </div>
+                                            <input type="radio" class="ui-checkbox" name="create-category">
+                                        </div>
+                                        <ul class="c-list">
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__btn btn" data-tree-title-btn></div>
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы</div>
+                                                    <input type="radio" class="ui-checkbox" name="create-category">
+                                                </div>
+                                                <ul class="c-list">
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__text btn" data-tree-title-text>
+                                                                BMS платы Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="create-category">
+                                                        </div>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title">
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="create-category">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="create-category">
+                                                </div>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="create-category">
+                                                </div>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title">
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="create-category">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c-list__item" data-tree-li-item>
+                                        <span class="end-border"></span>
+                                        <div class="title">
+                                            <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
+                                            <input type="radio" class="ui-checkbox" name="create-category">
+                                        </div>
+                                    </li>
+                                    <!--Здесь форич заканчивается-->
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="popup__footer">
+                        <div class="popup__btn ui-btn-common yes btn" data-pop-btn-close-parents
+                            data-is-close="defaultAjaxCallback">
+                            сохранить
+                        </div>
+                        <div class="popup__btn ui-btn-common no btn" data-pop-btn-close-parent
+                            data-is-close="defaultAjaxCallback">
+                            отменить создание
+                        </div>
+                    </div>
+                    <div class="pop-close-btn btn ico-wrapper" data-pop-btn-close-parent
+                        data-is-close="defaultAjaxCallback">
+                        <img src="public/static/assets/icons/close.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-block" id="edit-category-pop" data-popup-block>
+            <div class="popup-block__bg"></div>
+            <div class="popup-w">
+                <div class="popup-w__body popup">
+                    <div class="popup__info">
+                        <div class="popup__title-row">
+                            <div class="popup__sub-title">
+                                название категории
+                            </div>
+                        </div>
+                        <div class="ui-input-wrapper category-name">
+                            <input type="text" placeholder="Введите название категории" data-category-name-input
+                                data-ui-growable-input>
+                        </div>
+                    </div>
+                    <div class="popup__info grow">
+                        <div class="popup__title-row">
+                            <div class="popup__sub-title">
+                                Раздел в каталоге
+                            </div>
+                            <div class="search-form" data-search-form>
+                                <label for="search-btn" class="search-form__btn btn">
+                                    <span class="ico-wrapper">
+                                        <img src="public/static/assets/icons/searchLoupe.svg" alt="">
+                                    </span>
+                                </label>
+                                <input type="text" placeholder="Поиск товара или категории" name="search-str"
+                                    class="search-form__input" data-search-input>
+                                <input type="submit" value="" id="search-btn" class="d-none">
+                                <div class="search-form__clear-btn btn" data-clear-search-input-btn></div>
+                            </div>
+                        </div>
+                        <!--Если ошибка, надо добавить класс catalog-body__tree--error-->
+                        <form class="catalog-body__tree catalog-body__tree--in-pop 
+                        catalog-body__tree--wide toggled" data-tree-body>
+                            <div class="catalog-body__header">
+                                <span class="ico-wrapper">
+                                    <img src="public/static/assets/icons/catalogBook.svg" alt="">
+                                </span>
+                                <div class="tree-title">Каталог</div>
+                                <input type="radio" class="ui-checkbox" name="edit-category">
+                            </div>
+                            <div class="tree-body">
+                                <ul class="c-list tree-body__list">
+                                    <!--Здесь форич начинается-->
+                                    <!--data-catalog-id='catalogId[1] - ЭТО УНИКАЛЬНЫЙ ИДЕНТИФИКАТОР КАТЕГОРИИ-->
+                                    <!--Задай их каждому элементу li внутри дерева. Это чтобы данные подятнулись в попап-->
+                                    <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[1]'>
+                                        <span class="end-border"></span>
+                                        <div class="title" data-tree-title>
+                                            <div class="title__btn btn" data-tree-title-btn></div>
+                                            <div class="title__text btn" data-tree-title-text>Литиевые аккумуляторы
+                                            </div>
+                                            <input type="radio" class="ui-checkbox" name="edit-category">
+                                        </div>
+                                        <ul class="c-list">
+                                            <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[3]'>
+                                                <span class="end-border"></span>
+                                                <div class="title" data-tree-title>
+                                                    <div class="title__btn btn" data-tree-title-btn></div>
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы</div>
+                                                    <input type="radio" class="ui-checkbox" name="edit-category">
+                                                </div>
+                                                <ul class="c-list">
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title" data-tree-title>
+                                                            <div class="title__text btn" data-tree-title-text>
+                                                                BMS платы Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="edit-category">
+                                                        </div>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title" data-tree-title>
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="edit-category">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title" data-tree-title>
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="edit-category">
+                                                </div>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title" data-tree-title>
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="edit-category">
+                                                </div>
+                                            </li>
+                                            <li class="c-list__item" data-tree-li-item>
+                                                <span class="end-border"></span>
+                                                <div class="title" data-tree-title>
+                                                    <div class="title__btn btn" data-tree-title-btn></div>
+                                                    <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4
+                                                    </div>
+                                                    <input type="radio" class="ui-checkbox" name="edit-category">
+                                                </div>
+                                                <ul class="c-list">
+                                                    <li class="c-list__item" data-tree-li-item
+                                                        data-catalog-id='catalogId[4]'>
+                                                        <span class="end-border"></span>
+                                                        <div class="title" data-tree-title>
+                                                            <div class="title__btn btn" data-tree-title-btn></div>
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Тыкни
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="edit-category">
+                                                        </div>
+                                                        <ul class="c-list">
+                                                            <li class="c-list__item" data-tree-li-item>
+                                                                <span class="end-border"></span>
+                                                                <div class="title" data-tree-title>
+                                                                    <div class="title__text btn" data-tree-title-text>
+                                                                        BMS платы
+                                                                        Lifepo4
+                                                                    </div>
+                                                                    <input type="radio" class="ui-checkbox"
+                                                                        name="edit-category">
+                                                                </div>
+                                                            </li>
+                                                            <li class="c-list__item" data-tree-li-item>
+                                                                <span class="end-border"></span>
+                                                                <div class="title" data-tree-title>
+                                                                    <div class="title__text btn" data-tree-title-text>
+                                                                        BMS платы
+                                                                        Lifepo4
+                                                                    </div>
+                                                                    <input type="radio" class="ui-checkbox"
+                                                                        name="edit-category">
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title" data-tree-title>
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="edit-category">
+                                                        </div>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item>
+                                                        <span class="end-border"></span>
+                                                        <div class="title" data-tree-title>
+                                                            <div class="title__text btn" data-tree-title-text>BMS платы
+                                                                Lifepo4
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="edit-category">
+                                                        </div>
+                                                    </li>
+                                                    <li class="c-list__item" data-tree-li-item
+                                                        data-catalog-id='catalogId[5]'>
+                                                        <span class="end-border"></span>
+                                                        <div class="title" data-tree-title>
+                                                            <div class="title__text btn" data-tree-title-text>Тыкни на
+                                                                меня, я покажу
+                                                            </div>
+                                                            <input type="radio" class="ui-checkbox"
+                                                                name="edit-category">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c-list__item" data-tree-li-item data-catalog-id='catalogId[2]'>
+                                        <span class="end-border"></span>
+                                        <div class="title" data-tree-title>
+                                            <div class="title__text btn" data-tree-title-text>BMS платы Lifepo4</div>
+                                            <input type="radio" class="ui-checkbox" name="edit-category">
+                                        </div>
+                                    </li>
+                                    <!--Здесь форич заканчивается-->
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="popup__footer">
+                        <div class="popup__btn ui-btn-common yes btn" data-pop-btn-close-parents
+                            data-is-close="defaultAjaxCallback">
+                            сохранить
+                        </div>
+                        <div class="popup__btn ui-btn-common no btn" data-show-pop-with-id='ask-sure-delete-c-pop'>
+                            удалить категорию
+                        </div>
+                    </div>
+                    <div class="pop-close-btn btn ico-wrapper" data-pop-btn-close-parent
+                        data-is-close="defaultAjaxCallback">
+                        <img src="public/static/assets/icons/close.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="popup-block" id="ask-sure-delete-c-pop" data-popup-block>
+                <div class="popup-block__bg"></div>
+                <div class="popup-w">
+                    <div class="popup-w__body popup">
+                        <div class="popup__info">
+                            <h3 class="popup__header" data-pop-header>
+                                Вы хотите удалить категорию
+                                “<span data-category-name></span>”?
+                            </h3>
+                        </div>
+                        <div class="popup__footer">
+                            <div class="popup__btn ui-btn-common yes btn" data-pop-btn-close-parents
+                                data-is-close="defaultAjaxCallback">
+                                Да, удалить
+                            </div>
+                            <div class="popup__btn ui-btn-common no btn" data-pop-btn-close-parent
+                                data-is-close="defaultAjaxCallback">
+                                Нет, отмена
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-block" id="ask-sure-delete-c-extern-pop" data-popup-block>
+            <div class="popup-block__bg"></div>
+            <div class="popup-w">
+                <div class="popup-w__body popup">
+                    <div class="popup__info">
+                        <h3 class="popup__header" data-pop-header>
+                            Вы хотите удалить категорию
+                            “<span data-category-name></span>”?
+                        </h3>
+                    </div>
+                    <div class="popup__footer">
+                        <div class="popup__btn ui-btn-common yes btn" data-pop-btn-close-parents
+                            data-is-close="defaultAjaxCallback">
+                            Да, удалить
+                        </div>
+                        <div class="popup__btn ui-btn-common no btn" data-pop-btn-close-parent
+                            data-is-close="defaultAjaxCallback">
+                            Нет, отмена
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="public/static/js/jQuery/jquery-3.4.1.js"></script>
+    <script src="public/static/js/script.js"></script>
+    <script src="public/static/js/calendar.js"></script>
+</body>
+
+</html>
